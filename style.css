@@ -1,0 +1,47 @@
+:root{
+  color: red;
+  /* box-sizing: border-box; */
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  /* width: 100%; */
+  height: 100vh;
+  overflow: hidden;
+
+}
+
+canvas { 
+  display: block;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+ 
+} 
+
+p{
+  /* margin: 0; */
+}
+
+.bg{
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height:  100%;
+  background-color: blue;
+  background: radial-gradient(ellipse at top, red, transparent),
+            radial-gradient(ellipse at bottom, blue, transparent);
+  animation: slam 5s linear infinite reverse;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: space-evenly; */
+  /* position: relative; */
+  z-index: -1;
+   overflow: hidden;
+   
+}
