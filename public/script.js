@@ -1,53 +1,3 @@
-//CUBE DEFINITION
-function Cube() {
-  this.x = -2;
-  this.y = -2;
-  this.z = 0;
-  this._fsm(); //init statemachine
-}
-
-Cube.prototype = {
-  announce: function () {
-    console.log(
-      "pos is " +
-        this.x +
-        " " +
-        this.y +
-        " " +
-        this.z +
-        ", state is  " +
-        this.state
-    );
-  },
-};
-
-StateMachine.factory(Cube, {
-  init: "unselected",
-  transitions: [
-    { name: "makeHead", from: ["unselected", "body", "legs"], to: "head" },
-    { name: "makeBody", from: ["unselected", "head", "legs"], to: "body" },
-    { name: "makeLegs", from: ["unselected", "head", "body"], to: "legs" },
-    {
-      name: "makeUnselected",
-      from: ["head", "body", "legs"],
-      to: "unselected",
-    },
-  ],
-  methods: {
-    onMakeHead: function () {
-      console.log("made into head");
-    },
-    onMakeBody: function () {
-      console.log("made into body");
-    },
-    onMakeLegs: function () {
-      console.log("made into legs");
-    },
-    onMakeUnselected: function () {
-      console.log("made into unselected");
-    },
-  },
-});
 
 //SCENE
 var scene = new THREE.Scene();
@@ -69,49 +19,59 @@ document.body.appendChild(renderer.domElement);
 
 //GEOMETRY
 //boxes
-var cubetop = new THREE.Mesh(
-  new THREE.BoxGeometry(),
-  new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
-);
-// cubetop.castShadow = true;
+// var cubetop = new THREE.Mesh(
+//   new THREE.BoxGeometry(),
+//   new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
+// );
+// // cubetop.castShadow = true;
+// cubetop.position.y = 1.1;
+let cubetop = new Cube();
 cubetop.position.y = 1.1;
-scene.add(cubetop);
+// scene.add(cubetop);
 
-var cubemiddle = new THREE.Mesh(
-  new THREE.BoxGeometry(),
-  new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
-);
+// var cubemiddle = new THREE.Mesh(
+//   new THREE.BoxGeometry(),
+//   new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
+// );
 
+let cubemiddle = new Cube();
+// cubetop.box.position.y = 1.1;
 cubemiddle.position.y = 0;
-scene.add(cubemiddle);
+// scene.add(cubemiddle);
 
-var cubebottom = new THREE.Mesh(
-  new THREE.BoxGeometry(),
-  new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
-);
+// var cubebottom = new THREE.Mesh(
+//   new THREE.BoxGeometry(),
+//   new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
+// );
 
+// cubebottom.position.y = -1.1;
+// scene.add(cubebottom);
+let cubebottom = new Cube();
 cubebottom.position.y = -1.1;
-scene.add(cubebottom);
 
-var cubes = [cubetop, cubemiddle, cubebottom];
+let cubes = [cubetop, cubemiddle, cubebottom];
+
+cubes.map( (cube) => {
+  scene.add(cube);
+});
 
 //LIGHTS
-var ambientLight = new THREE.AmbientLight(0x404040);
+let ambientLight = new THREE.AmbientLight(0x404040);
 scene.add(ambientLight);
 
-var directionalLightRight = new THREE.DirectionalLight(0xffcccc, 1);
+let directionalLightRight = new THREE.DirectionalLight(0xffcccc, 1);
 directionalLightRight.position.set(200, 350, 250);
 // directionalLightRight.castShadow = true;
 scene.add(directionalLightRight);
 
-var directionalLightLeft = new THREE.DirectionalLight(0xccccff, 1);
+let directionalLightLeft = new THREE.DirectionalLight(0xccccff, 1);
 directionalLightLeft.position.set(-200, 350, 250);
 // directionalLightLeft.castShadow = true;
 scene.add(directionalLightLeft);
 
 //RAYCASTER
-var raycaster = new THREE.Raycaster();
-var mouse = new THREE.Vector2();
+let raycaster = new THREE.Raycaster();
+let mouse = new THREE.Vector2();
 mouse.x, (mouse.y = -2);
 
 function onMouseMove(event) {
@@ -132,7 +92,7 @@ function checkForHover() {
   raycaster.setFromCamera(mouse, camera);
 
   // calculate objects intersecting the picking ray
-  var intersects = raycaster.intersectObjects(scene.children);
+  let intersects = raycaster.intersectObjects(scene.children);
 
   //reset all colours
   cubes.map((cube) => {
@@ -140,19 +100,17 @@ function checkForHover() {
   });
 
   //set picked cubes to pink
-  for (var i = 0; i < intersects.length; i++) {
+  for (let i = 0; i < intersects.length; i++) {
     intersects[i].object.material.color.set(0xff00ff);
   }
 }
 
-
 //-----------------------------------------------
 //test vars
-var testCube = new Cube();
-testCube.announce();
-testCube.makeHead();
-testCube.announce();
-
+// let testCube = new Cube();
+// testCube.announce();
+// testCube.makeHead();
+// testCube.announce();
 
 //-----------------------------------------------
 //MAIN RENDER
