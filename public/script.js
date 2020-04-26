@@ -1,6 +1,7 @@
-
 //SCENE
 var scene = new THREE.Scene();
+const clock = new THREE.Clock();
+clock.autoStart= true;
 
 //CAMERA
 var camera = new THREE.PerspectiveCamera(
@@ -17,44 +18,30 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x000000, 0); // the default
 document.body.appendChild(renderer.domElement);
 
+function onWindowResize(event) {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+//------------------------------------------------------------------
 //GEOMETRY
-//boxes
-// var cubetop = new THREE.Mesh(
-//   new THREE.BoxGeometry(),
-//   new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
-// );
-// // cubetop.castShadow = true;
-// cubetop.position.y = 1.1;
 let cubetop = new Cube();
 cubetop.position.y = 1.1;
-// scene.add(cubetop);
-
-// var cubemiddle = new THREE.Mesh(
-//   new THREE.BoxGeometry(),
-//   new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
-// );
 
 let cubemiddle = new Cube();
-// cubetop.box.position.y = 1.1;
 cubemiddle.position.y = 0;
-// scene.add(cubemiddle);
 
-// var cubebottom = new THREE.Mesh(
-//   new THREE.BoxGeometry(),
-//   new THREE.MeshStandardMaterial({ color: 0xaaaaaa })
-// );
-
-// cubebottom.position.y = -1.1;
-// scene.add(cubebottom);
 let cubebottom = new Cube();
 cubebottom.position.y = -1.1;
 
 let cubes = [cubetop, cubemiddle, cubebottom];
 
-cubes.map( (cube) => {
+cubes.map((cube) => {
   scene.add(cube);
 });
 
+//------------------------------------------------------------------
 //LIGHTS
 let ambientLight = new THREE.AmbientLight(0x404040);
 scene.add(ambientLight);
@@ -69,7 +56,8 @@ directionalLightLeft.position.set(-200, 350, 250);
 // directionalLightLeft.castShadow = true;
 scene.add(directionalLightLeft);
 
-//RAYCASTER
+//------------------------------------------------------------------
+//RAYCASTER AND PICKING
 let raycaster = new THREE.Raycaster();
 let mouse = new THREE.Vector2();
 mouse.x, (mouse.y = -2);
@@ -79,12 +67,6 @@ function onMouseMove(event) {
   // (-1 to +1) for both components
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-}
-
-function onWindowResize(event) {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 function checkForHover() {
@@ -97,6 +79,7 @@ function checkForHover() {
   //reset all colours
   cubes.map((cube) => {
     cube.material.color.set(0xaaaaaa);
+    cube.update(clock);
   });
 
   //set picked cubes to pink
@@ -107,14 +90,15 @@ function checkForHover() {
 
 //-----------------------------------------------
 //test vars
-// let testCube = new Cube();
+let testCube = new Cube();
 // testCube.announce();
-// testCube.makeHead();
+testCube.makeHead();
 // testCube.announce();
 
 //-----------------------------------------------
 //MAIN RENDER
 function render() {
+  TWEEN.update();
   checkForHover();
   renderer.render(scene, camera);
   requestAnimationFrame(render);

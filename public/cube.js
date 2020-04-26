@@ -8,6 +8,21 @@ class Cube  extends THREE.Mesh{
     super(geometry, material);
 
     this._fsm(); //init statemachine
+    // this.currentRotation = { x: 0, y: 0, z: 0 };
+    // this.targetRotation = { x: 0, y: 360, z: 0 };
+
+    // let tween = new TWEEN.Tween(this.currentRotation).to(this.targetRotation, 2000);
+
+    // tween.onUpdate(function(){
+    //   // this.rotation._x = this.currentRotation.x;
+    //   // this.rotation._y = this.currentRotation.y;
+    //   // this.rotation._z = this.currentRotation.z;
+    // });
+
+    // tween.easing(TWEEN.Easing.Elastic.InOut);
+
+    // tween.start();
+    // tween.chain(tween);
   }
 
   announce() {
@@ -15,14 +30,14 @@ class Cube  extends THREE.Mesh{
       "pos is " + this.position + ", and state is  " + this.state
     );
   }
+  
+  update(clock){
+    this.rotation.y = Math.sin(clock.getElapsedTime() * 1.7 + (this.position.y) ) *  1/4;
+    // console.log(clock.getElapsedTime());
+  }
 
 }
 
-// Cube.prototype = {
-//   announce: function () {
-//     console.log("pos is " + this.box.position + ", state is  " + this.state);
-//   },
-// };
 
 StateMachine.factory(Cube, {
   init: "unselected",
@@ -38,6 +53,7 @@ StateMachine.factory(Cube, {
   ],
   methods: {
     onMakeHead: function () {
+      this.announce();
       console.log("made into head");
     },
     onMakeBody: function () {
