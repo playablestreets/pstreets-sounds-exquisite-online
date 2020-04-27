@@ -93,12 +93,11 @@ testCube.makeHead();
 //-----------------------------------------------
 //MAIN RENDER
 function render() {
-
 	checkForHover();
 	renderer.render(scene, camera);
-  requestAnimationFrame(render);
-  
-  TWEEN.update();
+	requestAnimationFrame(render);
+
+	TWEEN.update();
 }
 
 window.addEventListener('mousemove', onMouseMove, false);

@@ -7,33 +7,21 @@ class Cube extends THREE.Mesh {
 		super(geometry, material);
 
 		this._fsm(); //init statemachine
-		this.currentRotation = { x: 0, y: 0, z: 0 };
-		this.startRotation = { x: 0, y: -1/3, z: 0 };
-		this.endRotation = { x: 0, y: 1/3, z: 0 };
+		// this.currentRotation = { x: 0, y: 0, z: 0 };
+		this.rightRotation = { x: 0, y: -1 / 3, z: -1/16 };
+		this.leftRotation = { x: 0, y: 1 / 3, z: 1/16 };
 
-		let tween1 = new TWEEN.Tween(this.currentRotation)
-			.to(this.endRotation, 2000)
-			.easing(TWEEN.Easing.Elastic.InOut)
-			.onUpdate(() => {
-		  this.rotation.x = this.currentRotation.x;
-		  this.rotation.y = this.currentRotation.y;
-		  this.z = this.currentRotation.z;
-			})
+		let tween1 = new TWEEN.Tween(this.rotation)
+			.to(this.leftRotation, 1500)
+			.easing(TWEEN.Easing.Quadratic.InOut)
 			.start();
 
-			let tween2 = new TWEEN.Tween(this.currentRotation)
-			.to(this.startRotation, 2000)
-			.easing(TWEEN.Easing.Elastic.InOut)
-			.onUpdate(() => {
-		  this.rotation.x = this.currentRotation.x;
-		  this.rotation.y = this.currentRotation.y;
-		  this.z = this.currentRotation.z;
-			});
+		let tween2 = new TWEEN.Tween(this.rotation)
+			.to(this.rightRotation, 1500)
+			.easing(TWEEN.Easing.Quadratic.InOut);
 
-			tween1.chain(tween2);
-			tween2.chain(tween1);
-
-
+		tween1.chain(tween2);
+		tween2.chain(tween1);
 	}
 
 	announce() {
