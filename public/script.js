@@ -1,15 +1,10 @@
 //SCENE
 var scene = new THREE.Scene();
 const clock = new THREE.Clock();
-clock.autoStart= true;
+clock.autoStart = true;
 
 //CAMERA
-var camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 3;
 
 //RENDERER
@@ -19,9 +14,9 @@ renderer.setClearColor(0x000000, 0); // the default
 document.body.appendChild(renderer.domElement);
 
 function onWindowResize(event) {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 //------------------------------------------------------------------
@@ -35,10 +30,10 @@ cubemiddle.position.y = 0;
 let cubebottom = new Cube();
 cubebottom.position.y = -1.1;
 
-let cubes = [cubetop, cubemiddle, cubebottom];
+let cubes = [ cubetop, cubemiddle, cubebottom ];
 
 cubes.map((cube) => {
-  scene.add(cube);
+	scene.add(cube);
 });
 
 //------------------------------------------------------------------
@@ -63,29 +58,29 @@ let mouse = new THREE.Vector2();
 mouse.x, (mouse.y = -2);
 
 function onMouseMove(event) {
-  // calculate mouse position in normalized device coordinates
-  // (-1 to +1) for both components
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+	// calculate mouse position in normalized device coordinates
+	// (-1 to +1) for both components
+	mouse.x = event.clientX / window.innerWidth * 2 - 1;
+	mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 }
 
 function checkForHover() {
-  // update the picking ray with the camera and mouse position
-  raycaster.setFromCamera(mouse, camera);
+	// update the picking ray with the camera and mouse position
+	raycaster.setFromCamera(mouse, camera);
 
-  // calculate objects intersecting the picking ray
-  let intersects = raycaster.intersectObjects(scene.children);
+	// calculate objects intersecting the picking ray
+	let intersects = raycaster.intersectObjects(scene.children);
 
-  //reset all colours
-  cubes.map((cube) => {
-    cube.material.color.set(0xaaaaaa);
-    cube.update(clock);
-  });
+	//reset all colours
+	cubes.map((cube) => {
+		cube.material.color.set(0xaaaaaa);
+		cube.update(clock);
+	});
 
-  //set picked cubes to pink
-  for (let i = 0; i < intersects.length; i++) {
-    intersects[i].object.material.color.set(0xff00ff);
-  }
+	//set picked cubes to pink
+	for (let i = 0; i < intersects.length; i++) {
+		intersects[i].object.material.color.set(0xff00ff);
+	}
 }
 
 //-----------------------------------------------
@@ -98,12 +93,14 @@ testCube.makeHead();
 //-----------------------------------------------
 //MAIN RENDER
 function render() {
-  TWEEN.update();
-  checkForHover();
-  renderer.render(scene, camera);
+
+	checkForHover();
+	renderer.render(scene, camera);
   requestAnimationFrame(render);
+  
+  TWEEN.update();
 }
 
-window.addEventListener("mousemove", onMouseMove, false);
-window.addEventListener("resize", onWindowResize, false);
+window.addEventListener('mousemove', onMouseMove, false);
+window.addEventListener('resize', onWindowResize, false);
 window.requestAnimationFrame(render);
