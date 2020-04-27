@@ -21,13 +21,13 @@ function onWindowResize(event) {
 
 //------------------------------------------------------------------
 //GEOMETRY
-let cubetop = new Cube();
+let cubetop = new Cube('heads', 0);
 cubetop.position.y = 1.1;
 
-let cubemiddle = new Cube();
+let cubemiddle = new Cube('bodies', 0);
 cubemiddle.position.y = 0;
 
-let cubebottom = new Cube();
+let cubebottom = new Cube('legs', 0);
 cubebottom.position.y = -1.1;
 
 let cubes = [ cubetop, cubemiddle, cubebottom ];
@@ -73,21 +73,21 @@ function checkForHover() {
 
 	//reset all colours
 	cubes.map((cube) => {
-		cube.material.color.set(0xaaaaaa);
-		cube.update(clock);
+		cube.setMatColor(0xaaaaaa);
+		// cube.update(clock);
 	});
 
 	//set picked cubes to pink
 	for (let i = 0; i < intersects.length; i++) {
-		intersects[i].object.material.color.set(0xff00ff);
+		intersects[i].object.setMatColor(0xdd99dd);
 	}
 }
 
 //-----------------------------------------------
 //test vars
-let testCube = new Cube();
+// let testCube = new Cube();
 // testCube.announce();
-testCube.makeHead();
+// testCube.makeHead();
 // testCube.announce();
 
 //-----------------------------------------------

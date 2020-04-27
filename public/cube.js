@@ -1,27 +1,48 @@
 //CUBE DEFINITION
 class Cube extends THREE.Mesh {
-	constructor() {
+	constructor(bodyPart, index) {
 		const geometry = new THREE.BoxGeometry();
-		const material = new THREE.MeshStandardMaterial({ color: 0xaaaaff });
 
-		super(geometry, material);
+		let texPath = '/assets/' + bodyPart + '/' + index + '/';
+	
+		const materials = [];
 
+		for (let i = 0; i < 6; i++) {
+			const texture = new THREE.TextureLoader().load(texPath + i + '.png');
+			const material = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, map: texture });
+
+			materials.push(material);
+		}
+
+		// const material = new THREE.MeshStandardMaterial({ color: 0xffffff, map: texture });
+
+		super(geometry, materials);
+
+		this.materials = materials;
+		
 		this._fsm(); //init statemachine
 		// this.currentRotation = { x: 0, y: 0, z: 0 };
-		this.rightRotation = { x: 0, y: -1 / 3, z: -1/16 };
-		this.leftRotation = { x: 0, y: 1 / 3, z: 1/16 };
+		this.rightRotation = { x: 0, y: 3, z: -1 / 32 };
+		this.leftRotation = { x: 0, y: -3, z: 1 / 32 };
 
 		let tween1 = new TWEEN.Tween(this.rotation)
-			.to(this.leftRotation, 1500)
+			.to(this.leftRotation, 3000 + Math.random() * 4000)
 			.easing(TWEEN.Easing.Quadratic.InOut)
 			.start();
 
 		let tween2 = new TWEEN.Tween(this.rotation)
-			.to(this.rightRotation, 1500)
+			.to(this.rightRotation, 4000 + Math.random() * 4000)
 			.easing(TWEEN.Easing.Quadratic.InOut);
 
 		tween1.chain(tween2);
 		tween2.chain(tween1);
+	}
+
+	setMatColor(color){
+		// console.log(this.materials);
+		this.materials.map( mat =>{
+			mat.color.set(color);
+		});
 	}
 
 	announce() {
