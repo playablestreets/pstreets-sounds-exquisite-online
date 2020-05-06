@@ -1,6 +1,58 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
 :root{
   color: red;
   /* box-sizing: border-box; */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -26,22 +78,60 @@ p{
   /* margin: 0; */
 }
 
+.playbutton{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 265;
+  min-width: 100px;
+  min-height: 100px;
+  line-height: 100px;
+  background-color: rgb(255, 38, 0);
+  font-size: 24px;
+  margin: 25px;
+  border-radius: 20px;
+  border-style:  solid;
+  border-color: white;
+  border-width: 7px;
+  color: white;
+  text-align: center;
+  font-weight: bolder;
+  /* outline: 5px white dotted;  inner stroke */
+  /* outline-offset: -5px;  negative border width + outline width */
+}
+
+.playbutton:hover{
+  background-color: rgb(245, 81, 40);
+}
+.playbutton:active{
+  background-color:  rgb(240, 123, 77);  
+  font-size: 28px;
+  /* border-width: 10px; */
+}
+
 .bg{
   position: absolute;
   margin: 0;
   padding: 0;
   width: 100%;
   height:  100%;
-  background-color: blue;
-  background: radial-gradient(ellipse at top, red, transparent),
-            radial-gradient(ellipse at bottom, blue, transparent);
-  animation: slam 5s linear infinite reverse;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* justify-content: space-evenly; */
-  /* position: relative; */
+  /* background-color: greenyellow; */
+  /* background: radial-gradient(ellipse at top, red, transparent), */
+            /* radial-gradient(ellipse at bottom, blue, transparent); */
+  background: radial-gradient(ellipse at bottom, green, greenyellow),
+    radial-gradient(ellipse at top, darkgreen, transparent);
+  /* animation: slam 15s linear infinite alternate; */
   z-index: -1;
    overflow: hidden;
    
 }
+
+
+  @keyframes slam{
+    from{
+      filter: hue-rotate(20deg);
+    }
+    to{
+      filter: hue-rotate(-120deg);
+    }  
+  } 

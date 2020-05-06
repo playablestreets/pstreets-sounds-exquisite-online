@@ -8,8 +8,6 @@ class Cube extends THREE.Mesh {
 		const materials = [];
 		const sounds = [];
 		const audioLoader = new THREE.AudioLoader();
-	
-
 
 		for (let i = 0; i < 6; i++) {
 
@@ -36,60 +34,110 @@ class Cube extends THREE.Mesh {
 		this.materials = materials;
 		this.activeFace = 0;
 		this.sounds = sounds;
+
+		this.faceOrientations = 
+		[
+			{ x: 0, y: Math.PI*3/2, z: 0 },
+			{ x: 0, y: Math.PI/2, z: 0 },
+			{ x: Math.PI/2, y: 0, z: 0 },
+			{ x: Math.PI*3/2, y: 0, z: 0 },
+			{ x: 0, y: 0, z: 0 },
+			{ x: 0, y: Math.PI, z: 0 }
+		];
+
+		this.tween = new TWEEN.Tween();
+		this.animateToFace();
+		// this.rotation.set(this.faceOrientations[this.activeFace]);
 		
-		//set up tweening
-		// this.rightRotation = { x: 0, y: 3, z: -1 / 32 };
-		// this.leftRotation = { x: 0, y: -3, z: 1 / 32 };
-
-		// let tween1 = new TWEEN.Tween(this.rotation)
-		// 	.to(this.leftRotation, 3000 + Math.random() * 4000)
-		// 	.easing(TWEEN.Easing.Quadratic.InOut)
-		// 	.start();
-
-		// let tween2 = new TWEEN.Tween(this.rotation)
-		// 	.to(this.rightRotation, 4000 + Math.random() * 4000)
-		// 	.easing(TWEEN.Easing.Quadratic.InOut);
-
-		// tween1.chain(tween2);
-		// tween2.chain(tween1);
 	}
 
 	setMatColor(color) {
-
 		this.materials.map( mat =>{
 			mat.color.set(color);
 		});
-
 	}
 
 	announce() {
-
 		console.log('pos is ' + this.position + ', and state is  ' + this.state);
-
 	}
 
 	update(clock) {
 
 		// this.rotation.y = Math.sin(clock.getElapsedTime() * 1.5 + this.position.y) * 1 / 12;
 		// console.log(clock.getElapsedTime());
-		if(!this.sounds[this.activeFace].isPlaying){
-			this.setMatColor(0xaaaaaa);
-		}
+		// if(!this.sounds[this.activeFace].isPlaying){
+			// this.setMatColor(0xaaaaaa);
+		// }
 
 	}
 
 	onClick() {
-		console.log( 'yo from da ' + this.state + ' ' + this.activeFace );
+		this.activeFace++;
+		this.activeFace %= 6;
+		this.animateToFace();
+		// console.log( 'yo from da ' + this.state + ' ' + this.activeFace );
+		
+
+	}
+
+
+	// soundEnded() {
+		// this.setMatColor(0xaaaaaa);
+		// this.animateSpin();
+		// this.setMatColor(0xdd99dd);		
+		// console.log('doneso');
+	// }
+
+	play(){
+		console.log('playing ' + this.state);
 		this.sounds[this.activeFace].play();
 		this.setMatColor(0xdd99dd);
-		// this.sounds[this.activeFace].onEnded(() => {
-		// 	console.log('doneso');			
-		// });
+		this.animateSpin( this.sounds[this.activeFace].buffer.duration * 1000 );
+		// setTimeout( playNext, this.sounds[this.activeFace].buffer.duration * 1000 );
 	}
+
+	animateToFace(next){
+		this.tween = new TWEEN.Tween(this.rotation)
+			.to( this.faceOrientations[this.activeFace], 1500 )
+			.easing(TWEEN.Easing.Quadratic.InOut)
+			.start();
+		// this.rotation.set(this.faceOrientations[this.activeFace]);
+	}
+
+	animateSpin(duration = 1000) {
+		// this.rightRotation = { x: 0, y: 0, z: 0 };
+		this.leftRotation = { x: this.faceOrientations[this.activeFace].x + Math.PI * 2, y: this.faceOrientations[this.activeFace].y + Math.PI * 2, z: 0 };
+
+			this.tween = new TWEEN.Tween(this.rotation)
+			.to(this.leftRotation, duration)
+			.easing(TWEEN.Easing.Quadratic.InOut)
+			.start();
+
+		// let tween2 = new TWEEN.Tween(this.rotation)
+		// 	.to(this.rightRotation, 1000)
+		// 	.easing(TWEEN.Easing.Quadratic.InOut);
+
+		// tween1.chain(tween2);
+		// tween2.chain(tween1);
+	}
+
+  getCurrentDuration(){
+		return this.sounds[this.activeFace].buffer.duration * 1000;
+	}
+
 
 }
 //--- end class ---
 
+
+// Cube.prototype.soundEndsIn = function(duration, callback) {
+// 		setTimeout(  );
+
+// 	this.setMatColor(0xaaaaaa);
+// 	// this.animateSpin();
+// 	// this.setMatColor(0xdd99dd);		
+// 	console.log('doneso');
+// };
 
 StateMachine.factory(Cube, {
 	init: 'unselected',
@@ -101,25 +149,17 @@ StateMachine.factory(Cube, {
 	],
 	methods: {
 		onMakeHead: function() {
-		
 			this.announce();
 			console.log('made into head');
-		
 		},
 		onMakeBody: function() {
-		
 			console.log('made into body');
-		
 		},
 		onMakeLegs: function() {
-		
 			console.log('made into legs');
-		
 		},
 		onMakeUnselected: function() {
-
 			console.log('made into unselected');
-		
 		}
 	}
 });

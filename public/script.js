@@ -27,13 +27,13 @@ function onWindowResize(event) {
 //------------------------------------------------------------------
 //GEOMETRY
 let cubetop = new Cube('heads', 0, listener);
-cubetop.position.y = 1.1;
+cubetop.position.y = 1.001
 
 let cubemiddle = new Cube('bodies', 0, listener);
 cubemiddle.position.y = 0;
 
 let cubebottom = new Cube('legs', 0, listener);
-cubebottom.position.y = -1.1;
+cubebottom.position.y = -1.001;
 
 let cubes = [ cubetop, cubemiddle, cubebottom ];
 
@@ -43,15 +43,15 @@ cubes.map((cube) => {
 
 //------------------------------------------------------------------
 //LIGHTS
-let ambientLight = new THREE.AmbientLight(0x404040);
+let ambientLight = new THREE.AmbientLight(0xaaaaaa);
 scene.add(ambientLight);
 
-let directionalLightRight = new THREE.DirectionalLight(0xffcccc, 1);
+let directionalLightRight = new THREE.DirectionalLight(0xccaaaa, 1);
 directionalLightRight.position.set(200, 350, 250);
 // directionalLightRight.castShadow = true;
 scene.add(directionalLightRight);
 
-let directionalLightLeft = new THREE.DirectionalLight(0xccccff, 1);
+let directionalLightLeft = new THREE.DirectionalLight(0xaaaacc, 1);
 directionalLightLeft.position.set(-200, 350, 250);
 // directionalLightLeft.castShadow = true;
 scene.add(directionalLightLeft);
@@ -83,23 +83,33 @@ function onMouseDown(event) {
 }
 
 function checkForHover() {
-	// // update the picking ray with the camera and mouse position
-	// raycaster.setFromCamera(mouse, camera);
+	// update the picking ray with the camera and mouse position
+	raycaster.setFromCamera(mouse, camera);
 
-	// // calculate objects intersecting the picking ray
-	// let intersects = raycaster.intersectObjects(scene.children);
+	// calculate objects intersecting the picking ray
+	let intersects = raycaster.intersectObjects(scene.children);
 
-	// //reset all colours
-	// cubes.map((cube) => {
-	// 	cube.setMatColor(0xaaaaaa);
-	// 	// cube.update(clock);
-	// });
+	//reset all colours
+	cubes.map((cube) => {
+		cube.setMatColor(0xaaaaaa);
+		// cube.update(clock);
+	});
 
-	// //set picked cubes to pink
-	// for (let i = 0; i < intersects.length; i++) {
-	// 	intersects[i].object.setMatColor(0xdd99dd);
-	// }
+	//set picked cubes to pink
+	for (let i = 0; i < intersects.length; i++) {
+		intersects[i].object.setMatColor(0xdd99dd);
+	}
 }
+
+function play(){
+	// console.log('play');
+  let bodyInterval = cubetop.getCurrentDuration();
+  let legsInterval = bodyInterval + cubemiddle.getCurrentDuration();
+	cubetop.play();
+	setTimeout(function(){cubemiddle.play()}, bodyInterval);
+	setTimeout(function(){cubebottom.play()}, legsInterval);
+}
+
 
 //--- TESTING -----------------------------------
 // let testCube = new Cube();
@@ -118,14 +128,15 @@ function render() {
 	requestAnimationFrame(render);
 	
 	//update cubes
-	cubes.map((cube) => {
-		cube.update(clock);
-	});
-
+	// cubes.map((cube) => {
+	// 	cube.update(clock);
+	// });
 
 	TWEEN.update();
 }
 
+//- Using a function pointer:
+document.getElementById('playbutton').onclick = play;
 window.addEventListener('mousedown', onMouseDown, false);
 window.addEventListener('mousemove', onMouseMove, false);
 window.addEventListener('resize', onWindowResize, false);
