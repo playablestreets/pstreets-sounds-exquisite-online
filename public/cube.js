@@ -3,6 +3,7 @@ class Cube extends THREE.Mesh {
 
 	constructor(bodyPart, index, listener) {
 
+		// const container = new Object3D();
 		const geometry = new THREE.BoxGeometry();
 		let assetPath = '/assets/' + bodyPart + '/' + index + '/';	
 		const materials = [];
@@ -12,7 +13,8 @@ class Cube extends THREE.Mesh {
 		for (let i = 0; i < 6; i++) {
 
 			const texture = new THREE.TextureLoader().load(assetPath + i + '.png');
-			const material = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, map: texture });
+			// const material = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, map: texture });
+			const material = new THREE.MeshLambertMaterial({ color: 0xaaaaaa, map: texture });
 			materials.push(material);
 
 			const sound = new THREE.Audio(listener);
@@ -125,6 +127,10 @@ class Cube extends THREE.Mesh {
 		return this.sounds[this.activeFace].buffer.duration * 1000;
 	}
 
+
+	// startShake(){
+	// 	let shakeTween
+	// }
 
 }
 //--- end class ---

@@ -10,7 +10,7 @@ camera.position.z = 3;
 //AUDIO
 // create an AudioListener and add it to the camera
 const listener = new THREE.AudioListener();
-camera.add( listener );
+camera.add(listener);
 
 //RENDERER
 const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -27,7 +27,7 @@ function onWindowResize(event) {
 //------------------------------------------------------------------
 //GEOMETRY
 let cubetop = new Cube('heads', 0, listener);
-cubetop.position.y = 1.001
+cubetop.position.y = 1.001;
 
 let cubemiddle = new Cube('bodies', 0, listener);
 cubemiddle.position.y = 0;
@@ -37,23 +37,38 @@ cubebottom.position.y = -1.001;
 
 let cubes = [ cubetop, cubemiddle, cubebottom ];
 
+let cubeGroup = new THREE.Group();
+
+// cubeGroup.add(cubetop);
+// cubeGroup.add(cubemiddle);
+// cubeGroup.add(cubebottom);
+
 cubes.map((cube) => {
 	scene.add(cube);
 });
 
+// scene.add(cubeGroup);
+
+
+//-----------------------------------------------------------------
+//cube group animation
+
+
+
 //------------------------------------------------------------------
 //LIGHTS
-let ambientLight = new THREE.AmbientLight(0xaaaaaa);
+let ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight);
 
-let directionalLightRight = new THREE.DirectionalLight(0xccaaaa, 1);
-directionalLightRight.position.set(200, 350, 250);
-// directionalLightRight.castShadow = true;
+let directionalLightRight = new THREE.PointLight(0xff5555, 1);
+directionalLightRight.position.set(4, 3, 10);
+
+directionalLightRight.castShadow = true;
 scene.add(directionalLightRight);
 
-let directionalLightLeft = new THREE.DirectionalLight(0xaaaacc, 1);
-directionalLightLeft.position.set(-200, 350, 250);
-// directionalLightLeft.castShadow = true;
+let directionalLightLeft = new THREE.PointLight(0x55ff55, 1);
+directionalLightLeft.position.set(-4, -2, 10);
+directionalLightLeft.castShadow = true;
 scene.add(directionalLightLeft);
 
 //------------------------------------------------------------------
@@ -101,15 +116,18 @@ function checkForHover() {
 	}
 }
 
-function play(){
+function play() {
 	// console.log('play');
-  let bodyInterval = cubetop.getCurrentDuration();
-  let legsInterval = bodyInterval + cubemiddle.getCurrentDuration();
+	let bodyInterval = cubetop.getCurrentDuration();
+	let legsInterval = bodyInterval + cubemiddle.getCurrentDuration();
 	cubetop.play();
-	setTimeout(function(){cubemiddle.play()}, bodyInterval);
-	setTimeout(function(){cubebottom.play()}, legsInterval);
+	setTimeout(function() {
+		cubemiddle.play();
+	}, bodyInterval);
+	setTimeout(function() {
+		cubebottom.play();
+	}, legsInterval);
 }
-
 
 //--- TESTING -----------------------------------
 // let testCube = new Cube();
@@ -126,7 +144,7 @@ function render() {
 	checkForHover();
 	renderer.render(scene, camera);
 	requestAnimationFrame(render);
-	
+
 	//update cubes
 	// cubes.map((cube) => {
 	// 	cube.update(clock);
