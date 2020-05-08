@@ -74,12 +74,23 @@ class Cube extends THREE.Mesh {
 	}
 
 	onClick() {
-		this.activeFace++;
-		this.activeFace %= 6;
-		this.animateToFace();
-		// console.log( 'yo from da ' + this.state + ' ' + this.activeFace );
-		
+		// this.activeFace++;
+		// this.activeFace %= 6;
+		// this.animateToFace();
+		console.log( 'yo from da ' + this.state + ' ' + this.activeFace );
+		// this.sounds[this.activeFace].currentTime = 0;			
+		this.sounds[this.activeFace].play();
 
+	}
+
+	stopSound(){
+		this.sounds.map((sound) => {
+			console.log('stopping sound');
+			// sound.currentTime = 0;			
+			sound.pause();
+			sound._pausedAt = 0;
+			sound.isPlaying = false;
+		});
 	}
 
 
@@ -94,17 +105,30 @@ class Cube extends THREE.Mesh {
 		console.log('playing ' + this.state);
 		this.sounds[this.activeFace].play();
 		this.setMatColor(0xdd99dd);
-		this.animateSpin( this.sounds[this.activeFace].buffer.duration * 1000 );
+		// this.animateSpin( this.sounds[this.activeFace].buffer.duration * 1000 );
 		// setTimeout( playNext, this.sounds[this.activeFace].buffer.duration * 1000 );
 	}
 
-	animateToFace(next){
+	animateToFace(){
 		this.tween = new TWEEN.Tween(this.rotation)
 			.to( this.faceOrientations[this.activeFace], 1500 )
 			.easing(TWEEN.Easing.Quadratic.InOut)
 			.start();
 		// this.rotation.set(this.faceOrientations[this.activeFace]);
 	}
+
+	randomizeFace(){
+		
+		this.activeFace = Math.floor( Math.random() * 6);
+
+		console.log('randomizing ' + this.state + ' to ' + this.activeFace);
+		
+		this.animateToFace();
+		// this.rotation.set(this.faceOrientations[this.activeFace]);
+	}
+
+
+
 
 	animateSpin(duration = 1000) {
 		// this.rightRotation = { x: 0, y: 0, z: 0 };
@@ -168,4 +192,4 @@ StateMachine.factory(Cube, {
 			console.log('made into unselected');
 		}
 	}
-});
+})

@@ -57,16 +57,16 @@ cubes.map((cube) => {
 
 //------------------------------------------------------------------
 //LIGHTS
-let ambientLight = new THREE.AmbientLight(0x333333);
+let ambientLight = new THREE.AmbientLight(0x222222);
 scene.add(ambientLight);
 
-let directionalLightRight = new THREE.PointLight(0xff5555, 1);
+let directionalLightRight = new THREE.PointLight(0xee9999, 1);
 directionalLightRight.position.set(4, 3, 10);
 
 directionalLightRight.castShadow = true;
 scene.add(directionalLightRight);
 
-let directionalLightLeft = new THREE.PointLight(0x55ff55, 1);
+let directionalLightLeft = new THREE.PointLight(0x99ee99, 1);
 directionalLightLeft.position.set(-4, -2, 10);
 directionalLightLeft.castShadow = true;
 scene.add(directionalLightLeft);
@@ -91,7 +91,10 @@ function onMouseDown(event) {
 	// calculate objects intersecting the picking ray
 	let intersects = raycaster.intersectObjects(scene.children);
 
-	//set picked cubes to pink
+	cubes.map((cube) =>{
+		cube.stopSound();
+	});
+
 	for (let i = 0; i < intersects.length; i++) {
 		intersects[i].object.onClick();
 	}
@@ -116,17 +119,22 @@ function checkForHover() {
 	}
 }
 
-function play() {
-	// console.log('play');
-	let bodyInterval = cubetop.getCurrentDuration();
-	let legsInterval = bodyInterval + cubemiddle.getCurrentDuration();
-	cubetop.play();
-	setTimeout(function() {
-		cubemiddle.play();
-	}, bodyInterval);
-	setTimeout(function() {
-		cubebottom.play();
-	}, legsInterval);
+function shuffle() {
+	console.log('play');
+	// let bodyInterval = cubetop.getCurrentDuration();
+	// let legsInterval = bodyInterval + cubemiddle.getCurrentDuration();
+	// cubetop.play();
+	// setTimeout(function() {
+	// 	cubemiddle.play();
+	// }, bodyInterval);
+	// setTimeout(function() {
+	// 	cubebottom.play();
+	// }, legsInterval);
+	cubes.map((cube) => {
+		cube.randomizeFace();
+	});
+
+
 }
 
 //--- TESTING -----------------------------------
@@ -154,7 +162,7 @@ function render() {
 }
 
 //- Using a function pointer:
-document.getElementById('playbutton').onclick = play;
+document.getElementById('shufflebutton').onclick = shuffle;
 window.addEventListener('mousedown', onMouseDown, false);
 window.addEventListener('mousemove', onMouseMove, false);
 window.addEventListener('resize', onWindowResize, false);

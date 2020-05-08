@@ -82,6 +82,7 @@ p{
   position: absolute;
   bottom: 0;
   right: 0;
+  padding: 10px;
   z-index: 265;
   min-width: 100px;
   min-height: 100px;
@@ -123,7 +124,7 @@ p{
     radial-gradient(ellipse at top, darkgreen, transparent);
   /* animation: slam 15s linear infinite alternate; */
   z-index: -1;
-   overflow: hidden;
+  overflow: hidden;
    
 }
 
