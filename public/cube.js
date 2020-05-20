@@ -15,6 +15,7 @@ class Cube extends THREE.Mesh {
 			const texture = new THREE.TextureLoader().load(assetPath + i + '.png');
 			// const material = new THREE.MeshStandardMaterial({ color: 0xaaaaaa, map: texture });
 			const material = new THREE.MeshLambertMaterial({ color: 0xaaaaaa, map: texture });
+			material.transparent = true;
 			materials.push(material);
 
 			const sound = new THREE.Audio(listener);
@@ -22,6 +23,8 @@ class Cube extends THREE.Mesh {
 				sound.setBuffer( buffer );
 				sound.setVolume(0.9);
 			});
+
+
 
 			sounds.push(sound);
 		}
@@ -44,6 +47,8 @@ class Cube extends THREE.Mesh {
 			{ x: 0, y: Math.PI, z: 0 }
 		];
 
+		// this.fadeTween = new TWEEN.Tween();
+
 		this.tween = new TWEEN.Tween();
 		this.animateToFace();
 		// this.rotation.set(this.faceOrientations[this.activeFace]);
@@ -59,6 +64,26 @@ class Cube extends THREE.Mesh {
 		});
 	}
 
+
+	fadeOut(){
+		this.materials.map( mat =>{
+			mat.opacity = 0.7;
+		});
+
+	}
+
+	fadeIn(){
+		this.materials.map( mat =>{
+			mat.opacity = 1.0;
+		});
+	}
+
+	setFade(opacity){
+		this.materials.map( mat =>{
+			mat.opacity = opacity;
+		});
+	}
+
 	announce() {
 		console.log('pos is ' + this.position + ', and state is  ' + this.state);
 	}
@@ -70,7 +95,10 @@ class Cube extends THREE.Mesh {
 		// this.activeFace %= 6;
 		// this.animateToFace();
 		// console.log( 'yo from da ' + ' ' + this.activeFace );
-		this.sounds[this.activeFace].currentTime = 0;			
+		this.sounds[this.activeFace].currentTime = 0;		
+		this.sounds[this.activeFace].onEnded( () => {
+			console.log('doneso');
+		} );	
 		this.sounds[this.activeFace].play();
 
 	}
@@ -146,14 +174,9 @@ class Cube extends THREE.Mesh {
 
 	
 	onDragStop(){
-		// console.log("stoppin draggin", this.dragStartPos);
-		console.log(this.position.equals(this.dragStartPos));
+
 		if(this.position.equals(this.dragStartPos)){
-			console.log( 'clicky' );
 			this.onClick();
-		}else{
-			// console.log('not clicky');
-			console.log('not clicky');
 		}
 
 		this.dragStartPos = null;

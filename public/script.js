@@ -89,11 +89,31 @@ function onMouseMove(event) {
 controls.addEventListener( 'dragstart', function ( event ) {
 	event.object.onDragStart();
 	// event.object.setMatColor( 0xaaaaaa );
+	cubes.map((cube) =>{
+		cube.stopSound();
+
+		if(event.object !== cube ){
+			cube.fadeOut();
+		}
+
+	});
+
+
+
 
 } );
 
 controls.addEventListener( 'dragend', function ( event ) {
 	event.object.onDragStop();
+
+	cubes.map((cube) =>{
+		cube.stopSound();
+
+		if(event.object !== cube ){
+			cube.fadeIn();
+		}
+
+	});
 	// event.object.setMatColor( 0x000000 );	
 
 } );
@@ -105,6 +125,7 @@ function onMouseDown(event) {
 
 	// // calculate objects intersecting the picking ray
 	// let intersects = raycaster.intersectObjects(scene.children);
+	console.log('hey');
 
 	cubes.map((cube) =>{
 		cube.stopSound();
