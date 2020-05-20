@@ -9,6 +9,9 @@ camera.position.z = 3;
 
 //dragable controls
 let controls;
+let isDragging = false;
+let draggedFrom = null;
+//audio / drag toggle
 
 //AUDIO
 // create an AudioListener and add it to the camera
@@ -29,47 +32,36 @@ function onWindowResize(event) {
 
 //------------------------------------------------------------------
 //GEOMETRY
-let cubetop = new Cube('heads', 0, listener);
-cubetop.position.y = 1.001;
+//asset type, asset index, audio listener
+let cubeHead = new Cube('heads', 0, listener);
+cubeHead.position.y = 1.0;
 
-let cubemiddle = new Cube('bodies', 0, listener);
-cubemiddle.position.y = 0;
+let cubeBody = new Cube('bodies', 0, listener);
+cubeBody.position.y = 0;
 
-let cubebottom = new Cube('legs', 0, listener);
-cubebottom.position.y = -1.001;
+let cubeLegs = new Cube('legs', 0, listener);
+cubeLegs.position.y = -1.0;
 
-let cubes = [ cubetop, cubemiddle, cubebottom ];
+let cubes = [ cubeHead, cubeBody, cubeLegs ];
 
-let cubeGroup = new THREE.Group();
-
-// cubeGroup.add(cubetop);
-// cubeGroup.add(cubemiddle);
-// cubeGroup.add(cubebottom);
+let unselectedCubes = [];
 
 cubes.map((cube) => {
 	scene.add(cube);
 });
 
-// scene.add(cubeGroup);
-
-
-//-----------------------------------------------------------------
-//cube group animation
-
-
-
 //------------------------------------------------------------------
 //LIGHTS
-let ambientLight = new THREE.AmbientLight(0x222222);
+let ambientLight = new THREE.AmbientLight(0x111111);
 scene.add(ambientLight);
 
-let directionalLightRight = new THREE.PointLight(0xee9999, 1);
+let directionalLightRight = new THREE.PointLight(0x99bbbb, 1);
 directionalLightRight.position.set(4, 3, 10);
 
 directionalLightRight.castShadow = true;
 scene.add(directionalLightRight);
 
-let directionalLightLeft = new THREE.PointLight(0x99ee99, 1);
+let directionalLightLeft = new THREE.PointLight(0xbb99bb, 1);
 directionalLightLeft.position.set(-4, -2, 10);
 directionalLightLeft.castShadow = true;
 scene.add(directionalLightLeft);
@@ -79,30 +71,82 @@ scene.add(directionalLightLeft);
 let raycaster = new THREE.Raycaster();
 let mouse = new THREE.Vector2();
 mouse.x, (mouse.y = -2);
-controls = new THREE.DragControls( [ ... cubes ], camera, renderer.domElement );
-controls.addEventListener( 'drag', render );
+controls = new THREE.DragControls([ ...cubes ], camera, renderer.domElement);
+controls.addEventListener('drag', render);
 
 function onMouseMove(event) {
 	// calculate mouse position in normalized device coordinates
 	// (-1 to +1) for both components
 	mouse.x = event.clientX / window.innerWidth * 2 - 1;
 	mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+	if (isDragging) {
+		unselectedCubes.map((cube) => {
+			cube.fadeOut();
+		});
+
+		isDragging = false;
+	}
 }
 
+controls.addEventListener('dragstart', function(event) {
+	isDragging = true;
+
+	event.object.onDragStart();
+	draggedFrom = event.object.position.y;
+	// event.object.setMatColor( 0xaaaaaa );
+	cubes.map((cube) => {
+		cube.stopSound();
+		if (event.object !== cube) {
+			unselectedCubes.push(cube);
+		}
+	});
+});
+
+controls.addEventListener('dragend', function(event) {
+	event.object.onDragStop();
+
+	let targetPos;
+
+	if (event.object.position.y < -0.5) {
+		targetPos = -1;
+	}
+	else if (event.object.position.y > 0.5) {
+		targetPos = 1;
+	}
+	else {
+		targetPos = 0.0;
+	}
+
+	unselectedCubes.map((cube) => {
+		cube.fadeIn();
+		if (cube.position.y === targetPos) {
+			cube.position.y = draggedFrom;
+		}
+	});
+
+	event.object.position.y = targetPos;
+	event.object.position.x = 0;
+	event.object.position.z = 0;
+
+	draggedFrom = null;
+	unselectedCubes = [];
+});
+
 function onMouseDown(event) {
-	// update the picking ray with the camera and mouse position
-	raycaster.setFromCamera(mouse, camera);
+	// // update the picking ray with the camera and mouse position
+	// raycaster.setFromCamera(mouse, camera);
 
-	// calculate objects intersecting the picking ray
-	let intersects = raycaster.intersectObjects(scene.children);
+	// // calculate objects intersecting the picking ray
+	// let intersects = raycaster.intersectObjects(scene.children);
 
-	cubes.map((cube) =>{
+	cubes.map((cube) => {
 		cube.stopSound();
 	});
 
-	for (let i = 0; i < intersects.length; i++) {
-		intersects[i].object.onClick();
-	}
+	// for (let i = 0; i < intersects.length; i++) {
+	// 	intersects[i].object.onClick();
+	// }
 }
 
 function checkForHover() {
@@ -125,49 +169,24 @@ function checkForHover() {
 }
 
 function shuffle() {
-	console.log('play');
-	// let bodyInterval = cubetop.getCurrentDuration();
-	// let legsInterval = bodyInterval + cubemiddle.getCurrentDuration();
-	// cubetop.play();
-	// setTimeout(function() {
-	// 	cubemiddle.play();
-	// }, bodyInterval);
-	// setTimeout(function() {
-	// 	cubebottom.play();
-	// }, legsInterval);
 	cubes.map((cube) => {
 		cube.randomizeFace();
 	});
-
-
 }
-
-//--- TESTING -----------------------------------
-// let testCube = new Cube();
-// testCube.announce();
-// testCube.makeHead();
-// testCube.announce();
-cubetop.makeHead();
-cubemiddle.makeBody();
-cubebottom.makeLegs();
 
 //-----------------------------------------------
 //MAIN RENDER
 function render() {
-	checkForHover();
+	// checkForHover();
+
 	renderer.render(scene, camera);
 	requestAnimationFrame(render);
-
-	//update cubes
-	// cubes.map((cube) => {
-	// 	cube.update(clock);
-	// });
 
 	TWEEN.update();
 }
 
-//- Using a function pointer:
 document.getElementById('shufflebutton').onclick = shuffle;
+// document.addEventListener('click', onClick, false);
 window.addEventListener('mousedown', onMouseDown, false);
 window.addEventListener('mousemove', onMouseMove, false);
 window.addEventListener('resize', onWindowResize, false);
