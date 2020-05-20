@@ -9,7 +9,8 @@ camera.position.z = 3;
 
 //dragable controls
 let controls;
-
+let isDragging = false;
+let draggedFrom = null;
 //audio / drag toggle
 
 //AUDIO
@@ -32,22 +33,22 @@ function onWindowResize(event) {
 //------------------------------------------------------------------
 //GEOMETRY
 //asset type, asset index, audio listener
-let cubetop = new Cube('heads', 0, listener);
-cubetop.position.y = 1.001;
+let cubeHead = new Cube('heads', 0, listener);
+cubeHead.position.y = 1.0;
 
-let cubemiddle = new Cube('bodies', 0, listener);
-cubemiddle.position.y = 0;
+let cubeBody = new Cube('bodies', 0, listener);
+cubeBody.position.y = 0;
 
-let cubebottom = new Cube('legs', 0, listener);
-cubebottom.position.y = -1.001;
+let cubeLegs = new Cube('legs', 0, listener);
+cubeLegs.position.y = -1.0;
 
-let cubes = [ cubetop, cubemiddle, cubebottom ];
+let cubes = [ cubeHead, cubeBody, cubeLegs ];
 
+let unselectedCubes = [];
 
 cubes.map((cube) => {
 	scene.add(cube);
 });
-
 
 //------------------------------------------------------------------
 //LIGHTS
@@ -70,54 +71,67 @@ scene.add(directionalLightLeft);
 let raycaster = new THREE.Raycaster();
 let mouse = new THREE.Vector2();
 mouse.x, (mouse.y = -2);
-controls = new THREE.DragControls( [ ... cubes ], camera, renderer.domElement );
-controls.addEventListener( 'drag', render );
-
-
-
+controls = new THREE.DragControls([ ...cubes ], camera, renderer.domElement);
+controls.addEventListener('drag', render);
 
 function onMouseMove(event) {
 	// calculate mouse position in normalized device coordinates
 	// (-1 to +1) for both components
 	mouse.x = event.clientX / window.innerWidth * 2 - 1;
 	mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+	if (isDragging) {
+		unselectedCubes.map((cube) => {
+			cube.fadeOut();
+		});
+
+		isDragging = false;
+	}
 }
 
+controls.addEventListener('dragstart', function(event) {
+	isDragging = true;
 
-
-
-controls.addEventListener( 'dragstart', function ( event ) {
 	event.object.onDragStart();
+	draggedFrom = event.object.position.y;
 	// event.object.setMatColor( 0xaaaaaa );
-	cubes.map((cube) =>{
+	cubes.map((cube) => {
 		cube.stopSound();
-
-		if(event.object !== cube ){
-			cube.fadeOut();
+		if (event.object !== cube) {
+			unselectedCubes.push(cube);
 		}
-
 	});
+});
 
-
-
-
-} );
-
-controls.addEventListener( 'dragend', function ( event ) {
+controls.addEventListener('dragend', function(event) {
 	event.object.onDragStop();
 
-	cubes.map((cube) =>{
-		cube.stopSound();
+	let targetPos;
 
-		if(event.object !== cube ){
-			cube.fadeIn();
+	if (event.object.position.y < -0.5) {
+		targetPos = -1;
+	}
+	else if (event.object.position.y > 0.5) {
+		targetPos = 1;
+	}
+	else {
+		targetPos = 0.0;
+	}
+
+	unselectedCubes.map((cube) => {
+		cube.fadeIn();
+		if (cube.position.y === targetPos) {
+			cube.position.y = draggedFrom;
 		}
-
 	});
-	// event.object.setMatColor( 0x000000 );	
 
-} );
+	event.object.position.y = targetPos;
+	event.object.position.x = 0;
+	event.object.position.z = 0;
 
+	draggedFrom = null;
+	unselectedCubes = [];
+});
 
 function onMouseDown(event) {
 	// // update the picking ray with the camera and mouse position
@@ -125,9 +139,8 @@ function onMouseDown(event) {
 
 	// // calculate objects intersecting the picking ray
 	// let intersects = raycaster.intersectObjects(scene.children);
-	console.log('hey');
 
-	cubes.map((cube) =>{
+	cubes.map((cube) => {
 		cube.stopSound();
 	});
 
@@ -135,10 +148,6 @@ function onMouseDown(event) {
 	// 	intersects[i].object.onClick();
 	// }
 }
-
-
-
-
 
 function checkForHover() {
 	// update the picking ray with the camera and mouse position
@@ -160,18 +169,14 @@ function checkForHover() {
 }
 
 function shuffle() {
-
 	cubes.map((cube) => {
 		cube.randomizeFace();
 	});
-
 }
-
 
 //-----------------------------------------------
 //MAIN RENDER
 function render() {
-	
 	// checkForHover();
 
 	renderer.render(scene, camera);
@@ -179,7 +184,6 @@ function render() {
 
 	TWEEN.update();
 }
-
 
 document.getElementById('shufflebutton').onclick = shuffle;
 // document.addEventListener('click', onClick, false);
