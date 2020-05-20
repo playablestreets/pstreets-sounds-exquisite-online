@@ -48,7 +48,6 @@ table {
 }
 
 
-
 :root{
   color: red;
   /* box-sizing: border-box; */
@@ -78,34 +77,28 @@ p{
   /* margin: 0; */
 }
 
-.playbutton{
+.button{
   position: absolute;
   bottom: 0;
   right: 0;
   padding: 10px;
   z-index: 265;
-  min-width: 100px;
-  min-height: 100px;
-  line-height: 100px;
   background-color: rgb(255, 72, 0);
   font-size: 24px;
-  margin: 25px;
-  border-radius: 20px;
+  margin: 20px 20px;
+  border-radius: 15px;
   border-style:  solid;
-  border-color: white;
-  border-width: 7px;
+
   color: white;
   text-align: center;
   font-weight: bolder;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-  /* outline: 5px white dotted;  inner stroke */
-  /* outline-offset: -5px;  negative border width + outline width */
 }
 
-.playbutton:hover{
+.button:hover{
   background-color: rgb(245, 115, 40);
 }
-.playbutton:active{
+.button:active{
   background-color:  rgb(240, 137, 77);  
   font-size: 28px;
   /* border-width: 10px; */
@@ -117,23 +110,9 @@ p{
   padding: 0;
   width: 100%;
   height:  100%;
-  /* background-color: greenyellow; */
-  /* background: radial-gradient(ellipse at top, red, transparent), */
-            /* radial-gradient(ellipse at bottom, blue, transparent); */
   background: radial-gradient(ellipse at bottom, green, greenyellow),
     radial-gradient(ellipse at top, darkgreen, transparent);
-  /* animation: slam 15s linear infinite alternate; */
   z-index: -1;
-  overflow: hidden;
-   
+  overflow: hidden;   
 }
 
-
-  @keyframes slam{
-    from{
-      filter: hue-rotate(20deg);
-    }
-    to{
-      filter: hue-rotate(-120deg);
-    }  
-  } 
