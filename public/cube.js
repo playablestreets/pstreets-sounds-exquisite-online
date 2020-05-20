@@ -29,8 +29,6 @@ class Cube extends THREE.Mesh {
 		//call super constructor
 		super(geometry, materials);
 
-		//init statemachine
-		this._fsm(); 
 
 		//set class variables
 		this.materials = materials;
@@ -63,15 +61,7 @@ class Cube extends THREE.Mesh {
 		console.log('pos is ' + this.position + ', and state is  ' + this.state);
 	}
 
-	update(clock) {
 
-		// this.rotation.y = Math.sin(clock.getElapsedTime() * 1.5 + this.position.y) * 1 / 12;
-		// console.log(clock.getElapsedTime());
-		// if(!this.sounds[this.activeFace].isPlaying){
-			// this.setMatColor(0xaaaaaa);
-		// }
-
-	}
 
 	onClick() {
 		// this.activeFace++;
@@ -159,37 +149,3 @@ class Cube extends THREE.Mesh {
 }
 //--- end class ---
 
-
-// Cube.prototype.soundEndsIn = function(duration, callback) {
-// 		setTimeout(  );
-
-// 	this.setMatColor(0xaaaaaa);
-// 	// this.animateSpin();
-// 	// this.setMatColor(0xdd99dd);		
-// 	console.log('doneso');
-// };
-
-StateMachine.factory(Cube, {
-	init: 'unselected',
-	transitions: [
-		{ name: 'makeHead', from: [ 'unselected', 'body', 'legs' ], to: 'head' },
-		{ name: 'makeBody', from: [ 'unselected', 'head', 'legs' ], to: 'body' },
-		{ name: 'makeLegs', from: [ 'unselected', 'head', 'body' ], to: 'legs' },
-		{ name: 'makeUnselected', from: [ 'head', 'body', 'legs' ], to: 'unselected'}
-	],
-	methods: {
-		onMakeHead: function() {
-			this.announce();
-			console.log('made into head');
-		},
-		onMakeBody: function() {
-			console.log('made into body');
-		},
-		onMakeLegs: function() {
-			console.log('made into legs');
-		},
-		onMakeUnselected: function() {
-			console.log('made into unselected');
-		}
-	}
-})
