@@ -7,6 +7,9 @@ clock.autoStart = true;
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 3;
 
+//dragable controls
+let controls;
+
 //AUDIO
 // create an AudioListener and add it to the camera
 const listener = new THREE.AudioListener();
@@ -76,6 +79,8 @@ scene.add(directionalLightLeft);
 let raycaster = new THREE.Raycaster();
 let mouse = new THREE.Vector2();
 mouse.x, (mouse.y = -2);
+controls = new THREE.DragControls( [ ... cubes ], camera, renderer.domElement );
+controls.addEventListener( 'drag', render );
 
 function onMouseMove(event) {
 	// calculate mouse position in normalized device coordinates
