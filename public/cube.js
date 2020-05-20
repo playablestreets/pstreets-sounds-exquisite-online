@@ -29,7 +29,6 @@ class Cube extends THREE.Mesh {
 		//call super constructor
 		super(geometry, materials);
 
-
 		//set class variables
 		this.materials = materials;
 		this.activeFace = 0;
@@ -49,6 +48,9 @@ class Cube extends THREE.Mesh {
 		this.animateToFace();
 		// this.rotation.set(this.faceOrientations[this.activeFace]);
 		
+		this.dragStartPos == null;
+
+
 	}
 
 	setMatColor(color) {
@@ -67,8 +69,8 @@ class Cube extends THREE.Mesh {
 		// this.activeFace++;
 		// this.activeFace %= 6;
 		// this.animateToFace();
-		console.log( 'yo from da ' + this.state + ' ' + this.activeFace );
-		// this.sounds[this.activeFace].currentTime = 0;			
+		// console.log( 'yo from da ' + ' ' + this.activeFace );
+		this.sounds[this.activeFace].currentTime = 0;			
 		this.sounds[this.activeFace].play();
 
 	}
@@ -80,6 +82,7 @@ class Cube extends THREE.Mesh {
 			sound.pause();
 			sound._pausedAt = 0;
 			sound.isPlaying = false;
+			// sound.stop();
 		});
 	}
 
@@ -94,7 +97,7 @@ class Cube extends THREE.Mesh {
 	play(){
 		console.log('playing ' + this.state);
 		this.sounds[this.activeFace].play();
-		this.setMatColor(0xdd99dd);
+		// this.setMatColor(0xdd99dd);
 		// this.animateSpin( this.sounds[this.activeFace].buffer.duration * 1000 );
 		// setTimeout( playNext, this.sounds[this.activeFace].buffer.duration * 1000 );
 	}
@@ -108,16 +111,11 @@ class Cube extends THREE.Mesh {
 	}
 
 	randomizeFace(){
-		
 		this.activeFace = Math.floor( Math.random() * 6);
-
 		console.log('randomizing ' + this.state + ' to ' + this.activeFace);
-		
 		this.animateToFace();
 		// this.rotation.set(this.faceOrientations[this.activeFace]);
 	}
-
-
 
 
 	animateSpin(duration = 1000) {
@@ -141,7 +139,25 @@ class Cube extends THREE.Mesh {
 		return this.sounds[this.activeFace].buffer.duration * 1000;
 	}
 
+	onDragStart(){
+		// console.log("starting draggin");
+		this.dragStartPos = this.position.clone();
+	}
 
+	
+	onDragStop(){
+		// console.log("stoppin draggin", this.dragStartPos);
+		console.log(this.position.equals(this.dragStartPos));
+		if(this.position.equals(this.dragStartPos)){
+			console.log( 'clicky' );
+			this.onClick();
+		}else{
+			// console.log('not clicky');
+			console.log('not clicky');
+		}
+
+		this.dragStartPos = null;
+	}
 	// startShake(){
 	// 	let shakeTween
 	// }

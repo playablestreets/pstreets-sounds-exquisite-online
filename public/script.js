@@ -10,6 +10,8 @@ camera.position.z = 3;
 //dragable controls
 let controls;
 
+//audio / drag toggle
+
 //AUDIO
 // create an AudioListener and add it to the camera
 const listener = new THREE.AudioListener();
@@ -85,32 +87,32 @@ function onMouseMove(event) {
 
 
 controls.addEventListener( 'dragstart', function ( event ) {
-
-	event.object.setMatColor( 0xaaaaaa );
+	event.object.onDragStart();
+	// event.object.setMatColor( 0xaaaaaa );
 
 } );
 
 controls.addEventListener( 'dragend', function ( event ) {
-
-	event.object.setMatColor( 0x000000 );	
+	event.object.onDragStop();
+	// event.object.setMatColor( 0x000000 );	
 
 } );
 
 
 function onMouseDown(event) {
-	// update the picking ray with the camera and mouse position
-	raycaster.setFromCamera(mouse, camera);
+	// // update the picking ray with the camera and mouse position
+	// raycaster.setFromCamera(mouse, camera);
 
-	// calculate objects intersecting the picking ray
-	let intersects = raycaster.intersectObjects(scene.children);
+	// // calculate objects intersecting the picking ray
+	// let intersects = raycaster.intersectObjects(scene.children);
 
 	cubes.map((cube) =>{
 		cube.stopSound();
 	});
 
-	for (let i = 0; i < intersects.length; i++) {
-		intersects[i].object.onClick();
-	}
+	// for (let i = 0; i < intersects.length; i++) {
+	// 	intersects[i].object.onClick();
+	// }
 }
 
 
@@ -149,7 +151,7 @@ function shuffle() {
 //MAIN RENDER
 function render() {
 	
-	checkForHover();
+	// checkForHover();
 
 	renderer.render(scene, camera);
 	requestAnimationFrame(render);
