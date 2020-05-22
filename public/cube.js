@@ -1,9 +1,11 @@
 //CUBE DEFINITION
 class Cube extends THREE.Mesh {
-	constructor(bodyPart, index, listener) {
+	constructor(bodypart, index, listener) {
+
+
 		// const container = new Object3D();
 		const geometry = new THREE.BoxGeometry();
-		let assetPath = '/assets/' + bodyPart + '/' + index + '/';
+		let assetPath = '/assets/' + bodypart + '/' + index + '/';
 		const materials = [];
 		const sounds = [];
 		const audioLoader = new THREE.AudioLoader();
@@ -47,7 +49,9 @@ class Cube extends THREE.Mesh {
 		this.animateToFace();
 		// this.rotation.set(this.faceOrientations[this.activeFace]);
 
-		this.dragStartPos == null;
+		this.dragStartPos = null;
+		this.role = null;
+		this.setTo(bodypart)
 	}
 
 	setMatColor(color) {
@@ -75,9 +79,23 @@ class Cube extends THREE.Mesh {
 	}
 
 	moveTo(yPos) {
-		this.position.y = yPos;
-		this.position.x = 0;
-		this.position.z = 0;
+
+		let moveTween = new TWEEN.Tween(this.position)
+		.to(new THREE.Vector3(0, yPos, 0), 250)
+		.easing(TWEEN.Easing.Quadratic.InOut)
+		.start();
+	}
+
+	setTo(bodypart){
+		this.role = bodypart;
+
+		if(bodypart === 'head'){
+			this.moveTo(1);
+		}else if(bodypart == 'body'){
+			this.moveTo(0);
+		}else if (bodypart =='legs'){
+			this.moveTo(-1);
+		}
 	}
 
 	announce() {
@@ -85,6 +103,7 @@ class Cube extends THREE.Mesh {
 	}
 
 	onClick() {
+		// console.log('click');
 		this.sounds[this.activeFace].currentTime = 0;
 		// this.sounds[this.activeFace].onEnded( () => {
 		// 	// console.log('doneso');
@@ -94,17 +113,14 @@ class Cube extends THREE.Mesh {
 
 	stopSound() {
 		this.sounds.map((sound) => {
-			// console.log('stopping sound');
-			// sound.currentTime = 0;
-			sound.pause();
-			sound._pausedAt = 0;
-			sound.isPlaying = false;
-			// sound.stop();
+			if(sound.isPlaying)
+				sound.stop();
 		});
 	}
 
 	play() {
-		console.log('playing ' + this.state);
+		// console.log('playing ' + this.state);
+		// this.sounds[this.activeFace].currentTime = 0;
 		this.sounds[this.activeFace].play();
 	}
 
@@ -117,7 +133,7 @@ class Cube extends THREE.Mesh {
 
 	randomizeFace() {
 		this.activeFace = Math.floor(Math.random() * 6);
-		console.log('randomizing ' + this.state + ' to ' + this.activeFace);
+		// console.log('randomizing ' + this.state + ' to ' + this.activeFace);
 		this.animateToFace();
 	}
 
@@ -149,6 +165,9 @@ class Cube extends THREE.Mesh {
 		}
 
 		this.dragStartPos = null;
+
+		this.setTo(this.role);
+
 	}
 }
 //--- end class ---
