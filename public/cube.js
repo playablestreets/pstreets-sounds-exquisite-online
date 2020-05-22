@@ -75,8 +75,8 @@ class Cube extends THREE.Mesh {
 
 	moveTo(yPos) {
 		let moveTween = new TWEEN.Tween(this.position)
-			.to(new THREE.Vector3(0, yPos, 0), 250)
-			.easing(TWEEN.Easing.Quadratic.InOut)
+			.to(new THREE.Vector3(0, yPos, 0), 600)
+			.easing(TWEEN.Easing.Elastic.Out)
 			.start();
 	}
 
@@ -138,8 +138,8 @@ class Cube extends THREE.Mesh {
 		};
 
 		let anitween = new TWEEN.Tween(this.rotation)
-			.to(this.faceOrientations[this.activeFace], 1500)
-			.easing(TWEEN.Easing.Quadratic.InOut)
+			.to(this.faceOrientations[this.activeFace], 1000)
+			.easing(TWEEN.Easing.Back.Out)
 			.onComplete(loadBackFace)
 			.start();
 	}
