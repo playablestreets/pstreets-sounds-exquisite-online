@@ -1,8 +1,6 @@
 //CUBE DEFINITION
 class Cube extends THREE.Mesh {
 	constructor(bodypart, index, listener) {
-
-
 		// const container = new Object3D();
 		const geometry = new THREE.BoxGeometry();
 		let assetPath = '/assets/' + bodypart + '/' + index + '/';
@@ -43,15 +41,11 @@ class Cube extends THREE.Mesh {
 			{ x: 0, y: Math.PI, z: 0 }
 		];
 
-		// this.fadeTween = new TWEEN.Tween();
-
-		this.tween = new TWEEN.Tween();
 		this.animateToFace();
-		// this.rotation.set(this.faceOrientations[this.activeFace]);
 
 		this.dragStartPos = null;
 		this.role = null;
-		this.setTo(bodypart)
+		this.setTo(bodypart);
 	}
 
 	setMatColor(color) {
@@ -79,21 +73,22 @@ class Cube extends THREE.Mesh {
 	}
 
 	moveTo(yPos) {
-
 		let moveTween = new TWEEN.Tween(this.position)
-		.to(new THREE.Vector3(0, yPos, 0), 250)
-		.easing(TWEEN.Easing.Quadratic.InOut)
-		.start();
+			.to(new THREE.Vector3(0, yPos, 0), 250)
+			.easing(TWEEN.Easing.Quadratic.InOut)
+			.start();
 	}
 
-	setTo(bodypart){
+	setTo(bodypart) {
 		this.role = bodypart;
 
-		if(bodypart === 'head'){
+		if (bodypart === 'head') {
 			this.moveTo(1);
-		}else if(bodypart == 'body'){
+		}
+		else if (bodypart == 'body') {
 			this.moveTo(0);
-		}else if (bodypart =='legs'){
+		}
+		else if (bodypart == 'legs') {
 			this.moveTo(-1);
 		}
 	}
@@ -103,7 +98,6 @@ class Cube extends THREE.Mesh {
 	}
 
 	onClick() {
-		// console.log('click');
 		this.sounds[this.activeFace].currentTime = 0;
 		// this.sounds[this.activeFace].onEnded( () => {
 		// 	// console.log('doneso');
@@ -113,8 +107,7 @@ class Cube extends THREE.Mesh {
 
 	stopSound() {
 		this.sounds.map((sound) => {
-			if(sound.isPlaying)
-				sound.stop();
+			if (sound.isPlaying) sound.stop();
 		});
 	}
 
@@ -124,10 +117,22 @@ class Cube extends THREE.Mesh {
 		this.sounds[this.activeFace].play();
 	}
 
+	loadFace() {
+		//TODO load random rear face
+		let oppositeFaces = [ 1, 0, 3, 2, 5, 4 ];
+		let oppositeFace = oppositeFaces[this.activeFace];
+	}
+
 	animateToFace() {
-		this.tween = new TWEEN.Tween(this.rotation)
+		let that = this;
+		let loadBackFace = function() {
+			that.loadFace();
+		};
+
+		let anitween = new TWEEN.Tween(this.rotation)
 			.to(this.faceOrientations[this.activeFace], 1500)
 			.easing(TWEEN.Easing.Quadratic.InOut)
+			.onComplete(loadBackFace)
 			.start();
 	}
 
@@ -135,20 +140,7 @@ class Cube extends THREE.Mesh {
 		this.activeFace = Math.floor(Math.random() * 6);
 		// console.log('randomizing ' + this.state + ' to ' + this.activeFace);
 		this.animateToFace();
-	}
-
-	animateSpin(duration = 1000) {
-		// this.rightRotation = { x: 0, y: 0, z: 0 };
-		this.leftRotation = {
-			x: this.faceOrientations[this.activeFace].x + Math.PI * 2,
-			y: this.faceOrientations[this.activeFace].y + Math.PI * 2,
-			z: 0
-		};
-
-		this.tween = new TWEEN.Tween(this.rotation)
-			.to(this.leftRotation, duration)
-			.easing(TWEEN.Easing.Quadratic.InOut)
-			.start();
+		// this.loadBackFace();
 	}
 
 	getCurrentDuration() {
@@ -167,7 +159,6 @@ class Cube extends THREE.Mesh {
 		this.dragStartPos = null;
 
 		this.setTo(this.role);
-
 	}
 }
 //--- end class ---
