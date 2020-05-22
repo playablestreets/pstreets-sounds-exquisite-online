@@ -46,6 +46,7 @@ class Cube extends THREE.Mesh {
 		this.dragStartPos = null;
 		this.role = null;
 		this.setTo(bodypart);
+		this.soundEndCallback = null;
 	}
 
 	setMatColor(color) {
@@ -98,22 +99,29 @@ class Cube extends THREE.Mesh {
 	}
 
 	onClick() {
-		this.sounds[this.activeFace].currentTime = 0;
-		// this.sounds[this.activeFace].onEnded( () => {
-		// 	// console.log('doneso');
-		// } );
-		this.sounds[this.activeFace].play();
+		this.play();
+		let duration = this.getCurrentDuration();
+		let that = this;
+
+		this.soundEndCallback = setTimeout(function() {
+			that.stopSound();
+		}, duration);
 	}
 
 	stopSound() {
+		//TODO STOP JIGGLING
+
+		clearTimeout(this.soundEndCallback);
 		this.sounds.map((sound) => {
 			if (sound.isPlaying) sound.stop();
 		});
 	}
 
 	play() {
+		//TODO START JIGGLING
+
 		// console.log('playing ' + this.state);
-		// this.sounds[this.activeFace].currentTime = 0;
+		this.sounds[this.activeFace].currentTime = 0;
 		this.sounds[this.activeFace].play();
 	}
 
