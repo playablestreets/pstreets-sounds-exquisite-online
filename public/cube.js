@@ -41,12 +41,16 @@ class Cube extends THREE.Mesh {
 			{ x: 0, y: Math.PI, z: 0 }
 		];
 
+		this.parent = new THREE.Object3D();
+		this.parent.add(this);
+
 		this.animateToFace();
 
 		this.dragStartPos = null;
 		this.role = null;
 		this.setTo(bodypart);
 		this.soundEndCallback = null;
+		this.shakeTween = null;
 	}
 
 	setMatColor(color) {
@@ -109,7 +113,7 @@ class Cube extends THREE.Mesh {
 	}
 
 	stopSound() {
-		//TODO STOP JIGGLING
+		this.shakeStop();
 
 		clearTimeout(this.soundEndCallback);
 		this.sounds.map((sound) => {
@@ -118,11 +122,37 @@ class Cube extends THREE.Mesh {
 	}
 
 	play() {
-		//TODO START JIGGLING
+		this.shake();
 
 		// console.log('playing ' + this.state);
 		this.sounds[this.activeFace].currentTime = 0;
 		this.sounds[this.activeFace].play();
+	}
+
+	shake() {
+		this.shakeTween = new TWEEN.Tween(this.parent.rotation)
+			.to(new THREE.Vector3(0, 0, -0.1), 200)
+			.easing(TWEEN.Easing.Back.Out)
+			.repeat(Infinity)
+			.yoyo(true);
+
+		let thatShakeTween = this.shakeTween;
+
+		let startShakeTween = new TWEEN.Tween(this.parent.rotation)
+			.to(new THREE.Vector3(0, 0, 0.1), 200)
+			.easing(TWEEN.Easing.Back.Out)
+			.onComplete(function() {
+				thatShakeTween.start();
+			})
+			.start();
+	}
+
+	shakeStop() {
+		if (this.shakeTween !== null) this.shakeTween.stop();
+		this.shakeTween = new TWEEN.Tween(this.parent.rotation)
+			.to(new THREE.Vector3(0, 0, 0), 200)
+			.easing(TWEEN.Easing.Back.Out)
+			.start();
 	}
 
 	loadFace() {
@@ -138,7 +168,7 @@ class Cube extends THREE.Mesh {
 		};
 
 		let anitween = new TWEEN.Tween(this.rotation)
-			.to(this.faceOrientations[this.activeFace], 1000)
+			.to(this.faceOrientations[this.activeFace], 1200)
 			.easing(TWEEN.Easing.Back.Out)
 			.onComplete(loadBackFace)
 			.start();

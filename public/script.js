@@ -34,20 +34,20 @@ function onWindowResize(event) {
 //GEOMETRY
 //asset type, asset index, audio listener
 let cubeHead = new Cube('head', 0, listener);
-cubeHead.position.y = 1.0;
+// cubeHead.position.y = 1.0;
 
 let cubeBody = new Cube('body', 0, listener);
-cubeBody.position.y = 0;
+// cubeBody.position.y = 0;
 
 let cubeLegs = new Cube('legs', 0, listener);
-cubeLegs.position.y = -1.0;
+// cubeLegs.position.y = -1.0;
 
 let cubes = [ cubeHead, cubeBody, cubeLegs ];
 
 let unselectedCubes = [];
 
 cubes.map((cube) => {
-	scene.add(cube);
+	scene.add(cube.parent);
 });
 
 //------------------------------------------------------------------
