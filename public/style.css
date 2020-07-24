@@ -47,6 +47,16 @@ table {
 	border-spacing: 0;
 }
 
+/* disable coloured hilighting */
+::selection {
+	color: none;
+	background: none;
+}
+/* For Mozilla Firefox */
+::-moz-selection {
+	color: none;
+	background: none;
+}
 
 :root{
   color: red;
