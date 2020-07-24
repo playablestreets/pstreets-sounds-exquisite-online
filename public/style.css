@@ -78,9 +78,9 @@ p{
 }
 
 .button{
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  /* position: absolute; */
+  /* bottom: 0; */
+  /* right: 0; */
   padding: 10px;
   z-index: 265;
   background-color: rgb(255, 72, 0);
@@ -116,3 +116,38 @@ p{
   overflow: hidden;   
 }
 
+.ui{
+	position: absolute;
+	width: 100vw;
+	/* bottom: 5vh;
+  right: 5vw; */
+	bottom: 0;
+	/* left: 5vw; */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: rgba(139, 0, 139, 0.118);
+}
+.nav{
+	/* position: absolute; */
+	width: 40vw;
+	/* bottom: 5vh;
+  right: 5vw; */
+	top: 0;
+	/* left: 5vw; */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	/* background-color: rgba(139, 0, 139, 0.118); */
+}
+
+.icon {
+	padding: 0;
+	background-color: #FFFFFF00;
+	width: 90px;
+	height: 90px;
+	margin: 5px;
+	border-style: none;
+}

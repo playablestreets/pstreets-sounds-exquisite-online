@@ -6,6 +6,7 @@ clock.autoStart = true;
 //CAMERA
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 3;
+camera.position.y = -0.25;
 
 //dragable controls
 let controls;
@@ -79,20 +80,15 @@ function onMouseMove(event) {
 	// (-1 to +1) for both components
 	// mouse.x = event.clientX / window.innerWidth * 2 - 1;
 	// mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
 	// if (isDragging) {
 	// 	unselectedCubes.map((cube) => {
 	// 		cube.fadeOut();
 	// 	});
-
 	// 	isDragging = false;
 	// }
 }
 
-
-
 controls.addEventListener('drag', function(event) {
-
 	mouse.x = event.clientX / window.innerWidth * 2 - 1;
 	mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -103,7 +99,6 @@ controls.addEventListener('drag', function(event) {
 
 		isDragging = false;
 	}
-
 
 	let targetPos;
 
@@ -126,13 +121,7 @@ controls.addEventListener('drag', function(event) {
 			// console.log(cube.role);
 		}
 	});
-
-
-
-
-
 });
-
 
 controls.addEventListener('dragstart', function(event) {
 	isDragging = true;
@@ -151,33 +140,10 @@ controls.addEventListener('dragstart', function(event) {
 controls.addEventListener('dragend', function(event) {
 	event.object.onDragStop();
 
-
-
-
-	// let targetPos;
-
-	// if (event.object.position.y < -0.5) {
-	// 	targetPos = 'legs';
-	// }
-	// else if (event.object.position.y > 0.5) {
-	// 	targetPos = 'head';
-	// }
-	// else {
-	// 	targetPos = 'body';
-	// }
-
 	unselectedCubes.map((cube) => {
 		cube.fadeIn();
-		// if (cube.position.y === targetPos) {
-		// 	cube.position.y = draggedFrom;
-		// }
 	});
 
-	// event.object.position.y = targetPos;
-	// event.object.position.x = 0;
-	// event.object.position.z = 0;
-
-	// draggedFrom = null;
 	unselectedCubes = [];
 });
 
