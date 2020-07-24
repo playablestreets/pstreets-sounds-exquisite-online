@@ -6,7 +6,7 @@ clock.autoStart = true;
 //CAMERA
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 3;
-camera.position.y = -0.25;
+// camera.position.y = -0.25;
 
 //dragable controls
 let controls;

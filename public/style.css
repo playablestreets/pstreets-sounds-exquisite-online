@@ -78,9 +78,9 @@ p{
 }
 
 .button{
-  /* position: absolute; */
-  /* bottom: 0; */
-  /* right: 0; */
+  position: absolute;
+  bottom: 0;
+  right: 0;
   padding: 10px;
   z-index: 265;
   background-color: rgb(255, 72, 0);
@@ -129,6 +129,14 @@ p{
 	justify-content: space-between;
 	background-color: rgba(139, 0, 139, 0.118);
 }
+
+.ui-top {
+  top: 0;
+  height: 15%;
+  background-color: #FFFFFF00;
+  margin: 5px 5px;
+}
+
 .nav{
 	/* position: absolute; */
 	width: 40vw;
@@ -144,10 +152,10 @@ p{
 }
 
 .icon {
-	padding: 0;
+	/* padding: 10px; */
 	background-color: #FFFFFF00;
 	width: 90px;
 	height: 90px;
-	margin: 5px;
+	margin: 15px;
 	border-style: none;
 }
