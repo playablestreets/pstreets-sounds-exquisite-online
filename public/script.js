@@ -31,6 +31,37 @@ function onWindowResize(event) {
 	renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
+//DYNAMIC DATA
+function setData(data) {
+	instruments = data;
+	// let i = 1;
+	// instruments.forEach((inst) => {
+	// 	inst.index = i++;
+	// } );
+
+	// currentInstrument = int(random() * instruments.length);
+	// console.log(instruments);
+	// instruments = shuffle(instruments);
+	// instrumentsFound = true;
+
+	//TODO reimplement URL finding
+	// let urlName = getUrlName();
+	// if (urlName != '') {
+	// 	for (let index = 0; index < instruments.length; index++) {
+	// 		if (instruments[index].uid.toLowerCase() == urlName) {
+	// 			currentInstrument = index;
+	// 			console.log('loading ' + instruments[currentInstrument].uid);
+	// 			break;
+	// 		}
+	// 	}
+	// }
+
+	// loadInstrument();
+
+	//resize window to init
+	// windowResized();
+}
+
 //------------------------------------------------------------------
 //GEOMETRY
 //asset type, asset index, audio listener
