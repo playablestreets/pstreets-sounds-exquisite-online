@@ -36,12 +36,10 @@ function onWindowResize(event) {
 
 //------------------------------------------------------------------
 //CALL PRISMIC API
-// setInfoText('loading from prismic...');
-getApi(setDataCallback); //returns to setKidstruments()
+getFromApi("sounds_exquisite", dataCallback); //returns to setKidstruments()
 
 //SET DYNAMIC DATA FROM PRISMIC
-function setDataCallback(data) {
-	// instruments = data;
+function dataCallback(data) {
 	console.log(data);
 	{
 
