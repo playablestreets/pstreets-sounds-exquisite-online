@@ -5,70 +5,64 @@
 const apiEndPoint = 'https://playable-web.cdn.prismic.io/api/v2';
 
 
-//todo: give this getApi(functionToReturnTo)
-function getApi(setDataCallback){
+function getFromApi(typeQuery, setDataCallback){
 	
 	let request = new XMLHttpRequest();
-	
 	request.open('GET', apiEndPoint, true);
+	request.send();
 	
 	request.onload = function () {
 		var data = JSON.parse(this.response);
 		data.refs.forEach((ref) => {
 			if(ref.isMasterRef){
-				console.log(ref.ref);
-				getExStoriesFromPrismic(ref.ref, setDataCallback);
+
+				const masterRef = ref.ref;
+				// console.log('Master Reference is ' + masterRef);
+
+				let predicates = '[[at(document.type,"' + typeQuery + '")]]';
+				let queryEndPoint = apiEndPoint + '/documents/search?ref=' + masterRef + '&q=' + predicates + '&pageSize=100'; 
+				
+				//request data for first page
+				requestData(queryEndPoint, setDataCallback);
 			}
 		});
 	}
-
-	// Send request
-	request.send();
 }
 
+let totalSize;
+let results = [];
 
-// argumment should be a return function?
-function getExStoriesFromPrismic(masterRef, setDataCallback){
-
-	let predicates = '[[at(document.type, "sounds_exquisite")]]';
-	
-	let queryEndPoint = apiEndPoint + '/documents/search?ref=' + masterRef + '&q=' + predicates + '&pageSize=100'; 
-
-	//todo iterate over pages
-
+function requestData(queryEndPoint, setDataCallback){	
 	let request = new XMLHttpRequest();
 	
+	//start request
 	request.open('GET', queryEndPoint, true);
-
-	request.onload = function () {
-		var data = JSON.parse(this.response);
-		// console.log(data);
-		//signal has loaded
-		setDataCallback(data.results);
-	}
 	request.send();
+
+	request.onload = function(){
+		var data = JSON.parse(this.response);
+		results = results.concat(data.results);
+
+		if(data.next_page != null){
+			//recursively call request data for each page
+			requestData(data.next_page, setDataCallback);
+		}else{
+			console.log('received ', results.length, ' results' );
+			setDataCallback(results);
+		}
+	}
+
 }
 
 
-function getKidstrumentsFromPrismic(masterRef, ctx){
-	let predicates = '[[at(document.type,"kidstrument")]]';
-	let queryEndPoint = apiEndPoint + '/documents/search?ref=' + masterRef + '&q=' + predicates + '&pageSize=100'; 
 
-	//todo iterate over pages
 
-	let request = new XMLHttpRequest();
-	
-	request.open('GET', queryEndPoint, true);
 
-	
-	request.onload = function () {
-		var data = JSON.parse(this.response);
-		// console.log(data);
-		//signal has loaded
-		ctx.setKidstruments(data.results);
-	}
-	request.send();
-}
+
+
+
+
+
 
 
 
