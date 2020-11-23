@@ -161,7 +161,9 @@ class Cube extends THREE.Mesh {
 		let oppositeFace = oppositeFaces[this.activeFace];
 	}
 
-	animateToFace() {
+	animateToFace(face) {
+		this.activeFace = face;
+		
 		let that = this;
 		let loadBackFace = function() {
 			that.loadFace();
@@ -175,9 +177,10 @@ class Cube extends THREE.Mesh {
 	}
 
 	randomizeFace() {
-		this.activeFace = Math.floor(Math.random() * 6);
+		const face = Math.floor(Math.random() * 6);
+		// this.activeFace = Math.floor(Math.random() * 6);
 		// console.log('randomizing ' + this.state + ' to ' + this.activeFace);
-		this.animateToFace();
+		this.animateToFace(face);
 		// this.loadBackFace();
 	}
 
