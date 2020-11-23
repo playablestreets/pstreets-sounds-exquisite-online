@@ -1,9 +1,17 @@
 //CUBE DEFINITION
 class Cube extends THREE.Mesh {
-	constructor(bodypart, index, listener) {
+	constructor(index, bodyParts, listener) {
+		const bodyPartNames = ['head', 'body', 'legs'];
+		let bodypart = bodyPartNames[index];
+		// console.log(bodypart, index);
+
+
 		// const container = new Object3D();
 		const geometry = new THREE.BoxGeometry();
-		let assetPath = '/assets/' + bodypart + '/' + index + '/';
+
+		
+
+		let assetPath = '/assets/' + bodypart + '/0/';
 		const materials = [];
 		const sounds = [];
 		const audioLoader = new THREE.AudioLoader();
@@ -20,6 +28,9 @@ class Cube extends THREE.Mesh {
 				sound.setBuffer(buffer);
 				sound.setVolume(0.9);
 			});
+
+
+
 
 			sounds.push(sound);
 		}
@@ -98,9 +109,12 @@ class Cube extends THREE.Mesh {
 		}
 	}
 
+
 	announce() {
 		console.log('pos is ' + this.position + ', and state is  ' + this.state);
 	}
+
+
 
 	onClick() {
 		this.play();
@@ -129,6 +143,10 @@ class Cube extends THREE.Mesh {
 		this.sounds[this.activeFace].play();
 	}
 
+
+
+
+
 	shake() {
 		this.shakeTween = new TWEEN.Tween(this.parent.rotation)
 			.to(new THREE.Vector3(0, 0, -0.1), 200)
@@ -155,10 +173,17 @@ class Cube extends THREE.Mesh {
 			.start();
 	}
 
+
+
+
+
 	loadFace() {
 		//TODO load random rear face
 		let oppositeFaces = [ 1, 0, 3, 2, 5, 4 ];
 		let oppositeFace = oppositeFaces[this.activeFace];
+
+		//check if backpage is currently loading
+		
 	}
 
 	animateToFace(face) {
@@ -178,11 +203,11 @@ class Cube extends THREE.Mesh {
 
 	randomizeFace() {
 		const face = Math.floor(Math.random() * 6);
-		// this.activeFace = Math.floor(Math.random() * 6);
-		// console.log('randomizing ' + this.state + ' to ' + this.activeFace);
 		this.animateToFace(face);
-		// this.loadBackFace();
 	}
+
+
+
 
 	getCurrentDuration() {
 		return this.sounds[this.activeFace].buffer.duration * 1000;

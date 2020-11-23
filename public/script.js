@@ -33,26 +33,75 @@ function onWindowResize(event) {
 
 
 
-
+let bodyparts;
 //------------------------------------------------------------------
 //CALL PRISMIC API
 getFromApi("sounds_exquisite", dataCallback); //returns to setKidstruments()
 
 //SET DYNAMIC DATA FROM PRISMIC
 function dataCallback(data) {
-	console.log(data);
-	{
+	// console.log(data);
+	
+	const part = {
+		imageLocation: null,
+		soundLocation: null,
+		text: null
+	};
+	
+	const story = {
+		uid: null,
+		title: null,
+		author: null,
+		age: null,
+		top: {...part},
+		middle: {...part},
+		bottom: {...part},
+	}
+	
+	const stories = [];
 
+	data.forEach((item) => {
+		// console.log(item);
+		let newStory = {...story};
+		
+		
+		newStory.uid = item.uid;
+		newStory.title = 	item.data.title[0].text;
+		newStory.author = 	item.data.name[0].text;
+		newStory.postcode  = 	item.data.postcode;
+		newStory.age = item.data.age;
+		
+		newStory.top.imageLocation = item.data.top_image.url;
+		newStory.top.soundLocation = item.data.top_sound.url;
+		newStory.top.text = item.data.top_text[0] ? item.data.top_text[0].text : "...";
+		
+		newStory.middle.imageLocation = item.data.middle_image.url;
+		newStory.middle.soundLocation = item.data.middle_sound.url;
+		newStory.middle.text = item.data.middle_text[0] ? item.data.middle_text[0].text : "...";
+		
+		newStory.bottom.imageLocation = item.data.bottom_image.url;
+		newStory.bottom.soundLocation = item.data.bottom_sound.url;
+		newStory.bottom.text = item.data.bottom_text[0] ? item.data.bottom_text[0].text : "...";
+		
+		// console.log(newStory);
+		stories.push(newStory);
+	});
+	
+	console.log(stories);
+	
+
+	{
+		
 		// let i = 1;
 		// instruments.forEach((inst) => {
 		// 	inst.index = i++;
 		// } );
-	
+		
 		// currentInstrument = int(random() * instruments.length);
 		// console.log(instruments);
 		// instruments = shuffle(instruments);
 		// instrumentsFound = true;
-	
+		
 		//TODO reimplement URL finding
 		// let urlName = getUrlName();
 		// if (urlName != '') {
@@ -64,9 +113,9 @@ function dataCallback(data) {
 		// 		}
 		// 	}
 		// }
-	
+		
 		// loadInstrument();
-	
+		
 		//resize window to init
 		// windowResized();
 	}
@@ -77,16 +126,15 @@ function dataCallback(data) {
 
 
 //------------------------------------------------------------------
-
 //GEOMETRY
 //asset type, asset index, audio listener
-let cubeHead = new Cube('head', 0, listener);
+let cubeHead = new Cube(0, bodyparts, listener);
 // cubeHead.position.y = 1.0;
 
-let cubeBody = new Cube('body', 0, listener);
+let cubeBody = new Cube(1, bodyparts, listener);
 // cubeBody.position.y = 0;
 
-let cubeLegs = new Cube('legs', 0, listener);
+let cubeLegs = new Cube(2, bodyparts, listener);
 // cubeLegs.position.y = -1.0;
 
 let cubes = [ cubeHead, cubeBody, cubeLegs ];
@@ -137,17 +185,17 @@ function onMouseMove(event) {
 controls.addEventListener('drag', function(event) {
 	mouse.x = event.clientX / window.innerWidth * 2 - 1;
 	mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
+	
 	if (isDragging) {
 		unselectedCubes.map((cube) => {
 			cube.fadeOut();
 		});
-
+		
 		isDragging = false;
 	}
-
+	
 	let targetPos;
-
+	
 	if (event.object.position.y < -0.5) {
 		targetPos = 'legs';
 	}
@@ -157,7 +205,7 @@ controls.addEventListener('drag', function(event) {
 	else {
 		targetPos = 'body';
 	}
-
+	
 	unselectedCubes.map((cube) => {
 		// cube.fadeIn();
 		// console.log(cube.role);
@@ -171,7 +219,7 @@ controls.addEventListener('drag', function(event) {
 
 controls.addEventListener('dragstart', function(event) {
 	isDragging = true;
-
+	
 	event.object.onDragStart();
 	// draggedFrom = event.object.position.y;
 	// event.object.setMatColor( 0xaaaaaa );
@@ -185,25 +233,25 @@ controls.addEventListener('dragstart', function(event) {
 
 controls.addEventListener('dragend', function(event) {
 	event.object.onDragStop();
-
+	
 	unselectedCubes.map((cube) => {
 		cube.fadeIn();
 	});
-
+	
 	unselectedCubes = [];
 });
 
 function onMouseDown(event) {
 	// // update the picking ray with the camera and mouse position
 	// raycaster.setFromCamera(mouse, camera);
-
+	
 	// // calculate objects intersecting the picking ray
 	// let intersects = raycaster.intersectObjects(scene.children);
-
+	
 	cubes.map((cube) => {
 		cube.stopSound();
 	});
-
+	
 	// for (let i = 0; i < intersects.length; i++) {
 	// 	intersects[i].object.onClick();
 	// }
@@ -212,16 +260,16 @@ function onMouseDown(event) {
 function checkForHover() {
 	// update the picking ray with the camera and mouse position
 	raycaster.setFromCamera(mouse, camera);
-
+	
 	// calculate objects intersecting the picking ray
 	let intersects = raycaster.intersectObjects(scene.children);
-
+	
 	//reset all colours
 	cubes.map((cube) => {
 		cube.setMatColor(0xaaaaaa);
 		// cube.update(clock);
 	});
-
+	
 	//set picked cubes to pink
 	for (let i = 0; i < intersects.length; i++) {
 		intersects[i].object.setMatColor(0xdd99dd);
@@ -238,10 +286,10 @@ function shuffle() {
 //MAIN RENDER
 function render() {
 	// checkForHover();
-
+	
 	renderer.render(scene, camera);
 	requestAnimationFrame(render);
-
+	
 	TWEEN.update();
 }
 
