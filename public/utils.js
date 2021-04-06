@@ -48,6 +48,7 @@ function requestData(queryEndPoint, setDataCallback){
 			requestData(data.next_page, setDataCallback);
 		}else{
 			console.log('received ', results.length, ' results' );
+			// console.log(results);
 			setDataCallback(results);
 		}
 	}
@@ -55,7 +56,9 @@ function requestData(queryEndPoint, setDataCallback){
 }
 
 
-
+function prismicArrayExists(a){
+	return( a.length > 0 && a[0].text != null );
+}
 
 
 

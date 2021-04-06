@@ -31,10 +31,20 @@ function onWindowResize(event) {
 	renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
-
-
-let bodyparts;
 //------------------------------------------------------------------
+//GEOMETRY
+//asset type, asset index, audio listener
+let cubeHead;
+let cubeBody;
+let cubeLegs;
+let cubes = [];
+let unselectedCubes = [];
+
+//------------------------------------------------------------------
+//GET STORIES DATA
+const stories = [];
+let hasLoaded = false;
+
 //CALL PRISMIC API
 getFromApi("sounds_exquisite", dataCallback); //returns to setKidstruments()
 
@@ -58,92 +68,62 @@ function dataCallback(data) {
 		bottom: {...part},
 	}
 	
-	const stories = [];
 
 	data.forEach((item) => {
-		// console.log(item);
+		// console.log("parsing...", item);
 		let newStory = {...story};
-		
-		
+		let newTop = {...part};
+		let newMiddle = {...part};
+		let newBottom = {...part};
+
 		newStory.uid = item.uid;
-		newStory.title = 	item.data.title[0].text;
-		newStory.author = 	item.data.name[0].text;
-		newStory.postcode  = 	item.data.postcode;
-		newStory.age = item.data.age;
+		if(prismicArrayExists(item.data.title))
+			newStory.title = 	item.data.title[0].text;
+		if(prismicArrayExists(item.data.name))
+			newStory.author = 	item.data.name[0].text;
+		if(item.data.postcode != null)
+			newStory.postcode  = 	item.data.postcode;
+		if(item.data.age != null)
+			newStory.age = item.data.age;
 		
-		newStory.top.imageLocation = item.data.top_image.url;
-		newStory.top.soundLocation = item.data.top_sound.url;
-		newStory.top.text = item.data.top_text[0] ? item.data.top_text[0].text : "...";
+		newTop.imageLocation = item.data.top_image.url;
+		newTop.soundLocation = item.data.top_sound.url;
+		newTop.text = item.data.top_text[0] ? item.data.top_text[0].text : "...";
 		
-		newStory.middle.imageLocation = item.data.middle_image.url;
-		newStory.middle.soundLocation = item.data.middle_sound.url;
-		newStory.middle.text = item.data.middle_text[0] ? item.data.middle_text[0].text : "...";
+		newMiddle.imageLocation = item.data.middle_image.url;
+		newMiddle.soundLocation = item.data.middle_sound.url;
+		newMiddle.text = item.data.middle_text[0] ? item.data.middle_text[0].text : "...";
 		
-		newStory.bottom.imageLocation = item.data.bottom_image.url;
-		newStory.bottom.soundLocation = item.data.bottom_sound.url;
-		newStory.bottom.text = item.data.bottom_text[0] ? item.data.bottom_text[0].text : "...";
+		newBottom.imageLocation = item.data.bottom_image.url;
+		newBottom.soundLocation = item.data.bottom_sound.url;
+		newBottom.text = item.data.bottom_text[0] ? item.data.bottom_text[0].text : "...";
 		
-		// console.log(newStory);
+		newStory.top = newTop;
+		newStory.middle = newMiddle;
+		newStory.bottom = newBottom;
+
 		stories.push(newStory);
 	});
 	
-	console.log(stories);
+	//create cubes
+	cubeHead = new Cube(0, stories, listener);
+	cubeHead.setTo('head');
+	cubeBody = new Cube(1, stories, listener);
+	cubeBody.setTo('body');
+	cubeLegs = new Cube(2, stories, listener);
+	cubeLegs.setTo('legs');
+	cubes = [ cubeHead, cubeBody, cubeLegs ];
+	cubes.map((cube) => {
+		scene.add(cube.parent);
+	});
 	
+	//set loaded to true
+	hasLoaded = true;
+	setupControls();
+	// sleep(5);
 
-	{
-		
-		// let i = 1;
-		// instruments.forEach((inst) => {
-		// 	inst.index = i++;
-		// } );
-		
-		// currentInstrument = int(random() * instruments.length);
-		// console.log(instruments);
-		// instruments = shuffle(instruments);
-		// instrumentsFound = true;
-		
-		//TODO reimplement URL finding
-		// let urlName = getUrlName();
-		// if (urlName != '') {
-		// 	for (let index = 0; index < instruments.length; index++) {
-		// 		if (instruments[index].uid.toLowerCase() == urlName) {
-		// 			currentInstrument = index;
-		// 			console.log('loading ' + instruments[currentInstrument].uid);
-		// 			break;
-		// 		}
-		// 	}
-		// }
-		
-		// loadInstrument();
-		
-		//resize window to init
-		// windowResized();
-	}
 }
 
-
-
-
-
-//------------------------------------------------------------------
-//GEOMETRY
-//asset type, asset index, audio listener
-let cubeHead = new Cube(0, bodyparts, listener);
-// cubeHead.position.y = 1.0;
-
-let cubeBody = new Cube(1, bodyparts, listener);
-// cubeBody.position.y = 0;
-
-let cubeLegs = new Cube(2, bodyparts, listener);
-// cubeLegs.position.y = -1.0;
-
-let cubes = [ cubeHead, cubeBody, cubeLegs ];
-
-let unselectedCubes = [];
-
-cubes.map((cube) => {
-	scene.add(cube.parent);
-});
 
 //------------------------------------------------------------------
 //LIGHTS
@@ -165,81 +145,72 @@ scene.add(directionalLightLeft);
 //RAYCASTER AND PICKING
 let raycaster = new THREE.Raycaster();
 let mouse = new THREE.Vector2();
-mouse.x, (mouse.y = -2);
-controls = new THREE.DragControls([ ...cubes ], camera, renderer.domElement);
-controls.addEventListener('drag', render);
-
-function onMouseMove(event) {
-	// calculate mouse position in normalized device coordinates
-	// (-1 to +1) for both components
-	// mouse.x = event.clientX / window.innerWidth * 2 - 1;
-	// mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-	// if (isDragging) {
-	// 	unselectedCubes.map((cube) => {
-	// 		cube.fadeOut();
-	// 	});
-	// 	isDragging = false;
-	// }
-}
-
-controls.addEventListener('drag', function(event) {
-	mouse.x = event.clientX / window.innerWidth * 2 - 1;
-	mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+// mouse.x, (mouse.y = -2);
+function setupControls(){
+	controls = new THREE.DragControls([ ...cubes ], camera, renderer.domElement);
+	controls.addEventListener('drag', render);
 	
-	if (isDragging) {
+	controls.addEventListener('drag', function(event) {
+		mouse.x = event.clientX / window.innerWidth * 2 - 1;
+		mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+		
+		if (isDragging) {
+			unselectedCubes.map((cube) => {
+				cube.fadeOut();
+			});
+			
+			isDragging = false;
+		}
+		
+		let targetPos;
+		
+		if (event.object.position.y < -0.5) {
+			targetPos = 'legs';
+		}
+		else if (event.object.position.y > 0.5) {
+			targetPos = 'head';
+		}
+		else {
+			targetPos = 'body';
+		}
+		
 		unselectedCubes.map((cube) => {
-			cube.fadeOut();
+			// cube.fadeIn();
+			// console.log(cube.role);
+			if (cube.role === targetPos) {
+				cube.setTo(event.object.role);
+				event.object.role = targetPos;
+				// console.log(cube.role);
+			}
+		});
+	});
+	
+	controls.addEventListener('dragstart', function(event) {
+		isDragging = true;
+		
+		event.object.onDragStart();
+		// draggedFrom = event.object.position.y;
+		// event.object.setMatColor( 0xaaaaaa );
+		cubes.map((cube) => {
+			cube.stopSound();
+			if (event.object !== cube) {
+				unselectedCubes.push(cube);
+			}
+		});
+	});
+	
+	controls.addEventListener('dragend', function(event) {
+		event.object.onDragStop();
+		
+		unselectedCubes.map((cube) => {
+			cube.fadeIn();
 		});
 		
-		isDragging = false;
-	}
-	
-	let targetPos;
-	
-	if (event.object.position.y < -0.5) {
-		targetPos = 'legs';
-	}
-	else if (event.object.position.y > 0.5) {
-		targetPos = 'head';
-	}
-	else {
-		targetPos = 'body';
-	}
-	
-	unselectedCubes.map((cube) => {
-		// cube.fadeIn();
-		// console.log(cube.role);
-		if (cube.role === targetPos) {
-			cube.setTo(event.object.role);
-			event.object.role = targetPos;
-			// console.log(cube.role);
-		}
+		unselectedCubes = [];
 	});
-});
+}
 
-controls.addEventListener('dragstart', function(event) {
-	isDragging = true;
-	
-	event.object.onDragStart();
-	// draggedFrom = event.object.position.y;
-	// event.object.setMatColor( 0xaaaaaa );
-	cubes.map((cube) => {
-		cube.stopSound();
-		if (event.object !== cube) {
-			unselectedCubes.push(cube);
-		}
-	});
-});
 
-controls.addEventListener('dragend', function(event) {
-	event.object.onDragStop();
-	
-	unselectedCubes.map((cube) => {
-		cube.fadeIn();
-	});
-	
-	unselectedCubes = [];
-});
 
 function onMouseDown(event) {
 	// // update the picking ray with the camera and mouse position
