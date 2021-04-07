@@ -41,8 +41,25 @@ let cubes = [];
 let unselectedCubes = [];
 
 //------------------------------------------------------------------
+//LIGHTS
+let ambientLight = new THREE.AmbientLight(0x111111);
+
+
+let directionalLightRight = new THREE.PointLight(0x99bbbb, 1);
+directionalLightRight.position.set(4, 3, 10);
+
+directionalLightRight.castShadow = true;
+
+
+let directionalLightLeft = new THREE.PointLight(0xbb99bb, 1);
+directionalLightLeft.position.set(-4, -2, 10);
+directionalLightLeft.castShadow = true;
+
+
+//------------------------------------------------------------------
 //GET STORIES DATA
 const stories = [];
+const faceStories = [];
 let hasLoaded = false;
 
 //CALL PRISMIC API
@@ -105,47 +122,42 @@ function dataCallback(data) {
 		stories.push(newStory);
 	});
 	
-	//create cubes
-	cubeHead = new Cube(0, stories, listener);
-	cubeHead.setTo('head');
-	cubeBody = new Cube(1, stories, listener);
-	cubeBody.setTo('body');
-	cubeLegs = new Cube(2, stories, listener);
-	cubeLegs.setTo('legs');
-	cubes = [ cubeHead, cubeBody, cubeLegs ];
-	cubes.map((cube) => {
-		scene.add(cube.parent);
-	});
-	
-	//set loaded to true
-	hasLoaded = true;
-	setupControls();
-	// sleep(5);
+
+	loadNewScene();
+
 
 }
 
+function loadNewScene(){
+	hasLoaded = false;
+	clearScene();
+	//create cubes
+	createCubes();
+	
+	createScene();
+	//set loaded to true
+	hasLoaded = true;
+	setupControls();
+}
 
-//------------------------------------------------------------------
-//LIGHTS
-let ambientLight = new THREE.AmbientLight(0x111111);
-scene.add(ambientLight);
+function createCubes(){
+	let tempStories = JSON.parse(JSON.stringify(stories));
+	shuffleArray(tempStories);
+	const faceStories = [];
+	for(let i = 0; i < 6; i++){
+		faceStories.push(tempStories.pop());
+	}
 
-let directionalLightRight = new THREE.PointLight(0x99bbbb, 1);
-directionalLightRight.position.set(4, 3, 10);
+	cubeHead = new Cube(0, faceStories, listener);
+	cubeHead.setTo('head');
+	cubeBody = new Cube(1, faceStories, listener);
+	cubeBody.setTo('body');
+	cubeLegs = new Cube(2, faceStories, listener);
+	cubeLegs.setTo('legs');
+	cubes = [ cubeHead, cubeBody, cubeLegs ];
 
-directionalLightRight.castShadow = true;
-scene.add(directionalLightRight);
+}
 
-let directionalLightLeft = new THREE.PointLight(0xbb99bb, 1);
-directionalLightLeft.position.set(-4, -2, 10);
-directionalLightLeft.castShadow = true;
-scene.add(directionalLightLeft);
-
-//------------------------------------------------------------------
-//RAYCASTER AND PICKING
-let raycaster = new THREE.Raycaster();
-let mouse = new THREE.Vector2();
-// mouse.x, (mouse.y = -2);
 function setupControls(){
 	controls = new THREE.DragControls([ ...cubes ], camera, renderer.domElement);
 	controls.addEventListener('drag', render);
@@ -209,6 +221,39 @@ function setupControls(){
 		unselectedCubes = [];
 	});
 }
+
+
+function clearScene(){
+	if(controls != null)
+		controls.dispose();
+	while( scene.children.length ){
+		if(scene.children[0].children[0] instanceof Cube){
+			console.log('stopping!');
+			scene.children[0].children[0].stopSound();
+		}
+		scene.remove( scene.children[0]);
+	}
+}
+
+function createScene(){
+	scene.add(ambientLight);
+	scene.add(directionalLightRight);
+	scene.add(directionalLightLeft);
+	cubes.map((cube) => {
+		scene.add(cube.parent);
+	});
+}
+
+
+
+
+
+//------------------------------------------------------------------
+//RAYCASTER AND PICKING
+let raycaster = new THREE.Raycaster();
+let mouse = new THREE.Vector2();
+// mouse.x, (mouse.y = -2);
+
 
 
 
