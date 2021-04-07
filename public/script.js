@@ -310,6 +310,7 @@ function render() {
 }
 
 document.getElementById('shufflebutton').onclick = shuffle;
+document.getElementById('reloadbutton').onclick = loadNewScene;
 // document.addEventListener('click', onClick, false);
 window.addEventListener('mousedown', onMouseDown, false);
 // window.addEventListener('mousemove', onMouseMove, false);
