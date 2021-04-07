@@ -21,12 +21,7 @@ class Cube extends THREE.Mesh {
 
 		for (let i = 0; i < 6; i++) {
 			
-
-			// let textureAssetPath = stories[i]
-			// let audioAssetPath = stories[i]
-			// const texture = new THREE.TextureLoader().load(assetPath + i + '.png');
-			let faceStory = stories[i + storyOffset];
-			// console.log('face story: ', faceStory);
+			let faceStory = stories[i + storyOffset];			// console.log('face story: ', faceStory);
 
 
 			const texture = new THREE.TextureLoader().load(faceStory[bodypart].imageLocation);

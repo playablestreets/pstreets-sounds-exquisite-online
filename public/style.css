@@ -88,9 +88,7 @@ p{
 }
 
 .button{
-  position: absolute;
-  bottom: 0;
-  right: 0;
+
   padding: 10px;
   z-index: 265;
   background-color: rgb(255, 72, 0);
@@ -103,6 +101,20 @@ p{
   text-align: center;
   font-weight: bolder;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
+.button-right{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+}
+
+.button-left{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
 }
 
 .button:hover{
