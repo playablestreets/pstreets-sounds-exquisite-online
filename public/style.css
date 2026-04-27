@@ -87,6 +87,10 @@ p{
 }
 
 .button{
+  /* native <button> resets so the existing rules win across browsers */
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
 
   padding: 10px;
   z-index: 265;
@@ -94,12 +98,13 @@ p{
   font-size: 24px;
   margin: 20px 20px;
   border-radius: 15px;
-  border-style:  solid;
+  border-style: solid;
 
   color: white;
   text-align: center;
   font-weight: bolder;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .button-right{
