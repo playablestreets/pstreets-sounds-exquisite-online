@@ -6,11 +6,12 @@ const apiEndPoint = 'https://playable-web.cdn.prismic.io/api/v2';
 
 
 function getFromApi(typeQuery, setDataCallback){
-	
+	results = [];
+
 	let request = new XMLHttpRequest();
 	request.open('GET', apiEndPoint, true);
 	request.send();
-	
+
 	request.onload = function () {
 		var data = JSON.parse(this.response);
 		data.refs.forEach((ref) => {
@@ -20,8 +21,8 @@ function getFromApi(typeQuery, setDataCallback){
 				// console.log('Master Reference is ' + masterRef);
 
 				let predicates = '[[at(document.type,"' + typeQuery + '")]]';
-				let queryEndPoint = apiEndPoint + '/documents/search?ref=' + masterRef + '&q=' + predicates + '&pageSize=100'; 
-				
+				let queryEndPoint = apiEndPoint + '/documents/search?ref=' + masterRef + '&q=' + predicates + '&pageSize=100';
+
 				//request data for first page
 				requestData(queryEndPoint, setDataCallback);
 			}
@@ -29,7 +30,6 @@ function getFromApi(typeQuery, setDataCallback){
 	}
 }
 
-let totalSize;
 let results = [];
 
 function requestData(queryEndPoint, setDataCallback){	
