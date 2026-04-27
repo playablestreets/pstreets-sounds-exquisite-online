@@ -146,15 +146,11 @@ p{
 .ui{
 	position: absolute;
 	width: 100vw;
-	/* bottom: 5vh;
-  right: 5vw; */
 	bottom: 0;
-	/* left: 5vw; */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	background-color: rgba(139, 0, 139, 0.118);
 }
 
 .ui-top {
