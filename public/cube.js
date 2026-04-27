@@ -38,8 +38,7 @@ class Cube extends THREE.Mesh {
 			audioLoader.load(faceStory[bodypart].soundLocation, function(buffer) {
 				sound.setBuffer(buffer);
 				sound.setVolume(0.9);
-				// sound.hasLoaded = true;
-				// console.log('loaded!');
+				sound.hasLoaded = true;
 			});
 
 			sounds.push(sound);
@@ -130,6 +129,9 @@ class Cube extends THREE.Mesh {
 
 
 	onClick() {
+		const sound = this.sounds[this.activeFace];
+		if (!sound || !sound.hasLoaded) return;
+
 		this.play();
 		let duration = this.getCurrentDuration();
 		let that = this;
