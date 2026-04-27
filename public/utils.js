@@ -57,7 +57,15 @@ function requestData(queryEndPoint, setDataCallback){
 
 
 function prismicArrayExists(a){
-	return( a.length > 0 && a[0].text != null );
+	return( Array.isArray(a) && a.length > 0 && a[0] != null && a[0].text != null );
+}
+
+function prismicText(a, fallback){
+	return prismicArrayExists(a) ? a[0].text : (fallback != null ? fallback : "...");
+}
+
+function prismicUrl(field){
+	return (field != null && field.url != null) ? field.url : null;
 }
 
 

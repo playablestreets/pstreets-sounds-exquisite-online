@@ -87,7 +87,8 @@ function dataCallback(data) {
 	
 
 	data.forEach((item) => {
-		// console.log("parsing...", item);
+		if (item == null || item.data == null) return;
+
 		let newStory = {...story};
 		let newTop = {...part};
 		let newMiddle = {...part};
@@ -95,26 +96,33 @@ function dataCallback(data) {
 
 		newStory.uid = item.uid;
 		if(prismicArrayExists(item.data.title))
-			newStory.title = 	item.data.title[0].text;
+			newStory.title = item.data.title[0].text;
 		if(prismicArrayExists(item.data.name))
-			newStory.author = 	item.data.name[0].text;
+			newStory.author = item.data.name[0].text;
 		if(item.data.postcode != null)
-			newStory.postcode  = 	item.data.postcode;
+			newStory.postcode = item.data.postcode;
 		if(item.data.age != null)
 			newStory.age = item.data.age;
-		
-		newTop.imageLocation = item.data.top_image.url;
-		newTop.soundLocation = item.data.top_sound.url;
-		newTop.text = item.data.top_text[0] ? item.data.top_text[0].text : "...";
-		
-		newMiddle.imageLocation = item.data.middle_image.url;
-		newMiddle.soundLocation = item.data.middle_sound.url;
-		newMiddle.text = item.data.middle_text[0] ? item.data.middle_text[0].text : "...";
-		
-		newBottom.imageLocation = item.data.bottom_image.url;
-		newBottom.soundLocation = item.data.bottom_sound.url;
-		newBottom.text = item.data.bottom_text[0] ? item.data.bottom_text[0].text : "...";
-		
+
+		newTop.imageLocation = prismicUrl(item.data.top_image);
+		newTop.soundLocation = prismicUrl(item.data.top_sound);
+		newTop.text = prismicText(item.data.top_text);
+
+		newMiddle.imageLocation = prismicUrl(item.data.middle_image);
+		newMiddle.soundLocation = prismicUrl(item.data.middle_sound);
+		newMiddle.text = prismicText(item.data.middle_text);
+
+		newBottom.imageLocation = prismicUrl(item.data.bottom_image);
+		newBottom.soundLocation = prismicUrl(item.data.bottom_sound);
+		newBottom.text = prismicText(item.data.bottom_text);
+
+		// require all three parts to have an image and a sound; skip half-finished stories
+		if (newTop.imageLocation == null || newTop.soundLocation == null ||
+			newMiddle.imageLocation == null || newMiddle.soundLocation == null ||
+			newBottom.imageLocation == null || newBottom.soundLocation == null) {
+			return;
+		}
+
 		newStory.top = newTop;
 		newStory.middle = newMiddle;
 		newStory.bottom = newBottom;
