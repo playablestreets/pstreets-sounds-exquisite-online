@@ -175,8 +175,7 @@ function createCubes(){
 
 function setupControls(){
 	controls = new THREE.DragControls([ ...cubes ], camera, renderer.domElement);
-	controls.addEventListener('drag', render);
-	
+
 	controls.addEventListener('drag', function(event) {
 		mouse.x = event.clientX / window.innerWidth * 2 - 1;
 		mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
