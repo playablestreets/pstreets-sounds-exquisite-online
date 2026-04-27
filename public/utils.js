@@ -73,7 +73,7 @@ function luma(img) {
 			let b = newImg.pixels[index + 2];
 			let a = newImg.pixels[index + 3];
 
-			let luma = r * 0.299 + g * 0.587 + b * 0.0114;
+			let luma = r * 0.299 + g * 0.587 + b * 0.114;
 
 			newImg.pixels[index + 0] = luma;
 			newImg.pixels[index + 1] = luma;
