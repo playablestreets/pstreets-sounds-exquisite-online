@@ -107,18 +107,13 @@ p{
   cursor: pointer;
 }
 
-.button-right{
-  position: absolute;
-  bottom: 0;
-  right: 0;
-
-}
-
-.button-left{
+.controls{
   position: absolute;
   bottom: 0;
   left: 0;
-
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .button:hover{
