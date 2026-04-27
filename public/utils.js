@@ -68,111 +68,11 @@ function prismicUrl(field){
 	return (field != null && field.url != null) ? field.url : null;
 }
 
-
-
-function luma(img) {
-	let newImg = img.get();
-
-	for (let y = 0; y < newImg.height; y++) {
-		for (let x = 0; x < newImg.width; x++) {
-			let index = (x + y * newImg.width) * 4;
-			let r = newImg.pixels[index + 0];
-			let g = newImg.pixels[index + 1];
-			let b = newImg.pixels[index + 2];
-			let a = newImg.pixels[index + 3];
-
-			let luma = r * 0.299 + g * 0.587 + b * 0.114;
-
-			newImg.pixels[index + 0] = luma;
-			newImg.pixels[index + 1] = luma;
-			newImg.pixels[index + 2] = luma;
-		}
-	}
-	newImg.updatePixels();
-
-	return newImg;
-}
-
-
-//relies on P5
-function getNormMouse() {
-	let normMouseX = mouseX / width;
-	let normMouseY = mouseY / height;
-	let obj = {
-		x: normMouseX,
-		y: normMouseY
-	};
-	return obj;
-}
-
-
-
-
-//TODO: this needs a (start timer function)
-function getElapsed() {
-	let endTime = new Date();
-	return endTime - startTime; //in ms
-}
-
-
-
-function getParameterByName(name, url) {
-	if (!url) url = window.location.href;
-	name = name.replace(/[\[\]]/g, '\\$&');
-	var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-			results = regex.exec(url);
-	if (!results) return null;
-	if (!results[2]) return '';
-	return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
-
-
-
-function getQueryVariable(variable) {
-	var query = window.location.search.substring(1);
-	var vars = query.split('&');
-	for (var i = 0; i < vars.length; i++) {
-		var pair = vars[i].split('=');
-		if (pair[0] == variable) {
-			return pair[1];
-		}
-	}
-	return false;
-}
-
-
-
-function getUrlName() {
-	var query = window.location.search.substring(1).toLowerCase(); 
-	return query;
-}
-
-
-// function shuffle(array) {
-// 	let counter = array.length;
-
-// 	// While there are elements in the array
-// 	while (counter > 0) {
-// 			// Pick a random index
-// 			let index = Math.floor(Math.random() * counter);
-
-// 			// Decrease counter by 1
-// 			counter--;
-
-// 			// And swap the last element with it
-// 			let temp = array[counter];
-// 			array[counter] = array[index];
-// 			array[index] = temp;
-// 	}
-
-// 	return array;
-// }
-
 /**
  * Shuffles array in place. ES6 version
  * @param {Array} a items An array containing the items.
  */
- function shuffleArray(a) {
+function shuffleArray(a) {
 	for (let i = a.length - 1; i > 0; i--) {
 			const j = Math.floor(Math.random() * (i + 1));
 			[a[i], a[j]] = [a[j], a[i]];
