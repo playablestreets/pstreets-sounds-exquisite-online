@@ -149,11 +149,18 @@ function loadNewScene(){
 }
 
 function createCubes(){
-	let tempStories = JSON.parse(JSON.stringify(stories));
-	shuffleArray(tempStories);
+	if (stories.length === 0) {
+		console.warn('createCubes: no stories available, skipping cube creation');
+		return;
+	}
+
+	let shuffled = JSON.parse(JSON.stringify(stories));
+	shuffleArray(shuffled);
+
+	// pad by cycling through what we have if fewer than 6 stories exist
 	const faceStories = [];
-	for(let i = 0; i < 6; i++){
-		faceStories.push(tempStories.pop());
+	for (let i = 0; i < 6; i++) {
+		faceStories.push(shuffled[i % shuffled.length]);
 	}
 
 	cubeHead = new Cube(0, faceStories, listener);
