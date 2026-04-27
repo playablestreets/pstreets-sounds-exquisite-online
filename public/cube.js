@@ -132,6 +132,11 @@ class Cube extends THREE.Mesh {
 		const sound = this.sounds[this.activeFace];
 		if (!sound || !sound.hasLoaded) return;
 
+		// stop first so any pending soundEndCallback from a previous play
+		// is cleared — otherwise it would fire mid-second-playback and
+		// cut the new sound off early
+		this.stopSound();
+
 		this.play();
 		let duration = this.getCurrentDuration();
 		let that = this;
