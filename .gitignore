@@ -1,1 +1,4 @@
 rawassets/
+
+# Local raw scans staged for cropping (not shipped); see docs/content-pipeline.md
+tools/staging/

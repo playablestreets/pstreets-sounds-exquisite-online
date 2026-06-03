@@ -1,283 +1,580 @@
 {
-  "generatedAt": "2026-06-03T03:42:09.378465Z",
-  "note": "Images and audio are decoupled pools. `group` keys coherent triples (image timestamp / audio recording); `association` is reserved for a later linking pass. Prismic content was found to be a subset of PENDING and is therefore not ingested separately.",
+  "generatedAt": "2026-06-03T04:57:58.410074+00:00",
+  "note": "Decoupled image/audio pools per body part. `group` keys coherent triples (shared stem); `association` is reserved for a later image<->audio linking pass.",
   "images": {
     "top": [
       {
         "id": "top/20260531-124038",
         "file": "images/top/20260531-124038.png",
         "group": "20260531-124038",
-        "sourceDriveId": "1Qns93WivEwqVw9EvxUJihpDeYAgOLQHU",
         "association": null
       },
       {
         "id": "top/20260531-124708",
         "file": "images/top/20260531-124708.png",
         "group": "20260531-124708",
-        "sourceDriveId": "1zyWYs7QNUmdY1zVBx0X8u0tmoGchtI8K",
         "association": null
       },
       {
         "id": "top/20260531-140345",
         "file": "images/top/20260531-140345.png",
         "group": "20260531-140345",
-        "sourceDriveId": "1BA7qY49Ikf6IjRQDe7J2EYkFafNw9rvU",
         "association": null
       },
       {
         "id": "top/20260531-140549",
         "file": "images/top/20260531-140549.png",
         "group": "20260531-140549",
-        "sourceDriveId": "10UXXQDwFAVZnC1qtbw9Wth9-mQKL37Ck",
         "association": null
       },
       {
         "id": "top/20260531-140724",
         "file": "images/top/20260531-140724.png",
         "group": "20260531-140724",
-        "sourceDriveId": "1EmVUHJ2ef7Lcf6x6vQahgPufK_GgbfAS",
         "association": null
       },
       {
         "id": "top/20260531-142957",
         "file": "images/top/20260531-142957.png",
         "group": "20260531-142957",
-        "sourceDriveId": "1o2l2K_2WOO7RsYCo8Yda6k64LWYgL_uh",
         "association": null
       },
       {
         "id": "top/20260531-143231",
         "file": "images/top/20260531-143231.png",
         "group": "20260531-143231",
-        "sourceDriveId": "1RUNMXiT-gb481BHTo18gvG_atpmfSF_Y",
         "association": null
       },
       {
         "id": "top/20260531-143342",
         "file": "images/top/20260531-143342.png",
         "group": "20260531-143342",
-        "sourceDriveId": "1nVCL88ST8JnWBN4md2lbfPVGFfN4Qd_E",
         "association": null
       },
       {
         "id": "top/20260531-143509",
         "file": "images/top/20260531-143509.png",
         "group": "20260531-143509",
-        "sourceDriveId": "1Yf1-CvshzMfmHbHS_C2RFZ2SNGTldRaK",
         "association": null
       },
       {
         "id": "top/20260531-143625",
         "file": "images/top/20260531-143625.png",
         "group": "20260531-143625",
-        "sourceDriveId": "19EgA7qdcT9bbEO2gPBoWsBQ8h-LVDZ26",
         "association": null
       },
       {
         "id": "top/20260531-143826",
         "file": "images/top/20260531-143826.png",
         "group": "20260531-143826",
-        "sourceDriveId": "1J9leQrmlTjnNd9eywSo9qd5eM7441zV1",
         "association": null
       },
       {
         "id": "top/20260531-143932",
         "file": "images/top/20260531-143932.png",
         "group": "20260531-143932",
-        "sourceDriveId": "1lqpcAkBjySo7hFUfSIval4ND2I8GER1M",
         "association": null
       },
       {
         "id": "top/20260531-144049",
         "file": "images/top/20260531-144049.png",
         "group": "20260531-144049",
-        "sourceDriveId": "1ugU4M1oOQPjPAuauH2655nNcttn5P_E0",
+        "association": null
+      },
+      {
+        "id": "top/2585d346-aa62-403e-8408-e8a74e6b1a9b_9face",
+        "file": "images/top/2585d346-aa62-403e-8408-e8a74e6b1a9b_9face.png",
+        "group": "2585d346-aa62-403e-8408-e8a74e6b1a9b_9face",
+        "association": null
+      },
+      {
+        "id": "top/27aff618-d4d1-4f27-8569-a47ac0762b03_face7",
+        "file": "images/top/27aff618-d4d1-4f27-8569-a47ac0762b03_face7.png",
+        "group": "27aff618-d4d1-4f27-8569-a47ac0762b03_face7",
+        "association": null
+      },
+      {
+        "id": "top/39dd0f3c-51fb-4369-b412-d2962c41b1ab_face10",
+        "file": "images/top/39dd0f3c-51fb-4369-b412-d2962c41b1ab_face10.png",
+        "group": "39dd0f3c-51fb-4369-b412-d2962c41b1ab_face10",
+        "association": null
+      },
+      {
+        "id": "top/3d0c0bf4-f8d7-4fb6-bed3-df4785e9f72e_3face",
+        "file": "images/top/3d0c0bf4-f8d7-4fb6-bed3-df4785e9f72e_3face.png",
+        "group": "3d0c0bf4-f8d7-4fb6-bed3-df4785e9f72e_3face",
+        "association": null
+      },
+      {
+        "id": "top/4a4d3eb4-b29e-47f5-a84f-329b327d92d1_20face",
+        "file": "images/top/4a4d3eb4-b29e-47f5-a84f-329b327d92d1_20face.png",
+        "group": "4a4d3eb4-b29e-47f5-a84f-329b327d92d1_20face",
+        "association": null
+      },
+      {
+        "id": "top/63ed0432-4945-4dc4-975e-0dc4d145af38_face9",
+        "file": "images/top/63ed0432-4945-4dc4-975e-0dc4d145af38_face9.png",
+        "group": "63ed0432-4945-4dc4-975e-0dc4d145af38_face9",
+        "association": null
+      },
+      {
+        "id": "top/6a195e39-d889-4000-9ac5-16da14c4a611_17face",
+        "file": "images/top/6a195e39-d889-4000-9ac5-16da14c4a611_17face.png",
+        "group": "6a195e39-d889-4000-9ac5-16da14c4a611_17face",
+        "association": null
+      },
+      {
+        "id": "top/6c0b0186-c50b-4b25-ba5a-077f2c61e7dc_face1",
+        "file": "images/top/6c0b0186-c50b-4b25-ba5a-077f2c61e7dc_face1.png",
+        "group": "6c0b0186-c50b-4b25-ba5a-077f2c61e7dc_face1",
+        "association": null
+      },
+      {
+        "id": "top/79f4cf27-e748-4b31-a8b2-31d4a4ad201b_12face",
+        "file": "images/top/79f4cf27-e748-4b31-a8b2-31d4a4ad201b_12face.png",
+        "group": "79f4cf27-e748-4b31-a8b2-31d4a4ad201b_12face",
+        "association": null
+      },
+      {
+        "id": "top/920969df-a8c6-4466-9e78-ca8c497395f6_14face",
+        "file": "images/top/920969df-a8c6-4466-9e78-ca8c497395f6_14face.png",
+        "group": "920969df-a8c6-4466-9e78-ca8c497395f6_14face",
+        "association": null
+      },
+      {
+        "id": "top/952fa98f-d4fb-4783-926f-718497edd723_face+6",
+        "file": "images/top/952fa98f-d4fb-4783-926f-718497edd723_face+6.png",
+        "group": "952fa98f-d4fb-4783-926f-718497edd723_face+6",
+        "association": null
+      },
+      {
+        "id": "top/a6cb30f7-4664-4027-bba0-3c0a052256e6_face5",
+        "file": "images/top/a6cb30f7-4664-4027-bba0-3c0a052256e6_face5.png",
+        "group": "a6cb30f7-4664-4027-bba0-3c0a052256e6_face5",
+        "association": null
+      },
+      {
+        "id": "top/bb706895-07e2-432b-8ac1-e59ad2eb4c0f_face2",
+        "file": "images/top/bb706895-07e2-432b-8ac1-e59ad2eb4c0f_face2.png",
+        "group": "bb706895-07e2-432b-8ac1-e59ad2eb4c0f_face2",
+        "association": null
+      },
+      {
+        "id": "top/bf9a4057-f7a9-4180-a16b-ad34c72be439_face3",
+        "file": "images/top/bf9a4057-f7a9-4180-a16b-ad34c72be439_face3.png",
+        "group": "bf9a4057-f7a9-4180-a16b-ad34c72be439_face3",
+        "association": null
+      },
+      {
+        "id": "top/e8449255-d93c-4529-bf2a-4a9d99d60e77_face8",
+        "file": "images/top/e8449255-d93c-4529-bf2a-4a9d99d60e77_face8.png",
+        "group": "e8449255-d93c-4529-bf2a-4a9d99d60e77_face8",
+        "association": null
+      },
+      {
+        "id": "top/f7fa8ed6-f0c7-4d13-be95-e2dbf99d4e63_6face",
+        "file": "images/top/f7fa8ed6-f0c7-4d13-be95-e2dbf99d4e63_6face.png",
+        "group": "f7fa8ed6-f0c7-4d13-be95-e2dbf99d4e63_6face",
+        "association": null
+      },
+      {
+        "id": "top/fbf5d522-98a8-4ca4-bd4c-43963080da02_face4",
+        "file": "images/top/fbf5d522-98a8-4ca4-bd4c-43963080da02_face4.png",
+        "group": "fbf5d522-98a8-4ca4-bd4c-43963080da02_face4",
+        "association": null
+      },
+      {
+        "id": "top/top_-3-",
+        "file": "images/top/top_-3-.png",
+        "group": "top_-3-",
         "association": null
       }
     ],
     "middle": [
       {
+        "id": "middle/1da8ea34-a562-479d-9bb4-030803c78feb_body9",
+        "file": "images/middle/1da8ea34-a562-479d-9bb4-030803c78feb_body9.png",
+        "group": "1da8ea34-a562-479d-9bb4-030803c78feb_body9",
+        "association": null
+      },
+      {
         "id": "middle/20260531-124038",
         "file": "images/middle/20260531-124038.png",
         "group": "20260531-124038",
-        "sourceDriveId": "1vhckUqk14WG2WKsctpvkEMQgiZwZ-aRe",
         "association": null
       },
       {
         "id": "middle/20260531-124750",
         "file": "images/middle/20260531-124750.png",
         "group": "20260531-124750",
-        "sourceDriveId": "1v8TP9pVcfVDimvU8-EYhsbCtpJ_Lkze6",
         "association": null
       },
       {
         "id": "middle/20260531-140345",
         "file": "images/middle/20260531-140345.png",
         "group": "20260531-140345",
-        "sourceDriveId": "1Wz93u2_Ic9TfTIwLfxyYGReJx2Ayayak",
         "association": null
       },
       {
         "id": "middle/20260531-140549",
         "file": "images/middle/20260531-140549.png",
         "group": "20260531-140549",
-        "sourceDriveId": "1PLl49l_pXz7nHaCxnY_N4gd6aH14g5UP",
         "association": null
       },
       {
         "id": "middle/20260531-140948",
         "file": "images/middle/20260531-140948.png",
         "group": "20260531-140948",
-        "sourceDriveId": "1g17aX3l6GNhQNNLLFG5Hd8BYioIn-Sho",
         "association": null
       },
       {
         "id": "middle/20260531-143033",
         "file": "images/middle/20260531-143033.png",
         "group": "20260531-143033",
-        "sourceDriveId": "1Y8yNwT20fz1psrF_0F7bx_pnKma9LrqE",
         "association": null
       },
       {
         "id": "middle/20260531-143231",
         "file": "images/middle/20260531-143231.png",
         "group": "20260531-143231",
-        "sourceDriveId": "1JSCLsU3WuA89Y9z2ZemZW-G_eDzyo7Y3",
         "association": null
       },
       {
         "id": "middle/20260531-143342",
         "file": "images/middle/20260531-143342.png",
         "group": "20260531-143342",
-        "sourceDriveId": "1ifPqqShEByHYia482mKpR3hN282tVuui",
         "association": null
       },
       {
         "id": "middle/20260531-143509",
         "file": "images/middle/20260531-143509.png",
         "group": "20260531-143509",
-        "sourceDriveId": "1c4XapJUEPP1U0-Zltu5RY5WuPPPZM9Bt",
         "association": null
       },
       {
         "id": "middle/20260531-143625",
         "file": "images/middle/20260531-143625.png",
         "group": "20260531-143625",
-        "sourceDriveId": "11TqALfSlyXoYvDQUTgwN2qT2QmrnydCg",
         "association": null
       },
       {
         "id": "middle/20260531-143826",
         "file": "images/middle/20260531-143826.png",
         "group": "20260531-143826",
-        "sourceDriveId": "1ePrxVKwaYKgKgtBw_J2NGK5j7P0p-r9E",
         "association": null
       },
       {
         "id": "middle/20260531-143932",
         "file": "images/middle/20260531-143932.png",
         "group": "20260531-143932",
-        "sourceDriveId": "1ogUnRprDEXn73n7rXXDiSsvhmVxHUBrV",
         "association": null
       },
       {
         "id": "middle/20260531-144049",
         "file": "images/middle/20260531-144049.png",
         "group": "20260531-144049",
-        "sourceDriveId": "12-Kv2VqLFxLPBpUZFse7KUtcdF-zgM3Q",
+        "association": null
+      },
+      {
+        "id": "middle/24d4a2f1-0c9a-4f6a-805e-db787d8151ce_19body",
+        "file": "images/middle/24d4a2f1-0c9a-4f6a-805e-db787d8151ce_19body.png",
+        "group": "24d4a2f1-0c9a-4f6a-805e-db787d8151ce_19body",
+        "association": null
+      },
+      {
+        "id": "middle/2e440f24-84bd-4f5f-a7fe-7ca45f639a68_4body",
+        "file": "images/middle/2e440f24-84bd-4f5f-a7fe-7ca45f639a68_4body.png",
+        "group": "2e440f24-84bd-4f5f-a7fe-7ca45f639a68_4body",
+        "association": null
+      },
+      {
+        "id": "middle/38ae38e4-8443-433e-a5a7-3fcfe31f1a26_body4",
+        "file": "images/middle/38ae38e4-8443-433e-a5a7-3fcfe31f1a26_body4.png",
+        "group": "38ae38e4-8443-433e-a5a7-3fcfe31f1a26_body4",
+        "association": null
+      },
+      {
+        "id": "middle/434015c5-0c18-467a-8794-ffb41fe9b154_11body",
+        "file": "images/middle/434015c5-0c18-467a-8794-ffb41fe9b154_11body.png",
+        "group": "434015c5-0c18-467a-8794-ffb41fe9b154_11body",
+        "association": null
+      },
+      {
+        "id": "middle/5c475c51-244e-49a6-a3b5-dc13c0f0c110_body5",
+        "file": "images/middle/5c475c51-244e-49a6-a3b5-dc13c0f0c110_body5.png",
+        "group": "5c475c51-244e-49a6-a3b5-dc13c0f0c110_body5",
+        "association": null
+      },
+      {
+        "id": "middle/5d3b47a3-c696-483a-a339-f236fcbef1c5_7body",
+        "file": "images/middle/5d3b47a3-c696-483a-a339-f236fcbef1c5_7body.png",
+        "group": "5d3b47a3-c696-483a-a339-f236fcbef1c5_7body",
+        "association": null
+      },
+      {
+        "id": "middle/7ce26fe0-b63b-408d-996b-20b279d98cbc_13body",
+        "file": "images/middle/7ce26fe0-b63b-408d-996b-20b279d98cbc_13body.png",
+        "group": "7ce26fe0-b63b-408d-996b-20b279d98cbc_13body",
+        "association": null
+      },
+      {
+        "id": "middle/8b96b4c9-e377-4cb2-856a-b8718cf86b08_body7",
+        "file": "images/middle/8b96b4c9-e377-4cb2-856a-b8718cf86b08_body7.png",
+        "group": "8b96b4c9-e377-4cb2-856a-b8718cf86b08_body7",
+        "association": null
+      },
+      {
+        "id": "middle/8dc79cd5-56cb-4d38-ae02-28b5f7378009_body6",
+        "file": "images/middle/8dc79cd5-56cb-4d38-ae02-28b5f7378009_body6.png",
+        "group": "8dc79cd5-56cb-4d38-ae02-28b5f7378009_body6",
+        "association": null
+      },
+      {
+        "id": "middle/94ae3c25-9a60-4bd5-9f32-67f02dc1b117_16body",
+        "file": "images/middle/94ae3c25-9a60-4bd5-9f32-67f02dc1b117_16body.png",
+        "group": "94ae3c25-9a60-4bd5-9f32-67f02dc1b117_16body",
+        "association": null
+      },
+      {
+        "id": "middle/9c1e92bc-baa7-45d4-8124-829b77756488_body10",
+        "file": "images/middle/9c1e92bc-baa7-45d4-8124-829b77756488_body10.png",
+        "group": "9c1e92bc-baa7-45d4-8124-829b77756488_body10",
+        "association": null
+      },
+      {
+        "id": "middle/b6f4ee60-d4d5-474d-af90-bd7eb2566bf5_body1",
+        "file": "images/middle/b6f4ee60-d4d5-474d-af90-bd7eb2566bf5_body1.png",
+        "group": "b6f4ee60-d4d5-474d-af90-bd7eb2566bf5_body1",
+        "association": null
+      },
+      {
+        "id": "middle/cd9d00ca-db85-451d-9c79-f0ddab45ff80_body2-1",
+        "file": "images/middle/cd9d00ca-db85-451d-9c79-f0ddab45ff80_body2-1.png",
+        "group": "cd9d00ca-db85-451d-9c79-f0ddab45ff80_body2-1",
+        "association": null
+      },
+      {
+        "id": "middle/ea3a1425-cb41-40e0-8737-9a3f4a0ca265_2body",
+        "file": "images/middle/ea3a1425-cb41-40e0-8737-9a3f4a0ca265_2body.png",
+        "group": "ea3a1425-cb41-40e0-8737-9a3f4a0ca265_2body",
+        "association": null
+      },
+      {
+        "id": "middle/eb2e05c6-3d72-4c1b-b2c0-04624f838b73_body8",
+        "file": "images/middle/eb2e05c6-3d72-4c1b-b2c0-04624f838b73_body8.png",
+        "group": "eb2e05c6-3d72-4c1b-b2c0-04624f838b73_body8",
+        "association": null
+      },
+      {
+        "id": "middle/f3b32450-4868-4849-96e2-8c21d4061298_body3",
+        "file": "images/middle/f3b32450-4868-4849-96e2-8c21d4061298_body3.png",
+        "group": "f3b32450-4868-4849-96e2-8c21d4061298_body3",
+        "association": null
+      },
+      {
+        "id": "middle/middle_-1-",
+        "file": "images/middle/middle_-1-.png",
+        "group": "middle_-1-",
         "association": null
       }
     ],
     "bottom": [
       {
+        "id": "bottom/00469335-4a96-4308-a9dc-637372868a17_15legs",
+        "file": "images/bottom/00469335-4a96-4308-a9dc-637372868a17_15legs.png",
+        "group": "00469335-4a96-4308-a9dc-637372868a17_15legs",
+        "association": null
+      },
+      {
+        "id": "bottom/0fd5a8cb-49b9-4830-b27c-938241352cc1_legs5",
+        "file": "images/bottom/0fd5a8cb-49b9-4830-b27c-938241352cc1_legs5.png",
+        "group": "0fd5a8cb-49b9-4830-b27c-938241352cc1_legs5",
+        "association": null
+      },
+      {
         "id": "bottom/20260531-124038",
         "file": "images/bottom/20260531-124038.png",
         "group": "20260531-124038",
-        "sourceDriveId": "1aKhw-LHRw5PmzNo2kvadQfATrSThvf7q",
         "association": null
       },
       {
         "id": "bottom/20260531-124752",
         "file": "images/bottom/20260531-124752.png",
         "group": "20260531-124752",
-        "sourceDriveId": "1HvTYrd1JTZ-xGX2uxc2WGzXFICI9DnQc",
         "association": null
       },
       {
         "id": "bottom/20260531-140345",
         "file": "images/bottom/20260531-140345.png",
         "group": "20260531-140345",
-        "sourceDriveId": "16qK6Bqs928RxlYlnG82ZCSVPO0KWM5NQ",
         "association": null
       },
       {
         "id": "bottom/20260531-140549",
         "file": "images/bottom/20260531-140549.png",
         "group": "20260531-140549",
-        "sourceDriveId": "1xVIHt7llI74_rsX2mM6WTd9e6COEjVEP",
         "association": null
       },
       {
         "id": "bottom/20260531-140845",
         "file": "images/bottom/20260531-140845.png",
         "group": "20260531-140845",
-        "sourceDriveId": "1AxTzVbO3cITyaVfUuZdBb4DZsX7fZ9aS",
         "association": null
       },
       {
         "id": "bottom/20260531-143056",
         "file": "images/bottom/20260531-143056.png",
         "group": "20260531-143056",
-        "sourceDriveId": "10-Z-qGG8l1Rpjc5FAJq6WMoaTmIjgiKw",
         "association": null
       },
       {
         "id": "bottom/20260531-143231",
         "file": "images/bottom/20260531-143231.png",
         "group": "20260531-143231",
-        "sourceDriveId": "1OqbheVE5h6aQf2YlaL-X5N0USFQig0w1",
         "association": null
       },
       {
         "id": "bottom/20260531-143342",
         "file": "images/bottom/20260531-143342.png",
         "group": "20260531-143342",
-        "sourceDriveId": "1PNsM8wnFSPHr0h9jMFPn551nyPQ7WyY6",
         "association": null
       },
       {
         "id": "bottom/20260531-143509",
         "file": "images/bottom/20260531-143509.png",
         "group": "20260531-143509",
-        "sourceDriveId": "1OTUoFZTLK5BAsGA_NXxrlcVfCNCy34w3",
         "association": null
       },
       {
         "id": "bottom/20260531-143625",
         "file": "images/bottom/20260531-143625.png",
         "group": "20260531-143625",
-        "sourceDriveId": "1kg0qLYkhcPvaKyqSSTTly5pBksEbHUqM",
         "association": null
       },
       {
         "id": "bottom/20260531-143826",
         "file": "images/bottom/20260531-143826.png",
         "group": "20260531-143826",
-        "sourceDriveId": "145DMQZkNFVromeylfIlt8pCuw3ENreP6",
         "association": null
       },
       {
         "id": "bottom/20260531-143932",
         "file": "images/bottom/20260531-143932.png",
         "group": "20260531-143932",
-        "sourceDriveId": "1M5h9dirnmlct5L8kjjZUcQmtnQAKYoIK",
         "association": null
       },
       {
         "id": "bottom/20260531-144049",
         "file": "images/bottom/20260531-144049.png",
         "group": "20260531-144049",
-        "sourceDriveId": "1gok3_UXF2TGjqnLrPR6HX3VoOEEkQz1B",
+        "association": null
+      },
+      {
+        "id": "bottom/24ec4703-4595-4a84-b32a-14cb72b26ec5_legs11",
+        "file": "images/bottom/24ec4703-4595-4a84-b32a-14cb72b26ec5_legs11.png",
+        "group": "24ec4703-4595-4a84-b32a-14cb72b26ec5_legs11",
+        "association": null
+      },
+      {
+        "id": "bottom/258b25d3-2d1e-4661-bbb7-b4e59e2f2eb3_legs8",
+        "file": "images/bottom/258b25d3-2d1e-4661-bbb7-b4e59e2f2eb3_legs8.png",
+        "group": "258b25d3-2d1e-4661-bbb7-b4e59e2f2eb3_legs8",
+        "association": null
+      },
+      {
+        "id": "bottom/36a25907-9e21-4968-b17b-22e8c333e6f3_13legs",
+        "file": "images/bottom/36a25907-9e21-4968-b17b-22e8c333e6f3_13legs.png",
+        "group": "36a25907-9e21-4968-b17b-22e8c333e6f3_13legs",
+        "association": null
+      },
+      {
+        "id": "bottom/393c23d6-802c-44d8-91af-b71e75d5c7e8_LEG_06",
+        "file": "images/bottom/393c23d6-802c-44d8-91af-b71e75d5c7e8_LEG_06.png",
+        "group": "393c23d6-802c-44d8-91af-b71e75d5c7e8_LEG_06",
+        "association": null
+      },
+      {
+        "id": "bottom/4bbdd0f8-98be-406e-b6af-0152c23da3c9_legs2",
+        "file": "images/bottom/4bbdd0f8-98be-406e-b6af-0152c23da3c9_legs2.png",
+        "group": "4bbdd0f8-98be-406e-b6af-0152c23da3c9_legs2",
+        "association": null
+      },
+      {
+        "id": "bottom/4c3183d1-ce32-416a-96ca-732ac983772e_18legs",
+        "file": "images/bottom/4c3183d1-ce32-416a-96ca-732ac983772e_18legs.png",
+        "group": "4c3183d1-ce32-416a-96ca-732ac983772e_18legs",
+        "association": null
+      },
+      {
+        "id": "bottom/4c967a1f-4a4d-4fd7-b980-b2860a1f068b_legs1",
+        "file": "images/bottom/4c967a1f-4a4d-4fd7-b980-b2860a1f068b_legs1.png",
+        "group": "4c967a1f-4a4d-4fd7-b980-b2860a1f068b_legs1",
+        "association": null
+      },
+      {
+        "id": "bottom/7558e7b1-6ced-4566-97c4-30f1b87fbaec_8legs",
+        "file": "images/bottom/7558e7b1-6ced-4566-97c4-30f1b87fbaec_8legs.png",
+        "group": "7558e7b1-6ced-4566-97c4-30f1b87fbaec_8legs",
+        "association": null
+      },
+      {
+        "id": "bottom/94f8fd27-3493-4633-857a-d54cf8214583_10legs",
+        "file": "images/bottom/94f8fd27-3493-4633-857a-d54cf8214583_10legs.png",
+        "group": "94f8fd27-3493-4633-857a-d54cf8214583_10legs",
+        "association": null
+      },
+      {
+        "id": "bottom/9d3a8236-2905-462d-9e48-b6f2bbf07824_legs10",
+        "file": "images/bottom/9d3a8236-2905-462d-9e48-b6f2bbf07824_legs10.png",
+        "group": "9d3a8236-2905-462d-9e48-b6f2bbf07824_legs10",
+        "association": null
+      },
+      {
+        "id": "bottom/ad3b5e69-c38f-4a5a-b5fc-e6bfbac91a75_legs6",
+        "file": "images/bottom/ad3b5e69-c38f-4a5a-b5fc-e6bfbac91a75_legs6.png",
+        "group": "ad3b5e69-c38f-4a5a-b5fc-e6bfbac91a75_legs6",
+        "association": null
+      },
+      {
+        "id": "bottom/ad6ca024-d4e0-42b4-9fe2-cd3725785494_legs1",
+        "file": "images/bottom/ad6ca024-d4e0-42b4-9fe2-cd3725785494_legs1.png",
+        "group": "ad6ca024-d4e0-42b4-9fe2-cd3725785494_legs1",
+        "association": null
+      },
+      {
+        "id": "bottom/bottom_-1-",
+        "file": "images/bottom/bottom_-1-.png",
+        "group": "bottom_-1-",
+        "association": null
+      },
+      {
+        "id": "bottom/c48765d4-6f7c-4641-9a06-c1f576219f57_legs4",
+        "file": "images/bottom/c48765d4-6f7c-4641-9a06-c1f576219f57_legs4.png",
+        "group": "c48765d4-6f7c-4641-9a06-c1f576219f57_legs4",
+        "association": null
+      },
+      {
+        "id": "bottom/cb478364-6514-4840-bd06-66c9ed9a219d_legs7",
+        "file": "images/bottom/cb478364-6514-4840-bd06-66c9ed9a219d_legs7.png",
+        "group": "cb478364-6514-4840-bd06-66c9ed9a219d_legs7",
+        "association": null
+      },
+      {
+        "id": "bottom/ce3964c2-869c-4963-901b-42d3bc693727_legs3",
+        "file": "images/bottom/ce3964c2-869c-4963-901b-42d3bc693727_legs3.png",
+        "group": "ce3964c2-869c-4963-901b-42d3bc693727_legs3",
+        "association": null
+      },
+      {
+        "id": "bottom/f029fe53-b9af-4c28-b420-366de204c13e_legs9",
+        "file": "images/bottom/f029fe53-b9af-4c28-b420-366de204c13e_legs9.png",
+        "group": "f029fe53-b9af-4c28-b420-366de204c13e_legs9",
+        "association": null
+      },
+      {
+        "id": "bottom/f146dee3-298b-477c-bbf2-9a6082eddbd0_5legs",
+        "file": "images/bottom/f146dee3-298b-477c-bbf2-9a6082eddbd0_5legs.png",
+        "group": "f146dee3-298b-477c-bbf2-9a6082eddbd0_5legs",
         "association": null
       }
     ]
@@ -288,35 +585,30 @@
         "id": "top/char-2026-05-31T01-30-11",
         "file": "audio/top/char-2026-05-31T01-30-11.mp3",
         "group": "char-2026-05-31T01-30-11",
-        "sourceDriveId": "1Iz9dPravKHzQ0I85F6BeLBayb8B_g6ua",
         "association": null
       },
       {
         "id": "top/char-2026-05-31T01-35-24",
         "file": "audio/top/char-2026-05-31T01-35-24.mp3",
         "group": "char-2026-05-31T01-35-24",
-        "sourceDriveId": "1dy4m1kXwahsZUA7t5Gz_1-gkTQo2xuua",
-        "association": null
-      },
-      {
-        "id": "top/zander",
-        "file": "audio/top/zander.mp3",
-        "group": "zander",
-        "sourceDriveId": "1SGB_gnMEj3UCfOOXivHNUnGO592_T780",
         "association": null
       },
       {
         "id": "top/faith",
         "file": "audio/top/faith.mp3",
         "group": "faith",
-        "sourceDriveId": "1MX-I8zlfHBW55WbHNx8OxaHUg7Uj7GaH",
         "association": null
       },
       {
         "id": "top/faith2",
         "file": "audio/top/faith2.mp3",
         "group": "faith2",
-        "sourceDriveId": "1kAYbotdEhljl41yiO4LnZiQRAlHz1eLM",
+        "association": null
+      },
+      {
+        "id": "top/zander",
+        "file": "audio/top/zander.mp3",
+        "group": "zander",
         "association": null
       }
     ],
@@ -325,35 +617,30 @@
         "id": "middle/char-2026-05-31T01-30-11",
         "file": "audio/middle/char-2026-05-31T01-30-11.mp3",
         "group": "char-2026-05-31T01-30-11",
-        "sourceDriveId": "1b_BBg914mVSnbHR9ecOO3QgqSfjrSBJT",
         "association": null
       },
       {
         "id": "middle/char-2026-05-31T01-35-24",
         "file": "audio/middle/char-2026-05-31T01-35-24.mp3",
         "group": "char-2026-05-31T01-35-24",
-        "sourceDriveId": "1u9TbHoRS8RRo-z4nma5E5wSrfQBA6vTS",
-        "association": null
-      },
-      {
-        "id": "middle/zander",
-        "file": "audio/middle/zander.mp3",
-        "group": "zander",
-        "sourceDriveId": "1eQEix_6ds5OHJ3pa8I9qOjMvYw8rQBDq",
         "association": null
       },
       {
         "id": "middle/faith",
         "file": "audio/middle/faith.mp3",
         "group": "faith",
-        "sourceDriveId": "137eAtokAoq8fhRCDpPLJoT1HmurUdCZR",
         "association": null
       },
       {
         "id": "middle/faith2",
         "file": "audio/middle/faith2.mp3",
         "group": "faith2",
-        "sourceDriveId": "1W3WstPo05RGue4Fl-IcsiyNMSTCOMXHo",
+        "association": null
+      },
+      {
+        "id": "middle/zander",
+        "file": "audio/middle/zander.mp3",
+        "group": "zander",
         "association": null
       }
     ],
@@ -362,35 +649,30 @@
         "id": "bottom/char-2026-05-31T01-30-11",
         "file": "audio/bottom/char-2026-05-31T01-30-11.mp3",
         "group": "char-2026-05-31T01-30-11",
-        "sourceDriveId": "142gMfCKivnb7EwB5PRZXkNrmhtPJFXM4",
         "association": null
       },
       {
         "id": "bottom/char-2026-05-31T01-35-24",
         "file": "audio/bottom/char-2026-05-31T01-35-24.mp3",
         "group": "char-2026-05-31T01-35-24",
-        "sourceDriveId": "1LRIjreljIeCwEuxIZ_verTtKesknZyYn",
-        "association": null
-      },
-      {
-        "id": "bottom/zander",
-        "file": "audio/bottom/zander.mp3",
-        "group": "zander",
-        "sourceDriveId": "1-5HwqCVJnKAp2TwYhq4g6BeNnkvl_4Xs",
         "association": null
       },
       {
         "id": "bottom/faith",
         "file": "audio/bottom/faith.mp3",
         "group": "faith",
-        "sourceDriveId": "1ujfZpIkJXsm3QscIgFKRxLg5A78OIPjz",
         "association": null
       },
       {
         "id": "bottom/faith2",
         "file": "audio/bottom/faith2.mp3",
         "group": "faith2",
-        "sourceDriveId": "13KrRmASUx5k_4NETEc77_mjXFNwqyBFw",
+        "association": null
+      },
+      {
+        "id": "bottom/zander",
+        "file": "audio/bottom/zander.mp3",
+        "group": "zander",
         "association": null
       }
     ]
