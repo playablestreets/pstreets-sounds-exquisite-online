@@ -1,7 +1,7 @@
 # Exquisite Stories
 
 A Three.js exquisite-corpse cube app. Three stacked cubes — head, body, legs —
-each show six story faces sourced from a Prismic content repo. Drag cubes to
+each show six story faces sourced from local content. Drag cubes to
 swap their roles, tap to play the story-fragment audio for the visible face,
 or shuffle to spin all three cubes to a new random face.
 
@@ -20,23 +20,35 @@ Then open <http://localhost:8000>.
 
 ## Content
 
-Stories are pulled from the Prismic repo `playable-web` (`sounds_exquisite`
-document type). Each story has a top, middle, and bottom part with an image,
-a sound, and some text. The page calls Prismic on load and never caches; new
-content published to Prismic appears on next refresh.
+Content is **cooked into the site source** under `public/assets/content/` and
+described by `manifest.json`; the page loads it on startup (no external CMS).
 
-Contributors can submit a story via the DIY form linked from the top-right
-corner of the page (currently <https://form.jotform.com/202537580463052>).
+Images and audio are **decoupled pools** per body part (top/middle/bottom).
+On every load the app samples each pool independently to dress the six cube
+faces, so a given image is not tied to a given sound. Each manifest entry
+carries a `group` key (image timestamp / audio recording id) and a reserved
+`association` field, leaving room to re-link images and audio in a later pass.
+
+Assets are normalised on ingest to **256×256 PNG** images and **mono ~80 kbps
+MP3** audio. New content flows through a Google Drive pipeline — see
+[docs/content-pipeline.md](docs/content-pipeline.md) for the full runbook and
+`tools/ingest.py` for the ingest script.
+
+> Note: this app previously pulled from the Prismic repo `playable-web`
+> (`sounds_exquisite` type). That dependency has been removed.
 
 ## Layout
 
 - `public/index.html` — entry point, loads Three.js and the app scripts
-- `public/script.js` — scene, camera, drag controls, top-level wiring
+- `public/script.js` — scene, camera, drag controls, content loading + face composition
 - `public/cube.js` — `Cube` class (faces, audio, animations)
-- `public/utils.js` — Prismic API client + helpers
+- `public/utils.js` — manifest loader + helpers
 - `public/style.css` — page chrome (canvas + the two corner buttons)
+- `public/assets/content/` — ingested images/audio pools + `manifest.json`
 - `public/assets/` — background SVG, icons, etc.
 - `public/Tween.js`, `public/three.js`, `public/DragControls.js` — vendored libs
+- `tools/ingest.py` — content ingest (Drive → normalised local assets + manifest)
+- `docs/content-pipeline.md` — content pipeline runbook
 
 ## Issue tracking
 

@@ -51,79 +51,59 @@ directionalLightLeft.castShadow = true;
 
 
 //------------------------------------------------------------------
-//GET STORIES DATA
-const stories = [];
+//GET CONTENT DATA
+//
+// Images and audio are decoupled pools per body part (top/middle/bottom).
+// We load the manifest once, then compose fresh random image+sound pairings
+// for the six cube faces on every (re)load — nothing ties a given image to a
+// given sound, which is the intended behaviour for now.
+const bodyParts = ['top', 'middle', 'bottom'];
+let content = null; // { images: {top:[url],...}, audio: {top:[url],...} }
 
-//CALL PRISMIC API
-getFromApi("sounds_exquisite", dataCallback);
+//LOAD LOCAL MANIFEST
+loadManifest(onContentLoaded);
 
-//SET DYNAMIC DATA FROM PRISMIC
-function dataCallback(data) {
-	const part = {
-		imageLocation: null,
-		soundLocation: null,
-		text: null
-	};
-	
-	const story = {
-		uid: null,
-		title: null,
-		author: null,
-		age: null,
-		top: {...part},
-		middle: {...part},
-		bottom: {...part},
-	}
-	
-
-	data.forEach((item) => {
-		if (item == null || item.data == null) return;
-
-		let newStory = {...story};
-		let newTop = {...part};
-		let newMiddle = {...part};
-		let newBottom = {...part};
-
-		newStory.uid = item.uid;
-		if(prismicArrayExists(item.data.title))
-			newStory.title = item.data.title[0].text;
-		if(prismicArrayExists(item.data.name))
-			newStory.author = item.data.name[0].text;
-		if(item.data.postcode != null)
-			newStory.postcode = item.data.postcode;
-		if(item.data.age != null)
-			newStory.age = item.data.age;
-
-		newTop.imageLocation = prismicUrl(item.data.top_image);
-		newTop.soundLocation = prismicUrl(item.data.top_sound);
-		newTop.text = prismicText(item.data.top_text);
-
-		newMiddle.imageLocation = prismicUrl(item.data.middle_image);
-		newMiddle.soundLocation = prismicUrl(item.data.middle_sound);
-		newMiddle.text = prismicText(item.data.middle_text);
-
-		newBottom.imageLocation = prismicUrl(item.data.bottom_image);
-		newBottom.soundLocation = prismicUrl(item.data.bottom_sound);
-		newBottom.text = prismicText(item.data.bottom_text);
-
-		// require all three parts to have an image and a sound; skip half-finished stories
-		if (newTop.imageLocation == null || newTop.soundLocation == null ||
-			newMiddle.imageLocation == null || newMiddle.soundLocation == null ||
-			newBottom.imageLocation == null || newBottom.soundLocation == null) {
-			return;
-		}
-
-		newStory.top = newTop;
-		newStory.middle = newMiddle;
-		newStory.bottom = newBottom;
-
-		stories.push(newStory);
+function onContentLoaded(manifest) {
+	const toUrls = (arr) => (arr || []).map((a) => contentBase + a.file);
+	content = { images: {}, audio: {} };
+	bodyParts.forEach((p) => {
+		content.images[p] = toUrls(manifest.images && manifest.images[p]);
+		content.audio[p] = toUrls(manifest.audio && manifest.audio[p]);
 	});
-	
 
 	loadNewScene();
+}
 
+// Draw `n` items from a pool, shuffled, cycling through the pool if it holds
+// fewer than `n` so every face still gets something.
+function drawFromPool(pool, n) {
+	const out = [];
+	let bag = [];
+	for (let i = 0; i < n; i++) {
+		if (bag.length === 0) bag = shuffleArray([...pool]);
+		out.push(bag.pop());
+	}
+	return out;
+}
 
+// Build six face "stories", each an independently sampled image + sound per part.
+function buildFaceStories() {
+	const imgs = {};
+	const snds = {};
+	bodyParts.forEach((p) => {
+		imgs[p] = drawFromPool(content.images[p], 6);
+		snds[p] = drawFromPool(content.audio[p], 6);
+	});
+
+	const faceStories = [];
+	for (let i = 0; i < 6; i++) {
+		const story = {};
+		bodyParts.forEach((p) => {
+			story[p] = { imageLocation: imgs[p][i], soundLocation: snds[p][i], text: '...' };
+		});
+		faceStories.push(story);
+	}
+	return faceStories;
 }
 
 function loadNewScene(){
@@ -134,19 +114,14 @@ function loadNewScene(){
 }
 
 function createCubes(){
-	if (stories.length === 0) {
-		console.warn('createCubes: no stories available, skipping cube creation');
+	const ready = content && bodyParts.every(
+		(p) => content.images[p].length > 0 && content.audio[p].length > 0);
+	if (!ready) {
+		console.warn('createCubes: content pools incomplete, skipping cube creation');
 		return;
 	}
 
-	let shuffled = JSON.parse(JSON.stringify(stories));
-	shuffleArray(shuffled);
-
-	// pad by cycling through what we have if fewer than 6 stories exist
-	const faceStories = [];
-	for (let i = 0; i < 6; i++) {
-		faceStories.push(shuffled[i % shuffled.length]);
-	}
+	const faceStories = buildFaceStories();
 
 	cubeHead = new Cube(0, faceStories, listener);
 	cubeHead.setTo('head');
