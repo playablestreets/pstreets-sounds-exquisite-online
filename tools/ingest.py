@@ -28,9 +28,21 @@ the group key (``pair-001.png`` / ``pair-001.mp3``), so a coherent set shares a
 stem across parts and across kinds -- which is what build_manifest.py and the
 future gallery use to re-link them without re-ingesting.
 
+Performance: Drive round trips dominate, so the run does ONE batched
+``rclone copy`` to pull every source locally, normalises with no further
+network calls, then issues ONE batched ``rclone move`` per (leaf, destination)
+to mirror the sources -- a handful of rclone invocations instead of two per
+file.
+
 Re-running is safe: outputs are deterministic by group key (so identical inputs
 overwrite to the same bytes), and processed sources leave INBOX, so a second run
 over a drained INBOX is a no-op.
+
+Recovery: every log line is keyed by ``runId`` with the ``COMPLETE``/``DROPPED``
+``destinationPath``, so the files a given run ingested can always be recovered
+from the log even though the originals (full-resolution) now live under
+``COMPLETE``. To reprocess after a format change, re-upload the originals to
+``INBOX`` (or move them back from ``COMPLETE``) and re-run.
 
 Usage:
   python3 tools/ingest.py --dry-run        # scan + print plan, no downloads/moves
@@ -48,6 +60,7 @@ import shutil
 import subprocess
 import sys
 import uuid
+from collections import defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -80,6 +93,8 @@ ALL_PARTS = {"top", "middle", "bottom"}
 
 IMG_SIZE = 256
 FFMPEG_AUDIO_ARGS = ["-ac", "1", "-ar", "44100", "-b:a", "80k", "-map_metadata", "-1"]
+# Parallelism for the batched rclone copy/move calls.
+RCLONE_PARALLEL = ["--transfers", "16", "--checkers", "16"]
 
 MAGICK = shutil.which("magick") or shutil.which("convert")
 
@@ -113,9 +128,15 @@ def parse_name(name, kind):
     return group, slot
 
 
-def scan():
-    """Return the list of source records across all six INBOX folders."""
+def scan(limit=0):
+    """Return the source records across all six INBOX folders.
+
+    ``limit`` caps how many files are taken from each leaf (0 = all). Pairing is
+    computed from the full scan first, so a limited run still reports each
+    group's true status.
+    """
     records = []
+    counts = defaultdict(int)
     for leaf, kind, site_part in INBOX_FOLDERS:
         for entry in lsjson(leaf):
             name = entry["Name"]
@@ -133,7 +154,15 @@ def scan():
                     "sourcePath": f"INBOX/{leaf}/{name}",
                 }
             )
-    return records
+    index = pairing_index(records)
+    if limit:
+        kept = []
+        for r in records:
+            if counts[r["leaf"]] < limit:
+                kept.append(r)
+                counts[r["leaf"]] += 1
+        records = kept
+    return records, index
 
 
 def pairing_index(records):
@@ -195,49 +224,67 @@ def append_log(entry):
         fh.write(json.dumps(entry) + "\n")
 
 
-def drive_move(record, decision):
-    dest_root = "COMPLETE" if decision == "complete" else "DROPPED"
-    src = f"{DRIVE_ROOT}/{record['sourcePath']}"
-    dst = f"{DRIVE_ROOT}/{dest_root}/{record['leaf']}/{record['name']}"
-    rclone("moveto", src, dst)
-    return f"{dest_root}/{record['leaf']}/{record['name']}"
+def batch_download(records, tmp):
+    """One rclone copy that pulls exactly the records' sources into ``tmp``."""
+    listfile = tmp / "_download.lst"
+    listfile.write_text("\n".join(f"{r['leaf']}/{r['name']}" for r in records) + "\n")
+    rclone("copy", f"{DRIVE_ROOT}/INBOX", str(tmp),
+           "--files-from", str(listfile), *RCLONE_PARALLEL)
+    listfile.unlink()
 
 
-def process(record, run_id, tmp, index):
-    """Normalise one source, log it, then mirror-move it in Drive."""
+def batch_move(plan, tmp):
+    """Mirror sources to COMPLETE/DROPPED with one rclone move per (leaf, dest)."""
+    groups = defaultdict(list)
+    for r, _decision, dest_root in plan:
+        groups[(r["leaf"], dest_root)].append(r["name"])
+    for (leaf, dest_root), names in sorted(groups.items()):
+        listfile = tmp / f"_move_{dest_root}_{leaf}.lst"
+        listfile.write_text("\n".join(names) + "\n")
+        rclone("move", f"{DRIVE_ROOT}/INBOX/{leaf}",
+               f"{DRIVE_ROOT}/{dest_root}/{leaf}",
+               "--files-from", str(listfile), *RCLONE_PARALLEL)
+        listfile.unlink()
+        print(f"  moved {len(names):3} -> {dest_root}/{leaf}")
+
+
+def normalize_record(record, tmp, index, run_id):
+    """Normalise one already-downloaded source and append its log line.
+
+    Returns (decision, dest_root). The log is written here -- BEFORE any Drive
+    move -- with the deterministic destinationPath, so intent is durable even if
+    a later move fails.
+    """
     status = pairing_status(record["group"], index)
     decision, reason, out_rel = "complete", "", None
+    local = tmp / record["leaf"] / record["name"]
 
     if record["group"] is None:
         decision, reason = "dropped", "unparseable filename (no group/slot)"
     elif not record["size"]:
         decision, reason = "dropped", "empty source file"
+    elif not local.exists():
+        decision, reason = "dropped", "source did not download"
     else:
-        raw = tmp / record["name"]
+        dst = output_path(record)
         try:
-            rclone("copyto", f"{DRIVE_ROOT}/{record['sourcePath']}", str(raw))
-            dst = output_path(record)
             if record["kind"] == "image":
-                normalize_image(raw, dst)
+                normalize_image(local, dst)
             else:
-                normalize_audio(raw, dst)
+                normalize_audio(local, dst)
             out_rel = str(dst.relative_to(ROOT))
             reason = f"normalized {record['kind']} ({status})"
         except subprocess.CalledProcessError as exc:
             decision = "dropped"
             err = (exc.stderr or "").strip().splitlines()
             reason = f"normalize failed: {err[-1] if err else exc}"
-        finally:
-            if raw.exists():
-                raw.unlink()
 
-    # Log BEFORE moving the Drive file, so intent is recorded even if the move
-    # fails partway. destinationPath is filled once the move succeeds.
-    entry = {
+    dest_root = "COMPLETE" if decision == "complete" else "DROPPED"
+    append_log({
         "runId": run_id,
         "processedAt": utcnow(),
         "sourcePath": record["sourcePath"],
-        "destinationPath": None,
+        "destinationPath": f"{dest_root}/{record['leaf']}/{record['name']}",
         "decision": decision,
         "reason": reason,
         "sitePart": record["sitePart"],
@@ -248,10 +295,8 @@ def process(record, run_id, tmp, index):
         "group": record["group"],
         "pairingStatus": status,
         "checksum": record["checksum"],
-    }
-    entry["destinationPath"] = drive_move(record, decision)
-    append_log(entry)
-    return decision, status, reason
+    })
+    return decision, dest_root
 
 
 def build_manifest():
@@ -277,24 +322,12 @@ def main():
         sys.exit("error: rclone not found on PATH")
 
     print(f"scanning {DRIVE_ROOT}/INBOX ...")
-    records = scan()
-    index = pairing_index(records)
+    records, index = scan(limit=args.limit)
 
-    if args.limit:
-        kept, seen = [], {}
-        for r in records:
-            n = seen.get(r["leaf"], 0)
-            if n < args.limit:
-                kept.append(r)
-                seen[r["leaf"]] = n + 1
-        records = kept
-
-    print(f"found {len(records)} source files; "
-          f"{len(index)} distinct groups")
-    status_tally = {}
+    print(f"found {len(records)} source files; {len(index)} distinct groups")
+    status_tally = defaultdict(int)
     for g in index:
-        s = pairing_status(g, index)
-        status_tally[s] = status_tally.get(s, 0) + 1
+        status_tally[pairing_status(g, index)] += 1
     for s in sorted(status_tally):
         print(f"  groups {s}: {status_tally[s]}")
 
@@ -312,27 +345,40 @@ def main():
         print("\n(dry run: nothing downloaded, moved, or logged)")
         return
 
+    if not records:
+        print("INBOX is empty; nothing to ingest.")
+        return
+
     run_id = datetime.datetime.now(datetime.timezone.utc).strftime(
         "%Y%m%dT%H%M%SZ"
     ) + "-" + uuid.uuid4().hex[:8]
     print(f"\nrunId {run_id}")
 
     tmp = OUT / "_tmp"
+    if tmp.exists():
+        shutil.rmtree(tmp, ignore_errors=True)
     tmp.mkdir(parents=True, exist_ok=True)
     completed = dropped = 0
     try:
+        print(f"downloading {len(records)} sources ...")
+        batch_download(records, tmp)
+
+        print("normalizing + logging ...")
+        plan = []
         for r in records:
-            decision, status, reason = process(r, run_id, tmp, index)
+            decision, dest_root = normalize_record(r, tmp, index, run_id)
+            plan.append((r, decision, dest_root))
             if decision == "complete":
                 completed += 1
             else:
                 dropped += 1
-            print(f"  {decision:8} {r['sourcePath']:48} [{status}] {reason}")
+
+        print(f"completed {completed}, dropped {dropped}; mirroring Drive moves ...")
+        batch_move(plan, tmp)
     finally:
         if tmp.exists():
             shutil.rmtree(tmp, ignore_errors=True)
 
-    print(f"\ncompleted {completed}, dropped {dropped}")
     print("regenerating manifest ...")
     build_manifest()
     print(f"ingest log: {LOG_PATH.relative_to(ROOT)}")

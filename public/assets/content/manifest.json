@@ -1,192 +1,608 @@
 {
-  "generatedAt": "2026-06-03T04:57:58.410074+00:00",
-  "note": "Decoupled image/audio pools per body part. `group` keys coherent triples (shared stem); `association` is reserved for a later image<->audio linking pass.",
+  "generatedAt": "2026-06-15T11:35:53.158030+00:00",
+  "note": "Decoupled image/audio pools per body part. `group` is the shared stem of a coherent set; `pairingStatus` and `associations` recover complete monster sets from shared stems for the gallery.",
   "images": {
     "top": [
       {
         "id": "top/20260531-124038",
         "file": "images/top/20260531-124038.png",
         "group": "20260531-124038",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-124708",
         "file": "images/top/20260531-124708.png",
         "group": "20260531-124708",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-140345",
         "file": "images/top/20260531-140345.png",
         "group": "20260531-140345",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-140549",
         "file": "images/top/20260531-140549.png",
         "group": "20260531-140549",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-140724",
         "file": "images/top/20260531-140724.png",
         "group": "20260531-140724",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-142957",
         "file": "images/top/20260531-142957.png",
         "group": "20260531-142957",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-143231",
         "file": "images/top/20260531-143231.png",
         "group": "20260531-143231",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-143342",
         "file": "images/top/20260531-143342.png",
         "group": "20260531-143342",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-143509",
         "file": "images/top/20260531-143509.png",
         "group": "20260531-143509",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-143625",
         "file": "images/top/20260531-143625.png",
         "group": "20260531-143625",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-143826",
         "file": "images/top/20260531-143826.png",
         "group": "20260531-143826",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-143932",
         "file": "images/top/20260531-143932.png",
         "group": "20260531-143932",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/20260531-144049",
         "file": "images/top/20260531-144049.png",
         "group": "20260531-144049",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/2585d346-aa62-403e-8408-e8a74e6b1a9b_9face",
         "file": "images/top/2585d346-aa62-403e-8408-e8a74e6b1a9b_9face.png",
         "group": "2585d346-aa62-403e-8408-e8a74e6b1a9b_9face",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/27aff618-d4d1-4f27-8569-a47ac0762b03_face7",
         "file": "images/top/27aff618-d4d1-4f27-8569-a47ac0762b03_face7.png",
         "group": "27aff618-d4d1-4f27-8569-a47ac0762b03_face7",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/39dd0f3c-51fb-4369-b412-d2962c41b1ab_face10",
         "file": "images/top/39dd0f3c-51fb-4369-b412-d2962c41b1ab_face10.png",
         "group": "39dd0f3c-51fb-4369-b412-d2962c41b1ab_face10",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/3d0c0bf4-f8d7-4fb6-bed3-df4785e9f72e_3face",
         "file": "images/top/3d0c0bf4-f8d7-4fb6-bed3-df4785e9f72e_3face.png",
         "group": "3d0c0bf4-f8d7-4fb6-bed3-df4785e9f72e_3face",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/4a4d3eb4-b29e-47f5-a84f-329b327d92d1_20face",
         "file": "images/top/4a4d3eb4-b29e-47f5-a84f-329b327d92d1_20face.png",
         "group": "4a4d3eb4-b29e-47f5-a84f-329b327d92d1_20face",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/63ed0432-4945-4dc4-975e-0dc4d145af38_face9",
         "file": "images/top/63ed0432-4945-4dc4-975e-0dc4d145af38_face9.png",
         "group": "63ed0432-4945-4dc4-975e-0dc4d145af38_face9",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/6a195e39-d889-4000-9ac5-16da14c4a611_17face",
         "file": "images/top/6a195e39-d889-4000-9ac5-16da14c4a611_17face.png",
         "group": "6a195e39-d889-4000-9ac5-16da14c4a611_17face",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/6c0b0186-c50b-4b25-ba5a-077f2c61e7dc_face1",
         "file": "images/top/6c0b0186-c50b-4b25-ba5a-077f2c61e7dc_face1.png",
         "group": "6c0b0186-c50b-4b25-ba5a-077f2c61e7dc_face1",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/79f4cf27-e748-4b31-a8b2-31d4a4ad201b_12face",
         "file": "images/top/79f4cf27-e748-4b31-a8b2-31d4a4ad201b_12face.png",
         "group": "79f4cf27-e748-4b31-a8b2-31d4a4ad201b_12face",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/920969df-a8c6-4466-9e78-ca8c497395f6_14face",
         "file": "images/top/920969df-a8c6-4466-9e78-ca8c497395f6_14face.png",
         "group": "920969df-a8c6-4466-9e78-ca8c497395f6_14face",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/952fa98f-d4fb-4783-926f-718497edd723_face+6",
         "file": "images/top/952fa98f-d4fb-4783-926f-718497edd723_face+6.png",
         "group": "952fa98f-d4fb-4783-926f-718497edd723_face+6",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/a6cb30f7-4664-4027-bba0-3c0a052256e6_face5",
         "file": "images/top/a6cb30f7-4664-4027-bba0-3c0a052256e6_face5.png",
         "group": "a6cb30f7-4664-4027-bba0-3c0a052256e6_face5",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/bb706895-07e2-432b-8ac1-e59ad2eb4c0f_face2",
         "file": "images/top/bb706895-07e2-432b-8ac1-e59ad2eb4c0f_face2.png",
         "group": "bb706895-07e2-432b-8ac1-e59ad2eb4c0f_face2",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/bf9a4057-f7a9-4180-a16b-ad34c72be439_face3",
         "file": "images/top/bf9a4057-f7a9-4180-a16b-ad34c72be439_face3.png",
         "group": "bf9a4057-f7a9-4180-a16b-ad34c72be439_face3",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/e8449255-d93c-4529-bf2a-4a9d99d60e77_face8",
         "file": "images/top/e8449255-d93c-4529-bf2a-4a9d99d60e77_face8.png",
         "group": "e8449255-d93c-4529-bf2a-4a9d99d60e77_face8",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/f7fa8ed6-f0c7-4d13-be95-e2dbf99d4e63_6face",
         "file": "images/top/f7fa8ed6-f0c7-4d13-be95-e2dbf99d4e63_6face.png",
         "group": "f7fa8ed6-f0c7-4d13-be95-e2dbf99d4e63_6face",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "top/fbf5d522-98a8-4ca4-bd4c-43963080da02_face4",
         "file": "images/top/fbf5d522-98a8-4ca4-bd4c-43963080da02_face4.png",
         "group": "fbf5d522-98a8-4ca4-bd4c-43963080da02_face4",
+        "pairingStatus": "image-only",
         "association": null
+      },
+      {
+        "id": "top/nopair-image-001",
+        "file": "images/top/nopair-image-001.png",
+        "group": "nopair-image-001",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "top/nopair-image-002",
+        "file": "images/top/nopair-image-002.png",
+        "group": "nopair-image-002",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "top/nopair-image-003",
+        "file": "images/top/nopair-image-003.png",
+        "group": "nopair-image-003",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "top/nopair-image-004",
+        "file": "images/top/nopair-image-004.png",
+        "group": "nopair-image-004",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "top/nopair-image-005",
+        "file": "images/top/nopair-image-005.png",
+        "group": "nopair-image-005",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "top/nopair-image-007",
+        "file": "images/top/nopair-image-007.png",
+        "group": "nopair-image-007",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "top/nopair-image-008",
+        "file": "images/top/nopair-image-008.png",
+        "group": "nopair-image-008",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "top/nopair-image-010",
+        "file": "images/top/nopair-image-010.png",
+        "group": "nopair-image-010",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "top/nopair-image-011",
+        "file": "images/top/nopair-image-011.png",
+        "group": "nopair-image-011",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "top/pair-001",
+        "file": "images/top/pair-001.png",
+        "group": "pair-001",
+        "pairingStatus": "complete",
+        "association": "pair-001"
+      },
+      {
+        "id": "top/pair-002",
+        "file": "images/top/pair-002.png",
+        "group": "pair-002",
+        "pairingStatus": "complete",
+        "association": "pair-002"
+      },
+      {
+        "id": "top/pair-004",
+        "file": "images/top/pair-004.png",
+        "group": "pair-004",
+        "pairingStatus": "complete",
+        "association": "pair-004"
+      },
+      {
+        "id": "top/pair-005",
+        "file": "images/top/pair-005.png",
+        "group": "pair-005",
+        "pairingStatus": "complete",
+        "association": "pair-005"
+      },
+      {
+        "id": "top/pair-006",
+        "file": "images/top/pair-006.png",
+        "group": "pair-006",
+        "pairingStatus": "complete",
+        "association": "pair-006"
+      },
+      {
+        "id": "top/pair-007",
+        "file": "images/top/pair-007.png",
+        "group": "pair-007",
+        "pairingStatus": "complete",
+        "association": "pair-007"
+      },
+      {
+        "id": "top/pair-008",
+        "file": "images/top/pair-008.png",
+        "group": "pair-008",
+        "pairingStatus": "complete",
+        "association": "pair-008"
+      },
+      {
+        "id": "top/pair-009",
+        "file": "images/top/pair-009.png",
+        "group": "pair-009",
+        "pairingStatus": "complete",
+        "association": "pair-009"
+      },
+      {
+        "id": "top/pair-010",
+        "file": "images/top/pair-010.png",
+        "group": "pair-010",
+        "pairingStatus": "complete",
+        "association": "pair-010"
+      },
+      {
+        "id": "top/pair-011",
+        "file": "images/top/pair-011.png",
+        "group": "pair-011",
+        "pairingStatus": "complete",
+        "association": "pair-011"
+      },
+      {
+        "id": "top/pair-012",
+        "file": "images/top/pair-012.png",
+        "group": "pair-012",
+        "pairingStatus": "complete",
+        "association": "pair-012"
+      },
+      {
+        "id": "top/pair-013",
+        "file": "images/top/pair-013.png",
+        "group": "pair-013",
+        "pairingStatus": "complete",
+        "association": "pair-013"
+      },
+      {
+        "id": "top/pair-014",
+        "file": "images/top/pair-014.png",
+        "group": "pair-014",
+        "pairingStatus": "complete",
+        "association": "pair-014"
+      },
+      {
+        "id": "top/pair-015",
+        "file": "images/top/pair-015.png",
+        "group": "pair-015",
+        "pairingStatus": "complete",
+        "association": "pair-015"
+      },
+      {
+        "id": "top/pair-016",
+        "file": "images/top/pair-016.png",
+        "group": "pair-016",
+        "pairingStatus": "complete",
+        "association": "pair-016"
+      },
+      {
+        "id": "top/pair-017",
+        "file": "images/top/pair-017.png",
+        "group": "pair-017",
+        "pairingStatus": "complete",
+        "association": "pair-017"
+      },
+      {
+        "id": "top/pair-018",
+        "file": "images/top/pair-018.png",
+        "group": "pair-018",
+        "pairingStatus": "complete",
+        "association": "pair-018"
+      },
+      {
+        "id": "top/pair-019",
+        "file": "images/top/pair-019.png",
+        "group": "pair-019",
+        "pairingStatus": "complete",
+        "association": "pair-019"
+      },
+      {
+        "id": "top/pair-020",
+        "file": "images/top/pair-020.png",
+        "group": "pair-020",
+        "pairingStatus": "complete",
+        "association": "pair-020"
+      },
+      {
+        "id": "top/pair-021",
+        "file": "images/top/pair-021.png",
+        "group": "pair-021",
+        "pairingStatus": "complete",
+        "association": "pair-021"
+      },
+      {
+        "id": "top/pair-022",
+        "file": "images/top/pair-022.png",
+        "group": "pair-022",
+        "pairingStatus": "complete",
+        "association": "pair-022"
+      },
+      {
+        "id": "top/pair-023",
+        "file": "images/top/pair-023.png",
+        "group": "pair-023",
+        "pairingStatus": "complete",
+        "association": "pair-023"
+      },
+      {
+        "id": "top/pair-024",
+        "file": "images/top/pair-024.png",
+        "group": "pair-024",
+        "pairingStatus": "complete",
+        "association": "pair-024"
+      },
+      {
+        "id": "top/pair-025",
+        "file": "images/top/pair-025.png",
+        "group": "pair-025",
+        "pairingStatus": "complete",
+        "association": "pair-025"
+      },
+      {
+        "id": "top/pair-026",
+        "file": "images/top/pair-026.png",
+        "group": "pair-026",
+        "pairingStatus": "complete",
+        "association": "pair-026"
+      },
+      {
+        "id": "top/pair-027",
+        "file": "images/top/pair-027.png",
+        "group": "pair-027",
+        "pairingStatus": "complete",
+        "association": "pair-027"
+      },
+      {
+        "id": "top/pair-028",
+        "file": "images/top/pair-028.png",
+        "group": "pair-028",
+        "pairingStatus": "complete",
+        "association": "pair-028"
+      },
+      {
+        "id": "top/pair-029",
+        "file": "images/top/pair-029.png",
+        "group": "pair-029",
+        "pairingStatus": "complete",
+        "association": "pair-029"
+      },
+      {
+        "id": "top/pair-030",
+        "file": "images/top/pair-030.png",
+        "group": "pair-030",
+        "pairingStatus": "complete",
+        "association": "pair-030"
+      },
+      {
+        "id": "top/pair-031",
+        "file": "images/top/pair-031.png",
+        "group": "pair-031",
+        "pairingStatus": "complete",
+        "association": "pair-031"
+      },
+      {
+        "id": "top/pair-032",
+        "file": "images/top/pair-032.png",
+        "group": "pair-032",
+        "pairingStatus": "complete",
+        "association": "pair-032"
+      },
+      {
+        "id": "top/pair-033",
+        "file": "images/top/pair-033.png",
+        "group": "pair-033",
+        "pairingStatus": "complete",
+        "association": "pair-033"
+      },
+      {
+        "id": "top/pair-034",
+        "file": "images/top/pair-034.png",
+        "group": "pair-034",
+        "pairingStatus": "complete",
+        "association": "pair-034"
+      },
+      {
+        "id": "top/pair-035",
+        "file": "images/top/pair-035.png",
+        "group": "pair-035",
+        "pairingStatus": "complete",
+        "association": "pair-035"
+      },
+      {
+        "id": "top/pair-036",
+        "file": "images/top/pair-036.png",
+        "group": "pair-036",
+        "pairingStatus": "complete",
+        "association": "pair-036"
+      },
+      {
+        "id": "top/pair-037",
+        "file": "images/top/pair-037.png",
+        "group": "pair-037",
+        "pairingStatus": "complete",
+        "association": "pair-037"
+      },
+      {
+        "id": "top/pair-040",
+        "file": "images/top/pair-040.png",
+        "group": "pair-040",
+        "pairingStatus": "complete",
+        "association": "pair-040"
+      },
+      {
+        "id": "top/pair-041",
+        "file": "images/top/pair-041.png",
+        "group": "pair-041",
+        "pairingStatus": "complete",
+        "association": "pair-041"
+      },
+      {
+        "id": "top/pair-042",
+        "file": "images/top/pair-042.png",
+        "group": "pair-042",
+        "pairingStatus": "complete",
+        "association": "pair-042"
+      },
+      {
+        "id": "top/pair-043",
+        "file": "images/top/pair-043.png",
+        "group": "pair-043",
+        "pairingStatus": "complete",
+        "association": "pair-043"
+      },
+      {
+        "id": "top/pair-044",
+        "file": "images/top/pair-044.png",
+        "group": "pair-044",
+        "pairingStatus": "complete",
+        "association": "pair-044"
+      },
+      {
+        "id": "top/pair-045",
+        "file": "images/top/pair-045.png",
+        "group": "pair-045",
+        "pairingStatus": "complete",
+        "association": "pair-045"
+      },
+      {
+        "id": "top/pair-046",
+        "file": "images/top/pair-046.png",
+        "group": "pair-046",
+        "pairingStatus": "complete",
+        "association": "pair-046"
+      },
+      {
+        "id": "top/pair-047",
+        "file": "images/top/pair-047.png",
+        "group": "pair-047",
+        "pairingStatus": "complete",
+        "association": "pair-047"
+      },
+      {
+        "id": "top/pair-048",
+        "file": "images/top/pair-048.png",
+        "group": "pair-048",
+        "pairingStatus": "complete",
+        "association": "pair-048"
+      },
+      {
+        "id": "top/pair-049",
+        "file": "images/top/pair-049.png",
+        "group": "pair-049",
+        "pairingStatus": "complete",
+        "association": "pair-049"
       },
       {
         "id": "top/top_-3-",
         "file": "images/top/top_-3-.png",
         "group": "top_-3-",
+        "pairingStatus": "image-only",
         "association": null
       }
     ],
@@ -195,187 +611,603 @@
         "id": "middle/1da8ea34-a562-479d-9bb4-030803c78feb_body9",
         "file": "images/middle/1da8ea34-a562-479d-9bb4-030803c78feb_body9.png",
         "group": "1da8ea34-a562-479d-9bb4-030803c78feb_body9",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-124038",
         "file": "images/middle/20260531-124038.png",
         "group": "20260531-124038",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-124750",
         "file": "images/middle/20260531-124750.png",
         "group": "20260531-124750",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-140345",
         "file": "images/middle/20260531-140345.png",
         "group": "20260531-140345",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-140549",
         "file": "images/middle/20260531-140549.png",
         "group": "20260531-140549",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-140948",
         "file": "images/middle/20260531-140948.png",
         "group": "20260531-140948",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-143033",
         "file": "images/middle/20260531-143033.png",
         "group": "20260531-143033",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-143231",
         "file": "images/middle/20260531-143231.png",
         "group": "20260531-143231",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-143342",
         "file": "images/middle/20260531-143342.png",
         "group": "20260531-143342",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-143509",
         "file": "images/middle/20260531-143509.png",
         "group": "20260531-143509",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-143625",
         "file": "images/middle/20260531-143625.png",
         "group": "20260531-143625",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-143826",
         "file": "images/middle/20260531-143826.png",
         "group": "20260531-143826",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-143932",
         "file": "images/middle/20260531-143932.png",
         "group": "20260531-143932",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/20260531-144049",
         "file": "images/middle/20260531-144049.png",
         "group": "20260531-144049",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/24d4a2f1-0c9a-4f6a-805e-db787d8151ce_19body",
         "file": "images/middle/24d4a2f1-0c9a-4f6a-805e-db787d8151ce_19body.png",
         "group": "24d4a2f1-0c9a-4f6a-805e-db787d8151ce_19body",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/2e440f24-84bd-4f5f-a7fe-7ca45f639a68_4body",
         "file": "images/middle/2e440f24-84bd-4f5f-a7fe-7ca45f639a68_4body.png",
         "group": "2e440f24-84bd-4f5f-a7fe-7ca45f639a68_4body",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/38ae38e4-8443-433e-a5a7-3fcfe31f1a26_body4",
         "file": "images/middle/38ae38e4-8443-433e-a5a7-3fcfe31f1a26_body4.png",
         "group": "38ae38e4-8443-433e-a5a7-3fcfe31f1a26_body4",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/434015c5-0c18-467a-8794-ffb41fe9b154_11body",
         "file": "images/middle/434015c5-0c18-467a-8794-ffb41fe9b154_11body.png",
         "group": "434015c5-0c18-467a-8794-ffb41fe9b154_11body",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/5c475c51-244e-49a6-a3b5-dc13c0f0c110_body5",
         "file": "images/middle/5c475c51-244e-49a6-a3b5-dc13c0f0c110_body5.png",
         "group": "5c475c51-244e-49a6-a3b5-dc13c0f0c110_body5",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/5d3b47a3-c696-483a-a339-f236fcbef1c5_7body",
         "file": "images/middle/5d3b47a3-c696-483a-a339-f236fcbef1c5_7body.png",
         "group": "5d3b47a3-c696-483a-a339-f236fcbef1c5_7body",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/7ce26fe0-b63b-408d-996b-20b279d98cbc_13body",
         "file": "images/middle/7ce26fe0-b63b-408d-996b-20b279d98cbc_13body.png",
         "group": "7ce26fe0-b63b-408d-996b-20b279d98cbc_13body",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/8b96b4c9-e377-4cb2-856a-b8718cf86b08_body7",
         "file": "images/middle/8b96b4c9-e377-4cb2-856a-b8718cf86b08_body7.png",
         "group": "8b96b4c9-e377-4cb2-856a-b8718cf86b08_body7",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/8dc79cd5-56cb-4d38-ae02-28b5f7378009_body6",
         "file": "images/middle/8dc79cd5-56cb-4d38-ae02-28b5f7378009_body6.png",
         "group": "8dc79cd5-56cb-4d38-ae02-28b5f7378009_body6",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/94ae3c25-9a60-4bd5-9f32-67f02dc1b117_16body",
         "file": "images/middle/94ae3c25-9a60-4bd5-9f32-67f02dc1b117_16body.png",
         "group": "94ae3c25-9a60-4bd5-9f32-67f02dc1b117_16body",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/9c1e92bc-baa7-45d4-8124-829b77756488_body10",
         "file": "images/middle/9c1e92bc-baa7-45d4-8124-829b77756488_body10.png",
         "group": "9c1e92bc-baa7-45d4-8124-829b77756488_body10",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/b6f4ee60-d4d5-474d-af90-bd7eb2566bf5_body1",
         "file": "images/middle/b6f4ee60-d4d5-474d-af90-bd7eb2566bf5_body1.png",
         "group": "b6f4ee60-d4d5-474d-af90-bd7eb2566bf5_body1",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/cd9d00ca-db85-451d-9c79-f0ddab45ff80_body2-1",
         "file": "images/middle/cd9d00ca-db85-451d-9c79-f0ddab45ff80_body2-1.png",
         "group": "cd9d00ca-db85-451d-9c79-f0ddab45ff80_body2-1",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/ea3a1425-cb41-40e0-8737-9a3f4a0ca265_2body",
         "file": "images/middle/ea3a1425-cb41-40e0-8737-9a3f4a0ca265_2body.png",
         "group": "ea3a1425-cb41-40e0-8737-9a3f4a0ca265_2body",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/eb2e05c6-3d72-4c1b-b2c0-04624f838b73_body8",
         "file": "images/middle/eb2e05c6-3d72-4c1b-b2c0-04624f838b73_body8.png",
         "group": "eb2e05c6-3d72-4c1b-b2c0-04624f838b73_body8",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/f3b32450-4868-4849-96e2-8c21d4061298_body3",
         "file": "images/middle/f3b32450-4868-4849-96e2-8c21d4061298_body3.png",
         "group": "f3b32450-4868-4849-96e2-8c21d4061298_body3",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "middle/middle_-1-",
         "file": "images/middle/middle_-1-.png",
         "group": "middle_-1-",
+        "pairingStatus": "image-only",
         "association": null
+      },
+      {
+        "id": "middle/nopair-image-001",
+        "file": "images/middle/nopair-image-001.png",
+        "group": "nopair-image-001",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "middle/nopair-image-002",
+        "file": "images/middle/nopair-image-002.png",
+        "group": "nopair-image-002",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "middle/nopair-image-003",
+        "file": "images/middle/nopair-image-003.png",
+        "group": "nopair-image-003",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "middle/nopair-image-004",
+        "file": "images/middle/nopair-image-004.png",
+        "group": "nopair-image-004",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "middle/nopair-image-005",
+        "file": "images/middle/nopair-image-005.png",
+        "group": "nopair-image-005",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "middle/nopair-image-007",
+        "file": "images/middle/nopair-image-007.png",
+        "group": "nopair-image-007",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "middle/nopair-image-008",
+        "file": "images/middle/nopair-image-008.png",
+        "group": "nopair-image-008",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "middle/nopair-image-010",
+        "file": "images/middle/nopair-image-010.png",
+        "group": "nopair-image-010",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "middle/nopair-image-011",
+        "file": "images/middle/nopair-image-011.png",
+        "group": "nopair-image-011",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "middle/pair-001",
+        "file": "images/middle/pair-001.png",
+        "group": "pair-001",
+        "pairingStatus": "complete",
+        "association": "pair-001"
+      },
+      {
+        "id": "middle/pair-002",
+        "file": "images/middle/pair-002.png",
+        "group": "pair-002",
+        "pairingStatus": "complete",
+        "association": "pair-002"
+      },
+      {
+        "id": "middle/pair-004",
+        "file": "images/middle/pair-004.png",
+        "group": "pair-004",
+        "pairingStatus": "complete",
+        "association": "pair-004"
+      },
+      {
+        "id": "middle/pair-005",
+        "file": "images/middle/pair-005.png",
+        "group": "pair-005",
+        "pairingStatus": "complete",
+        "association": "pair-005"
+      },
+      {
+        "id": "middle/pair-006",
+        "file": "images/middle/pair-006.png",
+        "group": "pair-006",
+        "pairingStatus": "complete",
+        "association": "pair-006"
+      },
+      {
+        "id": "middle/pair-007",
+        "file": "images/middle/pair-007.png",
+        "group": "pair-007",
+        "pairingStatus": "complete",
+        "association": "pair-007"
+      },
+      {
+        "id": "middle/pair-008",
+        "file": "images/middle/pair-008.png",
+        "group": "pair-008",
+        "pairingStatus": "complete",
+        "association": "pair-008"
+      },
+      {
+        "id": "middle/pair-009",
+        "file": "images/middle/pair-009.png",
+        "group": "pair-009",
+        "pairingStatus": "complete",
+        "association": "pair-009"
+      },
+      {
+        "id": "middle/pair-010",
+        "file": "images/middle/pair-010.png",
+        "group": "pair-010",
+        "pairingStatus": "complete",
+        "association": "pair-010"
+      },
+      {
+        "id": "middle/pair-011",
+        "file": "images/middle/pair-011.png",
+        "group": "pair-011",
+        "pairingStatus": "complete",
+        "association": "pair-011"
+      },
+      {
+        "id": "middle/pair-012",
+        "file": "images/middle/pair-012.png",
+        "group": "pair-012",
+        "pairingStatus": "complete",
+        "association": "pair-012"
+      },
+      {
+        "id": "middle/pair-013",
+        "file": "images/middle/pair-013.png",
+        "group": "pair-013",
+        "pairingStatus": "complete",
+        "association": "pair-013"
+      },
+      {
+        "id": "middle/pair-014",
+        "file": "images/middle/pair-014.png",
+        "group": "pair-014",
+        "pairingStatus": "complete",
+        "association": "pair-014"
+      },
+      {
+        "id": "middle/pair-015",
+        "file": "images/middle/pair-015.png",
+        "group": "pair-015",
+        "pairingStatus": "complete",
+        "association": "pair-015"
+      },
+      {
+        "id": "middle/pair-016",
+        "file": "images/middle/pair-016.png",
+        "group": "pair-016",
+        "pairingStatus": "complete",
+        "association": "pair-016"
+      },
+      {
+        "id": "middle/pair-017",
+        "file": "images/middle/pair-017.png",
+        "group": "pair-017",
+        "pairingStatus": "complete",
+        "association": "pair-017"
+      },
+      {
+        "id": "middle/pair-018",
+        "file": "images/middle/pair-018.png",
+        "group": "pair-018",
+        "pairingStatus": "complete",
+        "association": "pair-018"
+      },
+      {
+        "id": "middle/pair-019",
+        "file": "images/middle/pair-019.png",
+        "group": "pair-019",
+        "pairingStatus": "complete",
+        "association": "pair-019"
+      },
+      {
+        "id": "middle/pair-020",
+        "file": "images/middle/pair-020.png",
+        "group": "pair-020",
+        "pairingStatus": "complete",
+        "association": "pair-020"
+      },
+      {
+        "id": "middle/pair-021",
+        "file": "images/middle/pair-021.png",
+        "group": "pair-021",
+        "pairingStatus": "complete",
+        "association": "pair-021"
+      },
+      {
+        "id": "middle/pair-022",
+        "file": "images/middle/pair-022.png",
+        "group": "pair-022",
+        "pairingStatus": "complete",
+        "association": "pair-022"
+      },
+      {
+        "id": "middle/pair-023",
+        "file": "images/middle/pair-023.png",
+        "group": "pair-023",
+        "pairingStatus": "complete",
+        "association": "pair-023"
+      },
+      {
+        "id": "middle/pair-024",
+        "file": "images/middle/pair-024.png",
+        "group": "pair-024",
+        "pairingStatus": "complete",
+        "association": "pair-024"
+      },
+      {
+        "id": "middle/pair-025",
+        "file": "images/middle/pair-025.png",
+        "group": "pair-025",
+        "pairingStatus": "complete",
+        "association": "pair-025"
+      },
+      {
+        "id": "middle/pair-026",
+        "file": "images/middle/pair-026.png",
+        "group": "pair-026",
+        "pairingStatus": "complete",
+        "association": "pair-026"
+      },
+      {
+        "id": "middle/pair-027",
+        "file": "images/middle/pair-027.png",
+        "group": "pair-027",
+        "pairingStatus": "complete",
+        "association": "pair-027"
+      },
+      {
+        "id": "middle/pair-028",
+        "file": "images/middle/pair-028.png",
+        "group": "pair-028",
+        "pairingStatus": "complete",
+        "association": "pair-028"
+      },
+      {
+        "id": "middle/pair-029",
+        "file": "images/middle/pair-029.png",
+        "group": "pair-029",
+        "pairingStatus": "complete",
+        "association": "pair-029"
+      },
+      {
+        "id": "middle/pair-030",
+        "file": "images/middle/pair-030.png",
+        "group": "pair-030",
+        "pairingStatus": "complete",
+        "association": "pair-030"
+      },
+      {
+        "id": "middle/pair-031",
+        "file": "images/middle/pair-031.png",
+        "group": "pair-031",
+        "pairingStatus": "complete",
+        "association": "pair-031"
+      },
+      {
+        "id": "middle/pair-032",
+        "file": "images/middle/pair-032.png",
+        "group": "pair-032",
+        "pairingStatus": "complete",
+        "association": "pair-032"
+      },
+      {
+        "id": "middle/pair-033",
+        "file": "images/middle/pair-033.png",
+        "group": "pair-033",
+        "pairingStatus": "complete",
+        "association": "pair-033"
+      },
+      {
+        "id": "middle/pair-034",
+        "file": "images/middle/pair-034.png",
+        "group": "pair-034",
+        "pairingStatus": "complete",
+        "association": "pair-034"
+      },
+      {
+        "id": "middle/pair-035",
+        "file": "images/middle/pair-035.png",
+        "group": "pair-035",
+        "pairingStatus": "complete",
+        "association": "pair-035"
+      },
+      {
+        "id": "middle/pair-036",
+        "file": "images/middle/pair-036.png",
+        "group": "pair-036",
+        "pairingStatus": "complete",
+        "association": "pair-036"
+      },
+      {
+        "id": "middle/pair-037",
+        "file": "images/middle/pair-037.png",
+        "group": "pair-037",
+        "pairingStatus": "complete",
+        "association": "pair-037"
+      },
+      {
+        "id": "middle/pair-040",
+        "file": "images/middle/pair-040.png",
+        "group": "pair-040",
+        "pairingStatus": "complete",
+        "association": "pair-040"
+      },
+      {
+        "id": "middle/pair-041",
+        "file": "images/middle/pair-041.png",
+        "group": "pair-041",
+        "pairingStatus": "complete",
+        "association": "pair-041"
+      },
+      {
+        "id": "middle/pair-042",
+        "file": "images/middle/pair-042.png",
+        "group": "pair-042",
+        "pairingStatus": "complete",
+        "association": "pair-042"
+      },
+      {
+        "id": "middle/pair-043",
+        "file": "images/middle/pair-043.png",
+        "group": "pair-043",
+        "pairingStatus": "complete",
+        "association": "pair-043"
+      },
+      {
+        "id": "middle/pair-044",
+        "file": "images/middle/pair-044.png",
+        "group": "pair-044",
+        "pairingStatus": "complete",
+        "association": "pair-044"
+      },
+      {
+        "id": "middle/pair-045",
+        "file": "images/middle/pair-045.png",
+        "group": "pair-045",
+        "pairingStatus": "complete",
+        "association": "pair-045"
+      },
+      {
+        "id": "middle/pair-046",
+        "file": "images/middle/pair-046.png",
+        "group": "pair-046",
+        "pairingStatus": "complete",
+        "association": "pair-046"
+      },
+      {
+        "id": "middle/pair-047",
+        "file": "images/middle/pair-047.png",
+        "group": "pair-047",
+        "pairingStatus": "complete",
+        "association": "pair-047"
+      },
+      {
+        "id": "middle/pair-048",
+        "file": "images/middle/pair-048.png",
+        "group": "pair-048",
+        "pairingStatus": "complete",
+        "association": "pair-048"
+      },
+      {
+        "id": "middle/pair-049",
+        "file": "images/middle/pair-049.png",
+        "group": "pair-049",
+        "pairingStatus": "complete",
+        "association": "pair-049"
       }
     ],
     "bottom": [
@@ -383,199 +1215,617 @@
         "id": "bottom/00469335-4a96-4308-a9dc-637372868a17_15legs",
         "file": "images/bottom/00469335-4a96-4308-a9dc-637372868a17_15legs.png",
         "group": "00469335-4a96-4308-a9dc-637372868a17_15legs",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/0fd5a8cb-49b9-4830-b27c-938241352cc1_legs5",
         "file": "images/bottom/0fd5a8cb-49b9-4830-b27c-938241352cc1_legs5.png",
         "group": "0fd5a8cb-49b9-4830-b27c-938241352cc1_legs5",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-124038",
         "file": "images/bottom/20260531-124038.png",
         "group": "20260531-124038",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-124752",
         "file": "images/bottom/20260531-124752.png",
         "group": "20260531-124752",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-140345",
         "file": "images/bottom/20260531-140345.png",
         "group": "20260531-140345",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-140549",
         "file": "images/bottom/20260531-140549.png",
         "group": "20260531-140549",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-140845",
         "file": "images/bottom/20260531-140845.png",
         "group": "20260531-140845",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-143056",
         "file": "images/bottom/20260531-143056.png",
         "group": "20260531-143056",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-143231",
         "file": "images/bottom/20260531-143231.png",
         "group": "20260531-143231",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-143342",
         "file": "images/bottom/20260531-143342.png",
         "group": "20260531-143342",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-143509",
         "file": "images/bottom/20260531-143509.png",
         "group": "20260531-143509",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-143625",
         "file": "images/bottom/20260531-143625.png",
         "group": "20260531-143625",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-143826",
         "file": "images/bottom/20260531-143826.png",
         "group": "20260531-143826",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-143932",
         "file": "images/bottom/20260531-143932.png",
         "group": "20260531-143932",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/20260531-144049",
         "file": "images/bottom/20260531-144049.png",
         "group": "20260531-144049",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/24ec4703-4595-4a84-b32a-14cb72b26ec5_legs11",
         "file": "images/bottom/24ec4703-4595-4a84-b32a-14cb72b26ec5_legs11.png",
         "group": "24ec4703-4595-4a84-b32a-14cb72b26ec5_legs11",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/258b25d3-2d1e-4661-bbb7-b4e59e2f2eb3_legs8",
         "file": "images/bottom/258b25d3-2d1e-4661-bbb7-b4e59e2f2eb3_legs8.png",
         "group": "258b25d3-2d1e-4661-bbb7-b4e59e2f2eb3_legs8",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/36a25907-9e21-4968-b17b-22e8c333e6f3_13legs",
         "file": "images/bottom/36a25907-9e21-4968-b17b-22e8c333e6f3_13legs.png",
         "group": "36a25907-9e21-4968-b17b-22e8c333e6f3_13legs",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/393c23d6-802c-44d8-91af-b71e75d5c7e8_LEG_06",
         "file": "images/bottom/393c23d6-802c-44d8-91af-b71e75d5c7e8_LEG_06.png",
         "group": "393c23d6-802c-44d8-91af-b71e75d5c7e8_LEG_06",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/4bbdd0f8-98be-406e-b6af-0152c23da3c9_legs2",
         "file": "images/bottom/4bbdd0f8-98be-406e-b6af-0152c23da3c9_legs2.png",
         "group": "4bbdd0f8-98be-406e-b6af-0152c23da3c9_legs2",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/4c3183d1-ce32-416a-96ca-732ac983772e_18legs",
         "file": "images/bottom/4c3183d1-ce32-416a-96ca-732ac983772e_18legs.png",
         "group": "4c3183d1-ce32-416a-96ca-732ac983772e_18legs",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/4c967a1f-4a4d-4fd7-b980-b2860a1f068b_legs1",
         "file": "images/bottom/4c967a1f-4a4d-4fd7-b980-b2860a1f068b_legs1.png",
         "group": "4c967a1f-4a4d-4fd7-b980-b2860a1f068b_legs1",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/7558e7b1-6ced-4566-97c4-30f1b87fbaec_8legs",
         "file": "images/bottom/7558e7b1-6ced-4566-97c4-30f1b87fbaec_8legs.png",
         "group": "7558e7b1-6ced-4566-97c4-30f1b87fbaec_8legs",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/94f8fd27-3493-4633-857a-d54cf8214583_10legs",
         "file": "images/bottom/94f8fd27-3493-4633-857a-d54cf8214583_10legs.png",
         "group": "94f8fd27-3493-4633-857a-d54cf8214583_10legs",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/9d3a8236-2905-462d-9e48-b6f2bbf07824_legs10",
         "file": "images/bottom/9d3a8236-2905-462d-9e48-b6f2bbf07824_legs10.png",
         "group": "9d3a8236-2905-462d-9e48-b6f2bbf07824_legs10",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/ad3b5e69-c38f-4a5a-b5fc-e6bfbac91a75_legs6",
         "file": "images/bottom/ad3b5e69-c38f-4a5a-b5fc-e6bfbac91a75_legs6.png",
         "group": "ad3b5e69-c38f-4a5a-b5fc-e6bfbac91a75_legs6",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/ad6ca024-d4e0-42b4-9fe2-cd3725785494_legs1",
         "file": "images/bottom/ad6ca024-d4e0-42b4-9fe2-cd3725785494_legs1.png",
         "group": "ad6ca024-d4e0-42b4-9fe2-cd3725785494_legs1",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/bottom_-1-",
         "file": "images/bottom/bottom_-1-.png",
         "group": "bottom_-1-",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/c48765d4-6f7c-4641-9a06-c1f576219f57_legs4",
         "file": "images/bottom/c48765d4-6f7c-4641-9a06-c1f576219f57_legs4.png",
         "group": "c48765d4-6f7c-4641-9a06-c1f576219f57_legs4",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/cb478364-6514-4840-bd06-66c9ed9a219d_legs7",
         "file": "images/bottom/cb478364-6514-4840-bd06-66c9ed9a219d_legs7.png",
         "group": "cb478364-6514-4840-bd06-66c9ed9a219d_legs7",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/ce3964c2-869c-4963-901b-42d3bc693727_legs3",
         "file": "images/bottom/ce3964c2-869c-4963-901b-42d3bc693727_legs3.png",
         "group": "ce3964c2-869c-4963-901b-42d3bc693727_legs3",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/f029fe53-b9af-4c28-b420-366de204c13e_legs9",
         "file": "images/bottom/f029fe53-b9af-4c28-b420-366de204c13e_legs9.png",
         "group": "f029fe53-b9af-4c28-b420-366de204c13e_legs9",
+        "pairingStatus": "image-only",
         "association": null
       },
       {
         "id": "bottom/f146dee3-298b-477c-bbf2-9a6082eddbd0_5legs",
         "file": "images/bottom/f146dee3-298b-477c-bbf2-9a6082eddbd0_5legs.png",
         "group": "f146dee3-298b-477c-bbf2-9a6082eddbd0_5legs",
+        "pairingStatus": "image-only",
         "association": null
+      },
+      {
+        "id": "bottom/nopair-image-001",
+        "file": "images/bottom/nopair-image-001.png",
+        "group": "nopair-image-001",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "bottom/nopair-image-002",
+        "file": "images/bottom/nopair-image-002.png",
+        "group": "nopair-image-002",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "bottom/nopair-image-003",
+        "file": "images/bottom/nopair-image-003.png",
+        "group": "nopair-image-003",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "bottom/nopair-image-004",
+        "file": "images/bottom/nopair-image-004.png",
+        "group": "nopair-image-004",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "bottom/nopair-image-005",
+        "file": "images/bottom/nopair-image-005.png",
+        "group": "nopair-image-005",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "bottom/nopair-image-007",
+        "file": "images/bottom/nopair-image-007.png",
+        "group": "nopair-image-007",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "bottom/nopair-image-008",
+        "file": "images/bottom/nopair-image-008.png",
+        "group": "nopair-image-008",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "bottom/nopair-image-010",
+        "file": "images/bottom/nopair-image-010.png",
+        "group": "nopair-image-010",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "bottom/nopair-image-011",
+        "file": "images/bottom/nopair-image-011.png",
+        "group": "nopair-image-011",
+        "pairingStatus": "image-only",
+        "association": null
+      },
+      {
+        "id": "bottom/pair-001",
+        "file": "images/bottom/pair-001.png",
+        "group": "pair-001",
+        "pairingStatus": "complete",
+        "association": "pair-001"
+      },
+      {
+        "id": "bottom/pair-002",
+        "file": "images/bottom/pair-002.png",
+        "group": "pair-002",
+        "pairingStatus": "complete",
+        "association": "pair-002"
+      },
+      {
+        "id": "bottom/pair-004",
+        "file": "images/bottom/pair-004.png",
+        "group": "pair-004",
+        "pairingStatus": "complete",
+        "association": "pair-004"
+      },
+      {
+        "id": "bottom/pair-005",
+        "file": "images/bottom/pair-005.png",
+        "group": "pair-005",
+        "pairingStatus": "complete",
+        "association": "pair-005"
+      },
+      {
+        "id": "bottom/pair-006",
+        "file": "images/bottom/pair-006.png",
+        "group": "pair-006",
+        "pairingStatus": "complete",
+        "association": "pair-006"
+      },
+      {
+        "id": "bottom/pair-007",
+        "file": "images/bottom/pair-007.png",
+        "group": "pair-007",
+        "pairingStatus": "complete",
+        "association": "pair-007"
+      },
+      {
+        "id": "bottom/pair-008",
+        "file": "images/bottom/pair-008.png",
+        "group": "pair-008",
+        "pairingStatus": "complete",
+        "association": "pair-008"
+      },
+      {
+        "id": "bottom/pair-009",
+        "file": "images/bottom/pair-009.png",
+        "group": "pair-009",
+        "pairingStatus": "complete",
+        "association": "pair-009"
+      },
+      {
+        "id": "bottom/pair-010",
+        "file": "images/bottom/pair-010.png",
+        "group": "pair-010",
+        "pairingStatus": "complete",
+        "association": "pair-010"
+      },
+      {
+        "id": "bottom/pair-011",
+        "file": "images/bottom/pair-011.png",
+        "group": "pair-011",
+        "pairingStatus": "complete",
+        "association": "pair-011"
+      },
+      {
+        "id": "bottom/pair-012",
+        "file": "images/bottom/pair-012.png",
+        "group": "pair-012",
+        "pairingStatus": "complete",
+        "association": "pair-012"
+      },
+      {
+        "id": "bottom/pair-013",
+        "file": "images/bottom/pair-013.png",
+        "group": "pair-013",
+        "pairingStatus": "complete",
+        "association": "pair-013"
+      },
+      {
+        "id": "bottom/pair-014",
+        "file": "images/bottom/pair-014.png",
+        "group": "pair-014",
+        "pairingStatus": "complete",
+        "association": "pair-014"
+      },
+      {
+        "id": "bottom/pair-015",
+        "file": "images/bottom/pair-015.png",
+        "group": "pair-015",
+        "pairingStatus": "complete",
+        "association": "pair-015"
+      },
+      {
+        "id": "bottom/pair-016",
+        "file": "images/bottom/pair-016.png",
+        "group": "pair-016",
+        "pairingStatus": "complete",
+        "association": "pair-016"
+      },
+      {
+        "id": "bottom/pair-017",
+        "file": "images/bottom/pair-017.png",
+        "group": "pair-017",
+        "pairingStatus": "complete",
+        "association": "pair-017"
+      },
+      {
+        "id": "bottom/pair-018",
+        "file": "images/bottom/pair-018.png",
+        "group": "pair-018",
+        "pairingStatus": "complete",
+        "association": "pair-018"
+      },
+      {
+        "id": "bottom/pair-019",
+        "file": "images/bottom/pair-019.png",
+        "group": "pair-019",
+        "pairingStatus": "complete",
+        "association": "pair-019"
+      },
+      {
+        "id": "bottom/pair-020",
+        "file": "images/bottom/pair-020.png",
+        "group": "pair-020",
+        "pairingStatus": "complete",
+        "association": "pair-020"
+      },
+      {
+        "id": "bottom/pair-021",
+        "file": "images/bottom/pair-021.png",
+        "group": "pair-021",
+        "pairingStatus": "complete",
+        "association": "pair-021"
+      },
+      {
+        "id": "bottom/pair-022",
+        "file": "images/bottom/pair-022.png",
+        "group": "pair-022",
+        "pairingStatus": "complete",
+        "association": "pair-022"
+      },
+      {
+        "id": "bottom/pair-023",
+        "file": "images/bottom/pair-023.png",
+        "group": "pair-023",
+        "pairingStatus": "complete",
+        "association": "pair-023"
+      },
+      {
+        "id": "bottom/pair-024",
+        "file": "images/bottom/pair-024.png",
+        "group": "pair-024",
+        "pairingStatus": "complete",
+        "association": "pair-024"
+      },
+      {
+        "id": "bottom/pair-025",
+        "file": "images/bottom/pair-025.png",
+        "group": "pair-025",
+        "pairingStatus": "complete",
+        "association": "pair-025"
+      },
+      {
+        "id": "bottom/pair-026",
+        "file": "images/bottom/pair-026.png",
+        "group": "pair-026",
+        "pairingStatus": "complete",
+        "association": "pair-026"
+      },
+      {
+        "id": "bottom/pair-027",
+        "file": "images/bottom/pair-027.png",
+        "group": "pair-027",
+        "pairingStatus": "complete",
+        "association": "pair-027"
+      },
+      {
+        "id": "bottom/pair-028",
+        "file": "images/bottom/pair-028.png",
+        "group": "pair-028",
+        "pairingStatus": "complete",
+        "association": "pair-028"
+      },
+      {
+        "id": "bottom/pair-029",
+        "file": "images/bottom/pair-029.png",
+        "group": "pair-029",
+        "pairingStatus": "complete",
+        "association": "pair-029"
+      },
+      {
+        "id": "bottom/pair-030",
+        "file": "images/bottom/pair-030.png",
+        "group": "pair-030",
+        "pairingStatus": "complete",
+        "association": "pair-030"
+      },
+      {
+        "id": "bottom/pair-031",
+        "file": "images/bottom/pair-031.png",
+        "group": "pair-031",
+        "pairingStatus": "complete",
+        "association": "pair-031"
+      },
+      {
+        "id": "bottom/pair-032",
+        "file": "images/bottom/pair-032.png",
+        "group": "pair-032",
+        "pairingStatus": "complete",
+        "association": "pair-032"
+      },
+      {
+        "id": "bottom/pair-033",
+        "file": "images/bottom/pair-033.png",
+        "group": "pair-033",
+        "pairingStatus": "complete",
+        "association": "pair-033"
+      },
+      {
+        "id": "bottom/pair-034",
+        "file": "images/bottom/pair-034.png",
+        "group": "pair-034",
+        "pairingStatus": "complete",
+        "association": "pair-034"
+      },
+      {
+        "id": "bottom/pair-035",
+        "file": "images/bottom/pair-035.png",
+        "group": "pair-035",
+        "pairingStatus": "complete",
+        "association": "pair-035"
+      },
+      {
+        "id": "bottom/pair-036",
+        "file": "images/bottom/pair-036.png",
+        "group": "pair-036",
+        "pairingStatus": "complete",
+        "association": "pair-036"
+      },
+      {
+        "id": "bottom/pair-037",
+        "file": "images/bottom/pair-037.png",
+        "group": "pair-037",
+        "pairingStatus": "complete",
+        "association": "pair-037"
+      },
+      {
+        "id": "bottom/pair-040",
+        "file": "images/bottom/pair-040.png",
+        "group": "pair-040",
+        "pairingStatus": "complete",
+        "association": "pair-040"
+      },
+      {
+        "id": "bottom/pair-041",
+        "file": "images/bottom/pair-041.png",
+        "group": "pair-041",
+        "pairingStatus": "complete",
+        "association": "pair-041"
+      },
+      {
+        "id": "bottom/pair-042",
+        "file": "images/bottom/pair-042.png",
+        "group": "pair-042",
+        "pairingStatus": "complete",
+        "association": "pair-042"
+      },
+      {
+        "id": "bottom/pair-043",
+        "file": "images/bottom/pair-043.png",
+        "group": "pair-043",
+        "pairingStatus": "complete",
+        "association": "pair-043"
+      },
+      {
+        "id": "bottom/pair-044",
+        "file": "images/bottom/pair-044.png",
+        "group": "pair-044",
+        "pairingStatus": "complete",
+        "association": "pair-044"
+      },
+      {
+        "id": "bottom/pair-045",
+        "file": "images/bottom/pair-045.png",
+        "group": "pair-045",
+        "pairingStatus": "complete",
+        "association": "pair-045"
+      },
+      {
+        "id": "bottom/pair-046",
+        "file": "images/bottom/pair-046.png",
+        "group": "pair-046",
+        "pairingStatus": "complete",
+        "association": "pair-046"
+      },
+      {
+        "id": "bottom/pair-047",
+        "file": "images/bottom/pair-047.png",
+        "group": "pair-047",
+        "pairingStatus": "complete",
+        "association": "pair-047"
+      },
+      {
+        "id": "bottom/pair-048",
+        "file": "images/bottom/pair-048.png",
+        "group": "pair-048",
+        "pairingStatus": "complete",
+        "association": "pair-048"
+      },
+      {
+        "id": "bottom/pair-049",
+        "file": "images/bottom/pair-049.png",
+        "group": "pair-049",
+        "pairingStatus": "complete",
+        "association": "pair-049"
       }
     ]
   },
@@ -585,30 +1835,364 @@
         "id": "top/char-2026-05-31T01-30-11",
         "file": "audio/top/char-2026-05-31T01-30-11.mp3",
         "group": "char-2026-05-31T01-30-11",
+        "pairingStatus": "audio-only",
         "association": null
       },
       {
         "id": "top/char-2026-05-31T01-35-24",
         "file": "audio/top/char-2026-05-31T01-35-24.mp3",
         "group": "char-2026-05-31T01-35-24",
+        "pairingStatus": "audio-only",
         "association": null
       },
       {
         "id": "top/faith",
         "file": "audio/top/faith.mp3",
         "group": "faith",
+        "pairingStatus": "audio-only",
         "association": null
       },
       {
         "id": "top/faith2",
         "file": "audio/top/faith2.mp3",
         "group": "faith2",
+        "pairingStatus": "audio-only",
         "association": null
+      },
+      {
+        "id": "top/nopair-audio-015",
+        "file": "audio/top/nopair-audio-015.mp3",
+        "group": "nopair-audio-015",
+        "pairingStatus": "audio-only",
+        "association": null
+      },
+      {
+        "id": "top/pair-001",
+        "file": "audio/top/pair-001.mp3",
+        "group": "pair-001",
+        "pairingStatus": "complete",
+        "association": "pair-001"
+      },
+      {
+        "id": "top/pair-002",
+        "file": "audio/top/pair-002.mp3",
+        "group": "pair-002",
+        "pairingStatus": "complete",
+        "association": "pair-002"
+      },
+      {
+        "id": "top/pair-004",
+        "file": "audio/top/pair-004.mp3",
+        "group": "pair-004",
+        "pairingStatus": "complete",
+        "association": "pair-004"
+      },
+      {
+        "id": "top/pair-005",
+        "file": "audio/top/pair-005.mp3",
+        "group": "pair-005",
+        "pairingStatus": "complete",
+        "association": "pair-005"
+      },
+      {
+        "id": "top/pair-006",
+        "file": "audio/top/pair-006.mp3",
+        "group": "pair-006",
+        "pairingStatus": "complete",
+        "association": "pair-006"
+      },
+      {
+        "id": "top/pair-007",
+        "file": "audio/top/pair-007.mp3",
+        "group": "pair-007",
+        "pairingStatus": "complete",
+        "association": "pair-007"
+      },
+      {
+        "id": "top/pair-008",
+        "file": "audio/top/pair-008.mp3",
+        "group": "pair-008",
+        "pairingStatus": "complete",
+        "association": "pair-008"
+      },
+      {
+        "id": "top/pair-009",
+        "file": "audio/top/pair-009.mp3",
+        "group": "pair-009",
+        "pairingStatus": "complete",
+        "association": "pair-009"
+      },
+      {
+        "id": "top/pair-010",
+        "file": "audio/top/pair-010.mp3",
+        "group": "pair-010",
+        "pairingStatus": "complete",
+        "association": "pair-010"
+      },
+      {
+        "id": "top/pair-011",
+        "file": "audio/top/pair-011.mp3",
+        "group": "pair-011",
+        "pairingStatus": "complete",
+        "association": "pair-011"
+      },
+      {
+        "id": "top/pair-012",
+        "file": "audio/top/pair-012.mp3",
+        "group": "pair-012",
+        "pairingStatus": "complete",
+        "association": "pair-012"
+      },
+      {
+        "id": "top/pair-013",
+        "file": "audio/top/pair-013.mp3",
+        "group": "pair-013",
+        "pairingStatus": "complete",
+        "association": "pair-013"
+      },
+      {
+        "id": "top/pair-014",
+        "file": "audio/top/pair-014.mp3",
+        "group": "pair-014",
+        "pairingStatus": "complete",
+        "association": "pair-014"
+      },
+      {
+        "id": "top/pair-015",
+        "file": "audio/top/pair-015.mp3",
+        "group": "pair-015",
+        "pairingStatus": "complete",
+        "association": "pair-015"
+      },
+      {
+        "id": "top/pair-016",
+        "file": "audio/top/pair-016.mp3",
+        "group": "pair-016",
+        "pairingStatus": "complete",
+        "association": "pair-016"
+      },
+      {
+        "id": "top/pair-017",
+        "file": "audio/top/pair-017.mp3",
+        "group": "pair-017",
+        "pairingStatus": "complete",
+        "association": "pair-017"
+      },
+      {
+        "id": "top/pair-018",
+        "file": "audio/top/pair-018.mp3",
+        "group": "pair-018",
+        "pairingStatus": "complete",
+        "association": "pair-018"
+      },
+      {
+        "id": "top/pair-019",
+        "file": "audio/top/pair-019.mp3",
+        "group": "pair-019",
+        "pairingStatus": "complete",
+        "association": "pair-019"
+      },
+      {
+        "id": "top/pair-020",
+        "file": "audio/top/pair-020.mp3",
+        "group": "pair-020",
+        "pairingStatus": "complete",
+        "association": "pair-020"
+      },
+      {
+        "id": "top/pair-021",
+        "file": "audio/top/pair-021.mp3",
+        "group": "pair-021",
+        "pairingStatus": "complete",
+        "association": "pair-021"
+      },
+      {
+        "id": "top/pair-022",
+        "file": "audio/top/pair-022.mp3",
+        "group": "pair-022",
+        "pairingStatus": "complete",
+        "association": "pair-022"
+      },
+      {
+        "id": "top/pair-023",
+        "file": "audio/top/pair-023.mp3",
+        "group": "pair-023",
+        "pairingStatus": "complete",
+        "association": "pair-023"
+      },
+      {
+        "id": "top/pair-024",
+        "file": "audio/top/pair-024.mp3",
+        "group": "pair-024",
+        "pairingStatus": "complete",
+        "association": "pair-024"
+      },
+      {
+        "id": "top/pair-025",
+        "file": "audio/top/pair-025.mp3",
+        "group": "pair-025",
+        "pairingStatus": "complete",
+        "association": "pair-025"
+      },
+      {
+        "id": "top/pair-026",
+        "file": "audio/top/pair-026.mp3",
+        "group": "pair-026",
+        "pairingStatus": "complete",
+        "association": "pair-026"
+      },
+      {
+        "id": "top/pair-027",
+        "file": "audio/top/pair-027.mp3",
+        "group": "pair-027",
+        "pairingStatus": "complete",
+        "association": "pair-027"
+      },
+      {
+        "id": "top/pair-028",
+        "file": "audio/top/pair-028.mp3",
+        "group": "pair-028",
+        "pairingStatus": "complete",
+        "association": "pair-028"
+      },
+      {
+        "id": "top/pair-029",
+        "file": "audio/top/pair-029.mp3",
+        "group": "pair-029",
+        "pairingStatus": "complete",
+        "association": "pair-029"
+      },
+      {
+        "id": "top/pair-030",
+        "file": "audio/top/pair-030.mp3",
+        "group": "pair-030",
+        "pairingStatus": "complete",
+        "association": "pair-030"
+      },
+      {
+        "id": "top/pair-031",
+        "file": "audio/top/pair-031.mp3",
+        "group": "pair-031",
+        "pairingStatus": "complete",
+        "association": "pair-031"
+      },
+      {
+        "id": "top/pair-032",
+        "file": "audio/top/pair-032.mp3",
+        "group": "pair-032",
+        "pairingStatus": "complete",
+        "association": "pair-032"
+      },
+      {
+        "id": "top/pair-033",
+        "file": "audio/top/pair-033.mp3",
+        "group": "pair-033",
+        "pairingStatus": "complete",
+        "association": "pair-033"
+      },
+      {
+        "id": "top/pair-034",
+        "file": "audio/top/pair-034.mp3",
+        "group": "pair-034",
+        "pairingStatus": "complete",
+        "association": "pair-034"
+      },
+      {
+        "id": "top/pair-035",
+        "file": "audio/top/pair-035.mp3",
+        "group": "pair-035",
+        "pairingStatus": "complete",
+        "association": "pair-035"
+      },
+      {
+        "id": "top/pair-036",
+        "file": "audio/top/pair-036.mp3",
+        "group": "pair-036",
+        "pairingStatus": "complete",
+        "association": "pair-036"
+      },
+      {
+        "id": "top/pair-037",
+        "file": "audio/top/pair-037.mp3",
+        "group": "pair-037",
+        "pairingStatus": "complete",
+        "association": "pair-037"
+      },
+      {
+        "id": "top/pair-040",
+        "file": "audio/top/pair-040.mp3",
+        "group": "pair-040",
+        "pairingStatus": "complete",
+        "association": "pair-040"
+      },
+      {
+        "id": "top/pair-041",
+        "file": "audio/top/pair-041.mp3",
+        "group": "pair-041",
+        "pairingStatus": "complete",
+        "association": "pair-041"
+      },
+      {
+        "id": "top/pair-042",
+        "file": "audio/top/pair-042.mp3",
+        "group": "pair-042",
+        "pairingStatus": "complete",
+        "association": "pair-042"
+      },
+      {
+        "id": "top/pair-043",
+        "file": "audio/top/pair-043.mp3",
+        "group": "pair-043",
+        "pairingStatus": "complete",
+        "association": "pair-043"
+      },
+      {
+        "id": "top/pair-044",
+        "file": "audio/top/pair-044.mp3",
+        "group": "pair-044",
+        "pairingStatus": "complete",
+        "association": "pair-044"
+      },
+      {
+        "id": "top/pair-045",
+        "file": "audio/top/pair-045.mp3",
+        "group": "pair-045",
+        "pairingStatus": "complete",
+        "association": "pair-045"
+      },
+      {
+        "id": "top/pair-046",
+        "file": "audio/top/pair-046.mp3",
+        "group": "pair-046",
+        "pairingStatus": "complete",
+        "association": "pair-046"
+      },
+      {
+        "id": "top/pair-047",
+        "file": "audio/top/pair-047.mp3",
+        "group": "pair-047",
+        "pairingStatus": "complete",
+        "association": "pair-047"
+      },
+      {
+        "id": "top/pair-048",
+        "file": "audio/top/pair-048.mp3",
+        "group": "pair-048",
+        "pairingStatus": "complete",
+        "association": "pair-048"
+      },
+      {
+        "id": "top/pair-049",
+        "file": "audio/top/pair-049.mp3",
+        "group": "pair-049",
+        "pairingStatus": "complete",
+        "association": "pair-049"
       },
       {
         "id": "top/zander",
         "file": "audio/top/zander.mp3",
         "group": "zander",
+        "pairingStatus": "audio-only",
         "association": null
       }
     ],
@@ -617,30 +2201,364 @@
         "id": "middle/char-2026-05-31T01-30-11",
         "file": "audio/middle/char-2026-05-31T01-30-11.mp3",
         "group": "char-2026-05-31T01-30-11",
+        "pairingStatus": "audio-only",
         "association": null
       },
       {
         "id": "middle/char-2026-05-31T01-35-24",
         "file": "audio/middle/char-2026-05-31T01-35-24.mp3",
         "group": "char-2026-05-31T01-35-24",
+        "pairingStatus": "audio-only",
         "association": null
       },
       {
         "id": "middle/faith",
         "file": "audio/middle/faith.mp3",
         "group": "faith",
+        "pairingStatus": "audio-only",
         "association": null
       },
       {
         "id": "middle/faith2",
         "file": "audio/middle/faith2.mp3",
         "group": "faith2",
+        "pairingStatus": "audio-only",
         "association": null
+      },
+      {
+        "id": "middle/nopair-audio-015",
+        "file": "audio/middle/nopair-audio-015.mp3",
+        "group": "nopair-audio-015",
+        "pairingStatus": "audio-only",
+        "association": null
+      },
+      {
+        "id": "middle/pair-001",
+        "file": "audio/middle/pair-001.mp3",
+        "group": "pair-001",
+        "pairingStatus": "complete",
+        "association": "pair-001"
+      },
+      {
+        "id": "middle/pair-002",
+        "file": "audio/middle/pair-002.mp3",
+        "group": "pair-002",
+        "pairingStatus": "complete",
+        "association": "pair-002"
+      },
+      {
+        "id": "middle/pair-004",
+        "file": "audio/middle/pair-004.mp3",
+        "group": "pair-004",
+        "pairingStatus": "complete",
+        "association": "pair-004"
+      },
+      {
+        "id": "middle/pair-005",
+        "file": "audio/middle/pair-005.mp3",
+        "group": "pair-005",
+        "pairingStatus": "complete",
+        "association": "pair-005"
+      },
+      {
+        "id": "middle/pair-006",
+        "file": "audio/middle/pair-006.mp3",
+        "group": "pair-006",
+        "pairingStatus": "complete",
+        "association": "pair-006"
+      },
+      {
+        "id": "middle/pair-007",
+        "file": "audio/middle/pair-007.mp3",
+        "group": "pair-007",
+        "pairingStatus": "complete",
+        "association": "pair-007"
+      },
+      {
+        "id": "middle/pair-008",
+        "file": "audio/middle/pair-008.mp3",
+        "group": "pair-008",
+        "pairingStatus": "complete",
+        "association": "pair-008"
+      },
+      {
+        "id": "middle/pair-009",
+        "file": "audio/middle/pair-009.mp3",
+        "group": "pair-009",
+        "pairingStatus": "complete",
+        "association": "pair-009"
+      },
+      {
+        "id": "middle/pair-010",
+        "file": "audio/middle/pair-010.mp3",
+        "group": "pair-010",
+        "pairingStatus": "complete",
+        "association": "pair-010"
+      },
+      {
+        "id": "middle/pair-011",
+        "file": "audio/middle/pair-011.mp3",
+        "group": "pair-011",
+        "pairingStatus": "complete",
+        "association": "pair-011"
+      },
+      {
+        "id": "middle/pair-012",
+        "file": "audio/middle/pair-012.mp3",
+        "group": "pair-012",
+        "pairingStatus": "complete",
+        "association": "pair-012"
+      },
+      {
+        "id": "middle/pair-013",
+        "file": "audio/middle/pair-013.mp3",
+        "group": "pair-013",
+        "pairingStatus": "complete",
+        "association": "pair-013"
+      },
+      {
+        "id": "middle/pair-014",
+        "file": "audio/middle/pair-014.mp3",
+        "group": "pair-014",
+        "pairingStatus": "complete",
+        "association": "pair-014"
+      },
+      {
+        "id": "middle/pair-015",
+        "file": "audio/middle/pair-015.mp3",
+        "group": "pair-015",
+        "pairingStatus": "complete",
+        "association": "pair-015"
+      },
+      {
+        "id": "middle/pair-016",
+        "file": "audio/middle/pair-016.mp3",
+        "group": "pair-016",
+        "pairingStatus": "complete",
+        "association": "pair-016"
+      },
+      {
+        "id": "middle/pair-017",
+        "file": "audio/middle/pair-017.mp3",
+        "group": "pair-017",
+        "pairingStatus": "complete",
+        "association": "pair-017"
+      },
+      {
+        "id": "middle/pair-018",
+        "file": "audio/middle/pair-018.mp3",
+        "group": "pair-018",
+        "pairingStatus": "complete",
+        "association": "pair-018"
+      },
+      {
+        "id": "middle/pair-019",
+        "file": "audio/middle/pair-019.mp3",
+        "group": "pair-019",
+        "pairingStatus": "complete",
+        "association": "pair-019"
+      },
+      {
+        "id": "middle/pair-020",
+        "file": "audio/middle/pair-020.mp3",
+        "group": "pair-020",
+        "pairingStatus": "complete",
+        "association": "pair-020"
+      },
+      {
+        "id": "middle/pair-021",
+        "file": "audio/middle/pair-021.mp3",
+        "group": "pair-021",
+        "pairingStatus": "complete",
+        "association": "pair-021"
+      },
+      {
+        "id": "middle/pair-022",
+        "file": "audio/middle/pair-022.mp3",
+        "group": "pair-022",
+        "pairingStatus": "complete",
+        "association": "pair-022"
+      },
+      {
+        "id": "middle/pair-023",
+        "file": "audio/middle/pair-023.mp3",
+        "group": "pair-023",
+        "pairingStatus": "complete",
+        "association": "pair-023"
+      },
+      {
+        "id": "middle/pair-024",
+        "file": "audio/middle/pair-024.mp3",
+        "group": "pair-024",
+        "pairingStatus": "complete",
+        "association": "pair-024"
+      },
+      {
+        "id": "middle/pair-025",
+        "file": "audio/middle/pair-025.mp3",
+        "group": "pair-025",
+        "pairingStatus": "complete",
+        "association": "pair-025"
+      },
+      {
+        "id": "middle/pair-026",
+        "file": "audio/middle/pair-026.mp3",
+        "group": "pair-026",
+        "pairingStatus": "complete",
+        "association": "pair-026"
+      },
+      {
+        "id": "middle/pair-027",
+        "file": "audio/middle/pair-027.mp3",
+        "group": "pair-027",
+        "pairingStatus": "complete",
+        "association": "pair-027"
+      },
+      {
+        "id": "middle/pair-028",
+        "file": "audio/middle/pair-028.mp3",
+        "group": "pair-028",
+        "pairingStatus": "complete",
+        "association": "pair-028"
+      },
+      {
+        "id": "middle/pair-029",
+        "file": "audio/middle/pair-029.mp3",
+        "group": "pair-029",
+        "pairingStatus": "complete",
+        "association": "pair-029"
+      },
+      {
+        "id": "middle/pair-030",
+        "file": "audio/middle/pair-030.mp3",
+        "group": "pair-030",
+        "pairingStatus": "complete",
+        "association": "pair-030"
+      },
+      {
+        "id": "middle/pair-031",
+        "file": "audio/middle/pair-031.mp3",
+        "group": "pair-031",
+        "pairingStatus": "complete",
+        "association": "pair-031"
+      },
+      {
+        "id": "middle/pair-032",
+        "file": "audio/middle/pair-032.mp3",
+        "group": "pair-032",
+        "pairingStatus": "complete",
+        "association": "pair-032"
+      },
+      {
+        "id": "middle/pair-033",
+        "file": "audio/middle/pair-033.mp3",
+        "group": "pair-033",
+        "pairingStatus": "complete",
+        "association": "pair-033"
+      },
+      {
+        "id": "middle/pair-034",
+        "file": "audio/middle/pair-034.mp3",
+        "group": "pair-034",
+        "pairingStatus": "complete",
+        "association": "pair-034"
+      },
+      {
+        "id": "middle/pair-035",
+        "file": "audio/middle/pair-035.mp3",
+        "group": "pair-035",
+        "pairingStatus": "complete",
+        "association": "pair-035"
+      },
+      {
+        "id": "middle/pair-036",
+        "file": "audio/middle/pair-036.mp3",
+        "group": "pair-036",
+        "pairingStatus": "complete",
+        "association": "pair-036"
+      },
+      {
+        "id": "middle/pair-037",
+        "file": "audio/middle/pair-037.mp3",
+        "group": "pair-037",
+        "pairingStatus": "complete",
+        "association": "pair-037"
+      },
+      {
+        "id": "middle/pair-040",
+        "file": "audio/middle/pair-040.mp3",
+        "group": "pair-040",
+        "pairingStatus": "complete",
+        "association": "pair-040"
+      },
+      {
+        "id": "middle/pair-041",
+        "file": "audio/middle/pair-041.mp3",
+        "group": "pair-041",
+        "pairingStatus": "complete",
+        "association": "pair-041"
+      },
+      {
+        "id": "middle/pair-042",
+        "file": "audio/middle/pair-042.mp3",
+        "group": "pair-042",
+        "pairingStatus": "complete",
+        "association": "pair-042"
+      },
+      {
+        "id": "middle/pair-043",
+        "file": "audio/middle/pair-043.mp3",
+        "group": "pair-043",
+        "pairingStatus": "complete",
+        "association": "pair-043"
+      },
+      {
+        "id": "middle/pair-044",
+        "file": "audio/middle/pair-044.mp3",
+        "group": "pair-044",
+        "pairingStatus": "complete",
+        "association": "pair-044"
+      },
+      {
+        "id": "middle/pair-045",
+        "file": "audio/middle/pair-045.mp3",
+        "group": "pair-045",
+        "pairingStatus": "complete",
+        "association": "pair-045"
+      },
+      {
+        "id": "middle/pair-046",
+        "file": "audio/middle/pair-046.mp3",
+        "group": "pair-046",
+        "pairingStatus": "complete",
+        "association": "pair-046"
+      },
+      {
+        "id": "middle/pair-047",
+        "file": "audio/middle/pair-047.mp3",
+        "group": "pair-047",
+        "pairingStatus": "complete",
+        "association": "pair-047"
+      },
+      {
+        "id": "middle/pair-048",
+        "file": "audio/middle/pair-048.mp3",
+        "group": "pair-048",
+        "pairingStatus": "complete",
+        "association": "pair-048"
+      },
+      {
+        "id": "middle/pair-049",
+        "file": "audio/middle/pair-049.mp3",
+        "group": "pair-049",
+        "pairingStatus": "complete",
+        "association": "pair-049"
       },
       {
         "id": "middle/zander",
         "file": "audio/middle/zander.mp3",
         "group": "zander",
+        "pairingStatus": "audio-only",
         "association": null
       }
     ],
@@ -649,33 +2567,1012 @@
         "id": "bottom/char-2026-05-31T01-30-11",
         "file": "audio/bottom/char-2026-05-31T01-30-11.mp3",
         "group": "char-2026-05-31T01-30-11",
+        "pairingStatus": "audio-only",
         "association": null
       },
       {
         "id": "bottom/char-2026-05-31T01-35-24",
         "file": "audio/bottom/char-2026-05-31T01-35-24.mp3",
         "group": "char-2026-05-31T01-35-24",
+        "pairingStatus": "audio-only",
         "association": null
       },
       {
         "id": "bottom/faith",
         "file": "audio/bottom/faith.mp3",
         "group": "faith",
+        "pairingStatus": "audio-only",
         "association": null
       },
       {
         "id": "bottom/faith2",
         "file": "audio/bottom/faith2.mp3",
         "group": "faith2",
+        "pairingStatus": "audio-only",
         "association": null
+      },
+      {
+        "id": "bottom/nopair-audio-015",
+        "file": "audio/bottom/nopair-audio-015.mp3",
+        "group": "nopair-audio-015",
+        "pairingStatus": "audio-only",
+        "association": null
+      },
+      {
+        "id": "bottom/pair-001",
+        "file": "audio/bottom/pair-001.mp3",
+        "group": "pair-001",
+        "pairingStatus": "complete",
+        "association": "pair-001"
+      },
+      {
+        "id": "bottom/pair-002",
+        "file": "audio/bottom/pair-002.mp3",
+        "group": "pair-002",
+        "pairingStatus": "complete",
+        "association": "pair-002"
+      },
+      {
+        "id": "bottom/pair-004",
+        "file": "audio/bottom/pair-004.mp3",
+        "group": "pair-004",
+        "pairingStatus": "complete",
+        "association": "pair-004"
+      },
+      {
+        "id": "bottom/pair-005",
+        "file": "audio/bottom/pair-005.mp3",
+        "group": "pair-005",
+        "pairingStatus": "complete",
+        "association": "pair-005"
+      },
+      {
+        "id": "bottom/pair-006",
+        "file": "audio/bottom/pair-006.mp3",
+        "group": "pair-006",
+        "pairingStatus": "complete",
+        "association": "pair-006"
+      },
+      {
+        "id": "bottom/pair-007",
+        "file": "audio/bottom/pair-007.mp3",
+        "group": "pair-007",
+        "pairingStatus": "complete",
+        "association": "pair-007"
+      },
+      {
+        "id": "bottom/pair-008",
+        "file": "audio/bottom/pair-008.mp3",
+        "group": "pair-008",
+        "pairingStatus": "complete",
+        "association": "pair-008"
+      },
+      {
+        "id": "bottom/pair-009",
+        "file": "audio/bottom/pair-009.mp3",
+        "group": "pair-009",
+        "pairingStatus": "complete",
+        "association": "pair-009"
+      },
+      {
+        "id": "bottom/pair-010",
+        "file": "audio/bottom/pair-010.mp3",
+        "group": "pair-010",
+        "pairingStatus": "complete",
+        "association": "pair-010"
+      },
+      {
+        "id": "bottom/pair-011",
+        "file": "audio/bottom/pair-011.mp3",
+        "group": "pair-011",
+        "pairingStatus": "complete",
+        "association": "pair-011"
+      },
+      {
+        "id": "bottom/pair-012",
+        "file": "audio/bottom/pair-012.mp3",
+        "group": "pair-012",
+        "pairingStatus": "complete",
+        "association": "pair-012"
+      },
+      {
+        "id": "bottom/pair-013",
+        "file": "audio/bottom/pair-013.mp3",
+        "group": "pair-013",
+        "pairingStatus": "complete",
+        "association": "pair-013"
+      },
+      {
+        "id": "bottom/pair-014",
+        "file": "audio/bottom/pair-014.mp3",
+        "group": "pair-014",
+        "pairingStatus": "complete",
+        "association": "pair-014"
+      },
+      {
+        "id": "bottom/pair-015",
+        "file": "audio/bottom/pair-015.mp3",
+        "group": "pair-015",
+        "pairingStatus": "complete",
+        "association": "pair-015"
+      },
+      {
+        "id": "bottom/pair-016",
+        "file": "audio/bottom/pair-016.mp3",
+        "group": "pair-016",
+        "pairingStatus": "complete",
+        "association": "pair-016"
+      },
+      {
+        "id": "bottom/pair-017",
+        "file": "audio/bottom/pair-017.mp3",
+        "group": "pair-017",
+        "pairingStatus": "complete",
+        "association": "pair-017"
+      },
+      {
+        "id": "bottom/pair-018",
+        "file": "audio/bottom/pair-018.mp3",
+        "group": "pair-018",
+        "pairingStatus": "complete",
+        "association": "pair-018"
+      },
+      {
+        "id": "bottom/pair-019",
+        "file": "audio/bottom/pair-019.mp3",
+        "group": "pair-019",
+        "pairingStatus": "complete",
+        "association": "pair-019"
+      },
+      {
+        "id": "bottom/pair-020",
+        "file": "audio/bottom/pair-020.mp3",
+        "group": "pair-020",
+        "pairingStatus": "complete",
+        "association": "pair-020"
+      },
+      {
+        "id": "bottom/pair-021",
+        "file": "audio/bottom/pair-021.mp3",
+        "group": "pair-021",
+        "pairingStatus": "complete",
+        "association": "pair-021"
+      },
+      {
+        "id": "bottom/pair-022",
+        "file": "audio/bottom/pair-022.mp3",
+        "group": "pair-022",
+        "pairingStatus": "complete",
+        "association": "pair-022"
+      },
+      {
+        "id": "bottom/pair-023",
+        "file": "audio/bottom/pair-023.mp3",
+        "group": "pair-023",
+        "pairingStatus": "complete",
+        "association": "pair-023"
+      },
+      {
+        "id": "bottom/pair-024",
+        "file": "audio/bottom/pair-024.mp3",
+        "group": "pair-024",
+        "pairingStatus": "complete",
+        "association": "pair-024"
+      },
+      {
+        "id": "bottom/pair-025",
+        "file": "audio/bottom/pair-025.mp3",
+        "group": "pair-025",
+        "pairingStatus": "complete",
+        "association": "pair-025"
+      },
+      {
+        "id": "bottom/pair-026",
+        "file": "audio/bottom/pair-026.mp3",
+        "group": "pair-026",
+        "pairingStatus": "complete",
+        "association": "pair-026"
+      },
+      {
+        "id": "bottom/pair-027",
+        "file": "audio/bottom/pair-027.mp3",
+        "group": "pair-027",
+        "pairingStatus": "complete",
+        "association": "pair-027"
+      },
+      {
+        "id": "bottom/pair-028",
+        "file": "audio/bottom/pair-028.mp3",
+        "group": "pair-028",
+        "pairingStatus": "complete",
+        "association": "pair-028"
+      },
+      {
+        "id": "bottom/pair-029",
+        "file": "audio/bottom/pair-029.mp3",
+        "group": "pair-029",
+        "pairingStatus": "complete",
+        "association": "pair-029"
+      },
+      {
+        "id": "bottom/pair-030",
+        "file": "audio/bottom/pair-030.mp3",
+        "group": "pair-030",
+        "pairingStatus": "complete",
+        "association": "pair-030"
+      },
+      {
+        "id": "bottom/pair-031",
+        "file": "audio/bottom/pair-031.mp3",
+        "group": "pair-031",
+        "pairingStatus": "complete",
+        "association": "pair-031"
+      },
+      {
+        "id": "bottom/pair-032",
+        "file": "audio/bottom/pair-032.mp3",
+        "group": "pair-032",
+        "pairingStatus": "complete",
+        "association": "pair-032"
+      },
+      {
+        "id": "bottom/pair-033",
+        "file": "audio/bottom/pair-033.mp3",
+        "group": "pair-033",
+        "pairingStatus": "complete",
+        "association": "pair-033"
+      },
+      {
+        "id": "bottom/pair-034",
+        "file": "audio/bottom/pair-034.mp3",
+        "group": "pair-034",
+        "pairingStatus": "complete",
+        "association": "pair-034"
+      },
+      {
+        "id": "bottom/pair-035",
+        "file": "audio/bottom/pair-035.mp3",
+        "group": "pair-035",
+        "pairingStatus": "complete",
+        "association": "pair-035"
+      },
+      {
+        "id": "bottom/pair-036",
+        "file": "audio/bottom/pair-036.mp3",
+        "group": "pair-036",
+        "pairingStatus": "complete",
+        "association": "pair-036"
+      },
+      {
+        "id": "bottom/pair-037",
+        "file": "audio/bottom/pair-037.mp3",
+        "group": "pair-037",
+        "pairingStatus": "complete",
+        "association": "pair-037"
+      },
+      {
+        "id": "bottom/pair-040",
+        "file": "audio/bottom/pair-040.mp3",
+        "group": "pair-040",
+        "pairingStatus": "complete",
+        "association": "pair-040"
+      },
+      {
+        "id": "bottom/pair-041",
+        "file": "audio/bottom/pair-041.mp3",
+        "group": "pair-041",
+        "pairingStatus": "complete",
+        "association": "pair-041"
+      },
+      {
+        "id": "bottom/pair-042",
+        "file": "audio/bottom/pair-042.mp3",
+        "group": "pair-042",
+        "pairingStatus": "complete",
+        "association": "pair-042"
+      },
+      {
+        "id": "bottom/pair-043",
+        "file": "audio/bottom/pair-043.mp3",
+        "group": "pair-043",
+        "pairingStatus": "complete",
+        "association": "pair-043"
+      },
+      {
+        "id": "bottom/pair-044",
+        "file": "audio/bottom/pair-044.mp3",
+        "group": "pair-044",
+        "pairingStatus": "complete",
+        "association": "pair-044"
+      },
+      {
+        "id": "bottom/pair-045",
+        "file": "audio/bottom/pair-045.mp3",
+        "group": "pair-045",
+        "pairingStatus": "complete",
+        "association": "pair-045"
+      },
+      {
+        "id": "bottom/pair-046",
+        "file": "audio/bottom/pair-046.mp3",
+        "group": "pair-046",
+        "pairingStatus": "complete",
+        "association": "pair-046"
+      },
+      {
+        "id": "bottom/pair-047",
+        "file": "audio/bottom/pair-047.mp3",
+        "group": "pair-047",
+        "pairingStatus": "complete",
+        "association": "pair-047"
+      },
+      {
+        "id": "bottom/pair-048",
+        "file": "audio/bottom/pair-048.mp3",
+        "group": "pair-048",
+        "pairingStatus": "complete",
+        "association": "pair-048"
+      },
+      {
+        "id": "bottom/pair-049",
+        "file": "audio/bottom/pair-049.mp3",
+        "group": "pair-049",
+        "pairingStatus": "complete",
+        "association": "pair-049"
       },
       {
         "id": "bottom/zander",
         "file": "audio/bottom/zander.mp3",
         "group": "zander",
+        "pairingStatus": "audio-only",
         "association": null
       }
     ]
   },
-  "associations": []
+  "associations": [
+    {
+      "group": "pair-001",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-001",
+        "middle/pair-001",
+        "bottom/pair-001"
+      ],
+      "audio": [
+        "top/pair-001",
+        "middle/pair-001",
+        "bottom/pair-001"
+      ]
+    },
+    {
+      "group": "pair-002",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-002",
+        "middle/pair-002",
+        "bottom/pair-002"
+      ],
+      "audio": [
+        "top/pair-002",
+        "middle/pair-002",
+        "bottom/pair-002"
+      ]
+    },
+    {
+      "group": "pair-004",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-004",
+        "middle/pair-004",
+        "bottom/pair-004"
+      ],
+      "audio": [
+        "top/pair-004",
+        "middle/pair-004",
+        "bottom/pair-004"
+      ]
+    },
+    {
+      "group": "pair-005",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-005",
+        "middle/pair-005",
+        "bottom/pair-005"
+      ],
+      "audio": [
+        "top/pair-005",
+        "middle/pair-005",
+        "bottom/pair-005"
+      ]
+    },
+    {
+      "group": "pair-006",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-006",
+        "middle/pair-006",
+        "bottom/pair-006"
+      ],
+      "audio": [
+        "top/pair-006",
+        "middle/pair-006",
+        "bottom/pair-006"
+      ]
+    },
+    {
+      "group": "pair-007",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-007",
+        "middle/pair-007",
+        "bottom/pair-007"
+      ],
+      "audio": [
+        "top/pair-007",
+        "middle/pair-007",
+        "bottom/pair-007"
+      ]
+    },
+    {
+      "group": "pair-008",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-008",
+        "middle/pair-008",
+        "bottom/pair-008"
+      ],
+      "audio": [
+        "top/pair-008",
+        "middle/pair-008",
+        "bottom/pair-008"
+      ]
+    },
+    {
+      "group": "pair-009",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-009",
+        "middle/pair-009",
+        "bottom/pair-009"
+      ],
+      "audio": [
+        "top/pair-009",
+        "middle/pair-009",
+        "bottom/pair-009"
+      ]
+    },
+    {
+      "group": "pair-010",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-010",
+        "middle/pair-010",
+        "bottom/pair-010"
+      ],
+      "audio": [
+        "top/pair-010",
+        "middle/pair-010",
+        "bottom/pair-010"
+      ]
+    },
+    {
+      "group": "pair-011",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-011",
+        "middle/pair-011",
+        "bottom/pair-011"
+      ],
+      "audio": [
+        "top/pair-011",
+        "middle/pair-011",
+        "bottom/pair-011"
+      ]
+    },
+    {
+      "group": "pair-012",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-012",
+        "middle/pair-012",
+        "bottom/pair-012"
+      ],
+      "audio": [
+        "top/pair-012",
+        "middle/pair-012",
+        "bottom/pair-012"
+      ]
+    },
+    {
+      "group": "pair-013",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-013",
+        "middle/pair-013",
+        "bottom/pair-013"
+      ],
+      "audio": [
+        "top/pair-013",
+        "middle/pair-013",
+        "bottom/pair-013"
+      ]
+    },
+    {
+      "group": "pair-014",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-014",
+        "middle/pair-014",
+        "bottom/pair-014"
+      ],
+      "audio": [
+        "top/pair-014",
+        "middle/pair-014",
+        "bottom/pair-014"
+      ]
+    },
+    {
+      "group": "pair-015",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-015",
+        "middle/pair-015",
+        "bottom/pair-015"
+      ],
+      "audio": [
+        "top/pair-015",
+        "middle/pair-015",
+        "bottom/pair-015"
+      ]
+    },
+    {
+      "group": "pair-016",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-016",
+        "middle/pair-016",
+        "bottom/pair-016"
+      ],
+      "audio": [
+        "top/pair-016",
+        "middle/pair-016",
+        "bottom/pair-016"
+      ]
+    },
+    {
+      "group": "pair-017",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-017",
+        "middle/pair-017",
+        "bottom/pair-017"
+      ],
+      "audio": [
+        "top/pair-017",
+        "middle/pair-017",
+        "bottom/pair-017"
+      ]
+    },
+    {
+      "group": "pair-018",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-018",
+        "middle/pair-018",
+        "bottom/pair-018"
+      ],
+      "audio": [
+        "top/pair-018",
+        "middle/pair-018",
+        "bottom/pair-018"
+      ]
+    },
+    {
+      "group": "pair-019",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-019",
+        "middle/pair-019",
+        "bottom/pair-019"
+      ],
+      "audio": [
+        "top/pair-019",
+        "middle/pair-019",
+        "bottom/pair-019"
+      ]
+    },
+    {
+      "group": "pair-020",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-020",
+        "middle/pair-020",
+        "bottom/pair-020"
+      ],
+      "audio": [
+        "top/pair-020",
+        "middle/pair-020",
+        "bottom/pair-020"
+      ]
+    },
+    {
+      "group": "pair-021",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-021",
+        "middle/pair-021",
+        "bottom/pair-021"
+      ],
+      "audio": [
+        "top/pair-021",
+        "middle/pair-021",
+        "bottom/pair-021"
+      ]
+    },
+    {
+      "group": "pair-022",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-022",
+        "middle/pair-022",
+        "bottom/pair-022"
+      ],
+      "audio": [
+        "top/pair-022",
+        "middle/pair-022",
+        "bottom/pair-022"
+      ]
+    },
+    {
+      "group": "pair-023",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-023",
+        "middle/pair-023",
+        "bottom/pair-023"
+      ],
+      "audio": [
+        "top/pair-023",
+        "middle/pair-023",
+        "bottom/pair-023"
+      ]
+    },
+    {
+      "group": "pair-024",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-024",
+        "middle/pair-024",
+        "bottom/pair-024"
+      ],
+      "audio": [
+        "top/pair-024",
+        "middle/pair-024",
+        "bottom/pair-024"
+      ]
+    },
+    {
+      "group": "pair-025",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-025",
+        "middle/pair-025",
+        "bottom/pair-025"
+      ],
+      "audio": [
+        "top/pair-025",
+        "middle/pair-025",
+        "bottom/pair-025"
+      ]
+    },
+    {
+      "group": "pair-026",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-026",
+        "middle/pair-026",
+        "bottom/pair-026"
+      ],
+      "audio": [
+        "top/pair-026",
+        "middle/pair-026",
+        "bottom/pair-026"
+      ]
+    },
+    {
+      "group": "pair-027",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-027",
+        "middle/pair-027",
+        "bottom/pair-027"
+      ],
+      "audio": [
+        "top/pair-027",
+        "middle/pair-027",
+        "bottom/pair-027"
+      ]
+    },
+    {
+      "group": "pair-028",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-028",
+        "middle/pair-028",
+        "bottom/pair-028"
+      ],
+      "audio": [
+        "top/pair-028",
+        "middle/pair-028",
+        "bottom/pair-028"
+      ]
+    },
+    {
+      "group": "pair-029",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-029",
+        "middle/pair-029",
+        "bottom/pair-029"
+      ],
+      "audio": [
+        "top/pair-029",
+        "middle/pair-029",
+        "bottom/pair-029"
+      ]
+    },
+    {
+      "group": "pair-030",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-030",
+        "middle/pair-030",
+        "bottom/pair-030"
+      ],
+      "audio": [
+        "top/pair-030",
+        "middle/pair-030",
+        "bottom/pair-030"
+      ]
+    },
+    {
+      "group": "pair-031",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-031",
+        "middle/pair-031",
+        "bottom/pair-031"
+      ],
+      "audio": [
+        "top/pair-031",
+        "middle/pair-031",
+        "bottom/pair-031"
+      ]
+    },
+    {
+      "group": "pair-032",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-032",
+        "middle/pair-032",
+        "bottom/pair-032"
+      ],
+      "audio": [
+        "top/pair-032",
+        "middle/pair-032",
+        "bottom/pair-032"
+      ]
+    },
+    {
+      "group": "pair-033",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-033",
+        "middle/pair-033",
+        "bottom/pair-033"
+      ],
+      "audio": [
+        "top/pair-033",
+        "middle/pair-033",
+        "bottom/pair-033"
+      ]
+    },
+    {
+      "group": "pair-034",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-034",
+        "middle/pair-034",
+        "bottom/pair-034"
+      ],
+      "audio": [
+        "top/pair-034",
+        "middle/pair-034",
+        "bottom/pair-034"
+      ]
+    },
+    {
+      "group": "pair-035",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-035",
+        "middle/pair-035",
+        "bottom/pair-035"
+      ],
+      "audio": [
+        "top/pair-035",
+        "middle/pair-035",
+        "bottom/pair-035"
+      ]
+    },
+    {
+      "group": "pair-036",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-036",
+        "middle/pair-036",
+        "bottom/pair-036"
+      ],
+      "audio": [
+        "top/pair-036",
+        "middle/pair-036",
+        "bottom/pair-036"
+      ]
+    },
+    {
+      "group": "pair-037",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-037",
+        "middle/pair-037",
+        "bottom/pair-037"
+      ],
+      "audio": [
+        "top/pair-037",
+        "middle/pair-037",
+        "bottom/pair-037"
+      ]
+    },
+    {
+      "group": "pair-040",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-040",
+        "middle/pair-040",
+        "bottom/pair-040"
+      ],
+      "audio": [
+        "top/pair-040",
+        "middle/pair-040",
+        "bottom/pair-040"
+      ]
+    },
+    {
+      "group": "pair-041",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-041",
+        "middle/pair-041",
+        "bottom/pair-041"
+      ],
+      "audio": [
+        "top/pair-041",
+        "middle/pair-041",
+        "bottom/pair-041"
+      ]
+    },
+    {
+      "group": "pair-042",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-042",
+        "middle/pair-042",
+        "bottom/pair-042"
+      ],
+      "audio": [
+        "top/pair-042",
+        "middle/pair-042",
+        "bottom/pair-042"
+      ]
+    },
+    {
+      "group": "pair-043",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-043",
+        "middle/pair-043",
+        "bottom/pair-043"
+      ],
+      "audio": [
+        "top/pair-043",
+        "middle/pair-043",
+        "bottom/pair-043"
+      ]
+    },
+    {
+      "group": "pair-044",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-044",
+        "middle/pair-044",
+        "bottom/pair-044"
+      ],
+      "audio": [
+        "top/pair-044",
+        "middle/pair-044",
+        "bottom/pair-044"
+      ]
+    },
+    {
+      "group": "pair-045",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-045",
+        "middle/pair-045",
+        "bottom/pair-045"
+      ],
+      "audio": [
+        "top/pair-045",
+        "middle/pair-045",
+        "bottom/pair-045"
+      ]
+    },
+    {
+      "group": "pair-046",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-046",
+        "middle/pair-046",
+        "bottom/pair-046"
+      ],
+      "audio": [
+        "top/pair-046",
+        "middle/pair-046",
+        "bottom/pair-046"
+      ]
+    },
+    {
+      "group": "pair-047",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-047",
+        "middle/pair-047",
+        "bottom/pair-047"
+      ],
+      "audio": [
+        "top/pair-047",
+        "middle/pair-047",
+        "bottom/pair-047"
+      ]
+    },
+    {
+      "group": "pair-048",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-048",
+        "middle/pair-048",
+        "bottom/pair-048"
+      ],
+      "audio": [
+        "top/pair-048",
+        "middle/pair-048",
+        "bottom/pair-048"
+      ]
+    },
+    {
+      "group": "pair-049",
+      "pairingStatus": "complete",
+      "images": [
+        "top/pair-049",
+        "middle/pair-049",
+        "bottom/pair-049"
+      ],
+      "audio": [
+        "top/pair-049",
+        "middle/pair-049",
+        "bottom/pair-049"
+      ]
+    }
+  ]
 }
