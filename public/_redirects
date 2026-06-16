@@ -1,0 +1,2 @@
+# Clean URL: serve the gallery at /gallery (no .html). 200 = rewrite, URL stays /gallery.
+/gallery   /gallery.html   200

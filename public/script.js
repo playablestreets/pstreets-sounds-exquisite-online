@@ -60,6 +60,11 @@ directionalLightLeft.castShadow = true;
 const bodyParts = ['top', 'middle', 'bottom'];
 let content = null; // { images: {top:[url],...}, audio: {top:[url],...} }
 
+// When opened as index.html?monster=<group> from the gallery, this holds the
+// chosen monster's per-part assets so face 0 of each cube shows it. The other
+// five faces stay random remixes (so shuffling still remixes away from it).
+let pinnedFace = null; // { top:{imageLocation,soundLocation}, middle:.., bottom:.. } | null
+
 //LOAD LOCAL MANIFEST
 loadManifest(onContentLoaded);
 
@@ -71,7 +76,33 @@ function onContentLoaded(manifest) {
 		content.audio[p] = toUrls(manifest.audio && manifest.audio[p]);
 	});
 
+	pinnedFace = resolveMonster(manifest);
+
 	loadNewScene();
+}
+
+// Resolve ?monster=<group> into a per-part face. Missing image parts fall back
+// to the placeholder silhouette; missing audio parts return null so a random
+// pool remix is used instead.
+function resolveMonster(manifest) {
+	const group = new URLSearchParams(window.location.search).get('monster');
+	if (!group) return null;
+
+	const { byGroup } = indexManifest(manifest);
+	const c = byGroup[group];
+	if (!c) {
+		console.warn('resolveMonster: unknown monster group', group);
+		return null;
+	}
+
+	const face = {};
+	bodyParts.forEach((p) => {
+		face[p] = {
+			imageLocation: c.image[p] ? contentBase + c.image[p] : PLACEHOLDER[p],
+			soundLocation: c.audio[p] ? contentBase + c.audio[p] : null,
+		};
+	});
+	return face;
 }
 
 // Draw `n` items from a pool, shuffled, cycling through the pool if it holds
@@ -99,7 +130,15 @@ function buildFaceStories() {
 	for (let i = 0; i < 6; i++) {
 		const story = {};
 		bodyParts.forEach((p) => {
-			story[p] = { imageLocation: imgs[p][i], soundLocation: snds[p][i], text: '...' };
+			let imageLocation = imgs[p][i];
+			let soundLocation = snds[p][i];
+			// Face 0 shows the pinned monster (if any). Keep the random sound as
+			// a remix when the monster has no audio for this part.
+			if (i === 0 && pinnedFace) {
+				imageLocation = pinnedFace[p].imageLocation;
+				if (pinnedFace[p].soundLocation) soundLocation = pinnedFace[p].soundLocation;
+			}
+			story[p] = { imageLocation, soundLocation, text: '...' };
 		});
 		faceStories.push(story);
 	}

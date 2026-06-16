@@ -182,3 +182,145 @@ p{
 	margin: 15px;
 	border-style: none;
 }
+
+/* ============================================================
+   GALLERY PAGE — loud, chunky, hand-drawn / scribbly look.
+   Scoped under .gallery-page / .gallery / .tile so it never
+   touches the cube page chrome.
+   ============================================================ */
+.gallery-page {
+	/* override the cube page's body { height:100vh; overflow:hidden } so the
+	   gallery can scroll */
+	height: auto;
+	overflow-y: auto;
+	min-height: 100vh;
+	background-color: #fff3d6;
+	background-image:
+		radial-gradient(#ffd23f 12%, transparent 13%),
+		radial-gradient(#ff5d8f 12%, transparent 13%);
+	background-position: 0 0, 22px 22px;
+	background-size: 44px 44px;
+	font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+	color: #1a1a1a;
+	-webkit-text-size-adjust: 100%;
+}
+
+.gallery-header {
+	text-align: center;
+	padding: 24px 16px 8px;
+}
+
+.gallery-title {
+	font-family: 'Gloria Hallelujah', 'Patrick Hand', cursive;
+	font-size: clamp(38px, 8vw, 78px);
+	line-height: 1.05;
+	color: #2b2b2b;
+	text-shadow: 4px 4px 0 #ffd23f, 7px 7px 0 #ff5d8f;
+	transform: rotate(-2deg);
+}
+
+.gallery-sub {
+	font-family: 'Gloria Hallelujah', 'Patrick Hand', cursive;
+	font-size: clamp(32px, 6vw, 48px); /* ~2x the original */
+	font-weight: bold;
+	margin-top: 14px;
+	color: #ff3d7f; /* punchy pink */
+	text-shadow: 3px 3px 0 #111;
+	transform: rotate(-1.5deg);
+}
+
+/* Playable Web home icon, top-left — mirrors the cube page */
+.gallery-home {
+	position: absolute;
+	top: 6px;
+	left: 6px;
+}
+
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 28px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 28px clamp(16px, 4vw, 48px) 64px;
+}
+
+.tile {
+	--hue: calc(var(--i, 0) * 47deg);
+	position: relative;
+	display: block;
+	padding: 14px 14px 18px;
+	text-decoration: none;
+	background: hsl(var(--hue) 90% 88%);
+	border: 6px solid #111;
+	/* deliberately uneven corners for a hand-drawn wobble */
+	border-radius: 22px 8px 26px 10px;
+	box-shadow: 7px 7px 0 #111;
+	transform: rotate(2deg);
+	transition: transform .12s ease, box-shadow .12s ease;
+}
+.tile:nth-child(2n) { transform: rotate(-2deg); border-radius: 8px 24px 9px 28px; }
+.tile:nth-child(3n) { transform: rotate(1.4deg); }
+.tile:nth-child(5n) { transform: rotate(-1deg); border-radius: 26px 12px 22px 7px; }
+.tile:hover,
+.tile:focus {
+	transform: rotate(0) scale(1.06);
+	box-shadow: 10px 10px 0 #111;
+	outline: none;
+	z-index: 2;
+}
+
+.stack {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	background: #fffdf5;
+	border: 4px solid #111;
+	border-radius: 14px 6px 16px 8px;
+	padding: 8px;
+	overflow: hidden;
+}
+
+.slot {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	aspect-ratio: 1 / 1;
+}
+.slot img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 8px 4px 9px 5px;
+	image-rendering: auto;
+}
+
+/* placeholder silhouettes inherit `color`, so tint each per part */
+.slot-placeholder {
+	background: hsl(var(--hue) 70% 95%);
+	border-radius: 8px 4px 9px 5px;
+}
+.slot-placeholder svg { width: 78%; height: 78%; display: block; }
+.slot-top.slot-placeholder { color: #ff5d8f; }
+.slot-middle.slot-placeholder { color: #5d7bff; }
+.slot-bottom.slot-placeholder { color: #2bb673; }
+
+/* Gallery link on the cube page — pinned bottom-right (mirrors .controls,
+   which sit bottom-left). Inherits the orange .button look. */
+.gallery-button {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.gallery-credit {
+	text-align: center;
+	padding: 8px 16px 36px;
+	font-size: 15px;
+	color: #555;
+}
+.gallery-credit a { color: #444; }
