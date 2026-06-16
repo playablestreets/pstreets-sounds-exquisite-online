@@ -2,3 +2,6 @@ rawassets/
 
 # Local raw scans staged for cropping (not shipped); see docs/content-pipeline.md
 tools/staging/
+
+# Local secrets — DRIVE_ROOT folder ID kept out of the public repo; `source .env`
+.env
