@@ -2,9 +2,10 @@
 
 Rebuild and maintain the Google Drive ingestion pipeline for Exquisite Stories.
 
-The current Drive source is the shared folder:
+The current Drive source is set via the `DRIVE_ROOT` env var (kept out of source
+control — see `docs/content-pipeline.md`):
 
-`gdrive,root_folder_id=<redacted-folder-id>:`
+`export DRIVE_ROOT='gdrive,root_folder_id=<your-folder-id>:'`
 
 The current workflow is `INBOX -> COMPLETE / DROPPED`, with all three folders
 mirroring the same six leaf folders:

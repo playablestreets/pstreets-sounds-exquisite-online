@@ -19,15 +19,20 @@ monster's images and audio loaded.
 
 ## Current Drive Source
 
-The shared Drive folder is:
+The Drive source is supplied via the `DRIVE_ROOT` environment variable so no
+folder ID is committed to the repo. Set it to your rclone remote plus the
+project's root folder ID before running anything below:
 
 ```sh
-DRIVE_ROOT='gdrive,root_folder_id=<redacted-folder-id>:'
+export DRIVE_ROOT='gdrive,root_folder_id=<your-folder-id>:'
 ```
+
+(The folder ID for this project is kept out of source control — get it from the
+project owner / your rclone setup, not from this repo.)
 
 The older shortcut path, `gdrive:SHARED/EXST_ PLAYABLE WEB`, exists in this
 account but has been unreliable with the current Linux/rclone setup. Prefer the
-folder-ID remote above until the shortcut behavior is understood.
+folder-ID remote until the shortcut behavior is understood.
 
 Current top-level folders:
 
@@ -166,7 +171,8 @@ and powering the later gallery of complete monsters.
 Use these while rebuilding the pipeline:
 
 ```sh
-DRIVE_ROOT='gdrive,root_folder_id=<redacted-folder-id>:'
+# Set DRIVE_ROOT first (see "Current Drive Source" above):
+#   export DRIVE_ROOT='gdrive,root_folder_id=<your-folder-id>:'
 
 rclone lsf "$DRIVE_ROOT/INBOX" --dirs-only
 

@@ -67,11 +67,12 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "public" / "assets" / "content"
 LOG_PATH = OUT / "ingest-log.jsonl"
 
-# Drive remote; the docs pin the folder-ID remote because the named shortcut is
-# unreliable on Linux. Override with $DRIVE_ROOT for a different batch.
-DRIVE_ROOT = os.environ.get(
-    "DRIVE_ROOT", "gdrive,root_folder_id=<redacted-folder-id>:"
-)
+# Drive remote, supplied via the environment so no folder ID is committed.
+# Set it to your rclone remote + root folder, e.g.
+#   export DRIVE_ROOT='gdrive,root_folder_id=<your-folder-id>:'
+# The named shortcut path is unreliable on Linux, so the folder-ID form is
+# preferred. Required at run time (see check in main()).
+DRIVE_ROOT = os.environ.get("DRIVE_ROOT")
 
 # (drive leaf folder, kind, site part). Audio beginning->top, middle->middle,
 # end->bottom. COMPLETE and DROPPED mirror these same leaf names.
@@ -320,6 +321,12 @@ def main():
         sys.exit("error: ffmpeg not found on PATH")
     if shutil.which("rclone") is None:
         sys.exit("error: rclone not found on PATH")
+    if not DRIVE_ROOT:
+        sys.exit(
+            "error: DRIVE_ROOT is not set. Export your rclone remote + root "
+            "folder first, e.g.\n"
+            "  export DRIVE_ROOT='gdrive,root_folder_id=<your-folder-id>:'"
+        )
 
     print(f"scanning {DRIVE_ROOT}/INBOX ...")
     records, index = scan(limit=args.limit)
