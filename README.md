@@ -32,7 +32,8 @@ carries a `group` key (image timestamp / audio recording id) and a reserved
 Assets are normalised on ingest to **256×256 PNG** images and **mono ~80 kbps
 MP3** audio. New content flows through a Google Drive pipeline — see
 [docs/content-pipeline.md](docs/content-pipeline.md) for the current runbook.
-The old `tools/ingest.py` script is stale and is tracked for rebuild in loom.
+The importer is `tools/ingest.py`; run it with `--dry-run` first to preview
+downloads, normalisation, log writes, and Drive moves.
 
 > Note: this app previously pulled from the Prismic repo `playable-web`
 > (`sounds_exquisite` type). That dependency has been removed.

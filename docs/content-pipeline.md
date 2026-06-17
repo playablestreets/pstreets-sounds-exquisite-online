@@ -56,13 +56,14 @@ Current `INBOX` leaf folders:
 
 - `python3`
 - `ffmpeg` for audio conversion
-- ImageMagick (`magick`) for image normalization on Linux
+- ImageMagick (`magick` or `convert`) for image normalization
 - `rclone` with a `gdrive` Google Drive remote
 
-`tools/ingest.py` is stale. It still contains old hardcoded Drive file IDs and
-uses macOS `sips` for image conversion. Do not use it for the current `INBOX`
-batch until it is rebuilt around folder scanning, logging, and mirrored
-Drive moves.
+`tools/ingest.py` is the current importer. It scans the six `INBOX` leaf
+folders, downloads the current batch, normalizes usable assets into
+`public/assets/content/`, appends `public/assets/content/ingest-log.jsonl`,
+regenerates `manifest.json`, then mirrors processed Drive files to `COMPLETE`
+or `DROPPED`.
 
 ## rclone Setup
 
@@ -108,9 +109,9 @@ path with:
 rclone config file
 ```
 
-## Desired Ingest Behavior
+## Ingest Behavior
 
-The rebuilt ingest should:
+The importer:
 
 1. Scan the six `INBOX` leaf folders instead of using hardcoded Drive file IDs.
 2. Decide whether each input is `complete` or `dropped`.
@@ -123,6 +124,17 @@ The rebuilt ingest should:
 6. Write an ingest log before moving files in Drive.
 7. Move every processed source file from `INBOX/...` to the matching
    `COMPLETE/...` or `DROPPED/...` path.
+
+Source filenames must be shaped as `{group}_{slot}.{ext}`. Image slots are
+`top`, `middle`, and `bottom`; audio slots are `beginning`, `middle`, and
+`end`, which map to the site's `top`, `middle`, and `bottom` audio pools.
+Outputs are deterministic by group key, for example `pair-001.png` or
+`pair-001.mp3` in the relevant part folder.
+
+Missing image/audio counterparts do not make a source invalid. Image-only and
+audio-only groups are still normalized and marked `complete`; the log's
+`pairingStatus` field records whether the group is `complete`, `partial`,
+`image-only`, or `audio-only`.
 
 `COMPLETE` and `DROPPED` should mirror `INBOX` exactly:
 
@@ -144,11 +156,11 @@ DROPPED/AUDIO_END/
 
 ## Ingest Log
 
-Each run should create an append-only JSONL log, probably under
-`docs/ingest-logs/` or `public/assets/content/ingest-log.jsonl` depending on
-whether the gallery needs it at runtime.
+Each run appends JSONL records to `public/assets/content/ingest-log.jsonl`.
+The log is written before Drive files are moved, so a failed move still leaves
+a recovery trail for what the run intended to do.
 
-Recommended fields per source file:
+Fields per source file:
 
 - `runId` - stable timestamp or UUID for this ingest run
 - `processedAt` - UTC timestamp
@@ -161,18 +173,40 @@ Recommended fields per source file:
 - `sourceName` - original filename
 - `outputPath` - local normalized asset path, if complete
 - `group` - stable monster/group key when known
+- `slot` - source slot from the filename
+- `pairingStatus` - complete, partial, image-only, audio-only, or unknown
 - `checksum` - source checksum if rclone exposes one cheaply
 
 This log is the recovery point for reprocessing images, rebuilding associations,
 and powering the later gallery of complete monsters.
 
-## Manual Inventory Commands
+## Run the Importer
 
-Use these while rebuilding the pipeline:
+Set `DRIVE_ROOT` first (see "Current Drive Source" above), then preview the
+run:
 
 ```sh
-# Set DRIVE_ROOT first (see "Current Drive Source" above):
-#   export DRIVE_ROOT='gdrive,root_folder_id=<your-folder-id>:'
+python3 tools/ingest.py --dry-run
+```
+
+For a small real batch, limit how many files are processed from each leaf:
+
+```sh
+python3 tools/ingest.py --limit 3
+```
+
+Run the full ingest only after the dry-run plan looks right:
+
+```sh
+python3 tools/ingest.py
+```
+
+A full run moves processed Drive files out of `INBOX`, so treat it as the
+committing step. Re-running after a drained `INBOX` is a no-op.
+
+## Manual Inventory Commands
+
+Use these when checking Drive state by hand:
 
 rclone lsf "$DRIVE_ROOT/INBOX" --dirs-only
 
@@ -209,9 +243,9 @@ Pipeline rebuild work is tracked in loom:
 
 Relevant stitches:
 
-- `content-ingestion-pipeline/rebuild-inbox-ingest` - rebuild the importer
-  around the current `INBOX` folder shape, logging, normalization, and mirrored
-  Drive moves.
+- `content-ingestion-pipeline/rebuild-inbox-ingest` - completed importer
+  rebuild around the current `INBOX` folder shape, logging, normalization, and
+  mirrored Drive moves.
 - `fix-bugs-and-usability/gallery-page-for-complete-monsters` - future gallery
   for browsing complete monsters and opening the interactive site with that
   monster loaded.
