@@ -193,6 +193,7 @@ p{
 	   gallery can scroll */
 	height: auto;
 	overflow-y: auto;
+	overflow-x: hidden; /* chunky shadows + tile rotation must not add x-scroll */
 	min-height: 100vh;
 	background-color: #fff3d6;
 	background-image:
@@ -229,11 +230,20 @@ p{
 	transform: rotate(-1.5deg);
 }
 
-/* Playable Web home icon, top-left — mirrors the cube page */
+/* Playable Web home icon, top-left — mirrors the cube page.
+   display:block makes the anchor tightly wrap the image so the whole
+   visible icon is the link (an inline <a> leaves a baseline gap and a
+   misaligned hit area); z-index keeps it tappable above the big title. */
 .gallery-home {
 	position: absolute;
 	top: 6px;
 	left: 6px;
+	z-index: 3;
+	display: block;
+}
+.gallery-home .icon {
+	display: block;
+	margin: 0;
 }
 
 .gallery {
@@ -324,3 +334,39 @@ p{
 	color: #555;
 }
 .gallery-credit a { color: #444; }
+
+/* ------------------------------------------------------------
+   MOBILE — fit at least two monsters across and keep each tile
+   shorter than the viewport. Trim the chunky borders/shadows so
+   the smaller tiles still read as hand-drawn without overflowing.
+   ------------------------------------------------------------ */
+@media (max-width: 640px) {
+	.gallery {
+		/* force two columns instead of one full-width monster */
+		grid-template-columns: repeat(2, 1fr);
+		gap: 14px;
+		padding: 16px 12px 48px;
+	}
+
+	.tile {
+		padding: 8px 8px 10px;
+		border-width: 4px;
+		box-shadow: 4px 4px 0 #111;
+	}
+	.tile:hover,
+	.tile:focus { transform: rotate(0) scale(1.03); box-shadow: 6px 6px 0 #111; }
+
+	.stack {
+		gap: 4px;
+		border-width: 3px;
+		padding: 5px;
+	}
+
+	/* cap each part so the three stacked slots + chrome stay under the
+	   window height even on short screens */
+	.slot { max-height: 24vh; }
+
+	/* shrink the home icon so its hit area maps to the visible image and
+	   it doesn't crowd the title */
+	.gallery-home .icon { width: 56px; height: 56px; }
+}

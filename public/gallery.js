@@ -51,7 +51,9 @@ function render(manifest) {
 	const { creations } = indexManifest(manifest);
 	const grid = document.getElementById('gallery');
 	const frag = document.createDocumentFragment();
-	creations.forEach((c, i) => frag.appendChild(tileFor(c, i)));
+	// Hide orphaned audio-only monsters for now — nothing to show in a tile.
+	const shown = creations.filter((c) => c.status !== 'audio-only');
+	shown.forEach((c, i) => frag.appendChild(tileFor(c, i)));
 	grid.innerHTML = '';
 	grid.appendChild(frag);
 }
