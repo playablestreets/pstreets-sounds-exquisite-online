@@ -46,6 +46,7 @@ from the log even though the originals (full-resolution) now live under
 
 Usage:
   python3 tools/ingest.py --dry-run        # scan + print plan, no downloads/moves
+  python3 tools/ingest.py --check          # verify tools + Drive folder shape
   python3 tools/ingest.py --limit 3        # process at most 3 sources per folder
   python3 tools/ingest.py                  # full ingest (moves Drive files!)
 
@@ -118,6 +119,12 @@ def lsjson(leaf):
     return json.loads(out or "[]")
 
 
+def lsf(path, *args):
+    """Return rclone lsf output lines for a path."""
+    out = rclone("lsf", path, *args).stdout
+    return [line.strip() for line in out.splitlines() if line.strip()]
+
+
 def parse_name(name, kind):
     """``pair-001_top.png`` -> (group, slot). Returns (None, None) if invalid."""
     stem = Path(name).stem
@@ -129,12 +136,13 @@ def parse_name(name, kind):
     return group, slot
 
 
-def scan(limit=0):
+def scan(limit=0, full_pairing=False):
     """Return the source records across all six INBOX folders.
 
-    ``limit`` caps how many files are taken from each leaf (0 = all). Pairing is
-    computed from the full scan first, so a limited run still reports each
-    group's true status.
+    ``limit`` caps how many files are taken from each leaf after each Drive leaf
+    listing is returned (0 = all). By default, pairing is computed from the same
+    records that will be processed. Use ``full_pairing`` with limited dry-runs
+    when you need batch-wide pairing status.
     """
     records = []
     counts = defaultdict(int)
@@ -155,14 +163,18 @@ def scan(limit=0):
                     "sourcePath": f"INBOX/{leaf}/{name}",
                 }
             )
-    index = pairing_index(records)
     if limit:
         kept = []
         for r in records:
             if counts[r["leaf"]] < limit:
                 kept.append(r)
                 counts[r["leaf"]] += 1
-        records = kept
+        if not full_pairing:
+            records = kept
+            return records, pairing_index(records)
+        index = pairing_index(records)
+        return kept, index
+    index = pairing_index(records)
     return records, index
 
 
@@ -307,12 +319,43 @@ def build_manifest():
     )
 
 
+def check_drive_shape():
+    """Verify the expected Drive folders without enumerating source files."""
+    expected_roots = {"INBOX/", "COMPLETE/", "DROPPED/"}
+    expected_inbox = {f"{leaf}/" for leaf, _kind, _part in INBOX_FOLDERS}
+
+    roots = set(lsf(DRIVE_ROOT, "--dirs-only"))
+    inbox = set(lsf(f"{DRIVE_ROOT}/INBOX", "--dirs-only"))
+
+    missing_roots = sorted(expected_roots - roots)
+    missing_inbox = sorted(expected_inbox - inbox)
+    if missing_roots or missing_inbox:
+        if missing_roots:
+            print("missing Drive root folders:")
+            for item in missing_roots:
+                print(f"  {item}")
+        if missing_inbox:
+            print("missing INBOX leaf folders:")
+            for item in missing_inbox:
+                print(f"  {item}")
+        return False
+
+    print("Drive folder shape OK")
+    print("  roots: " + ", ".join(sorted(expected_roots)))
+    print("  INBOX leaves: " + ", ".join(sorted(expected_inbox)))
+    return True
+
+
 def main():
     ap = argparse.ArgumentParser(description="Ingest the Drive INBOX batch.")
+    ap.add_argument("--check", action="store_true",
+                    help="verify local tools and Drive folder shape; no file scan")
     ap.add_argument("--dry-run", action="store_true",
                     help="scan and print the plan; no downloads, moves or log writes")
     ap.add_argument("--limit", type=int, default=0,
                     help="process at most N sources per INBOX folder (0 = all)")
+    ap.add_argument("--full-pairing", action="store_true",
+                    help="with --limit, compute pairing status from the full batch")
     args = ap.parse_args()
 
     if MAGICK is None:
@@ -328,10 +371,19 @@ def main():
             "  export DRIVE_ROOT='gdrive,root_folder_id=<your-folder-id>:'"
         )
 
-    print(f"scanning {DRIVE_ROOT}/INBOX ...")
-    records, index = scan(limit=args.limit)
+    if args.check:
+        ok = check_drive_shape()
+        sys.exit(0 if ok else 1)
 
-    print(f"found {len(records)} source files; {len(index)} distinct groups")
+    print(f"scanning {DRIVE_ROOT}/INBOX ...")
+    records, index = scan(limit=args.limit, full_pairing=args.full_pairing)
+
+    suffix = ""
+    if args.limit and not args.full_pairing:
+        suffix = " (pairing from limited selection)"
+    elif args.limit and args.full_pairing:
+        suffix = " (pairing from full batch)"
+    print(f"found {len(records)} source files; {len(index)} distinct groups{suffix}")
     status_tally = defaultdict(int)
     for g in index:
         status_tally[pairing_status(g, index)] += 1
